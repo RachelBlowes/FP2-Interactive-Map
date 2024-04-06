@@ -27,25 +27,25 @@ import { onMount } from "svelte";
   }
 
   onMount(async () => {
-    const map = await loadMap();
+  const map = await loadMap();
 
-    // Once the map is loaded, add the source
-    map.addSource("boston_parcels", {
-      type: "geojson",
-      data: "C:\Users\rache\OneDrive\Documents\GitHub\FP2-Interactive-Map\geodata\Boston_sales_since_2010.geojson",
-    });
-
-    // After adding the source, add the layer
-    map.addLayer({
-      id: "boston_parcels", // A unique name for the layer
-      type: "fill", // The layer type, in this case, it's a line layer
-      source: "boston_parcels", // The id of the source we added earlier
-      paint: { "fill-color": "blue", // Fill color for the polygons
-        "fill-opacity": 0.5 // Opacity of the fill
-      },
-    });
+  // Once the map is loaded, add the source
+  map.addSource("boston_parcels_source", {
+    type: 'geojson',
+    data: "https://rachelblowes.github.io/Geodata/Boston_sales_since_2010.geojson",
   });
 
+  // After adding the source, add the layer
+  map.addLayer({
+    id: "boston_parcels_layer", // A unique name for the layer
+    type: "fill", // The layer type, in this case, it's a fill layer
+    source: "boston_parcels_source", // The id of the source we added earlier
+    paint: { 
+      "fill-color": "blue", // Fill color for the polygons
+      "fill-opacity": 0.5 // Opacity of the fill
+    },
+  });
+});
 
 </script>
 
