@@ -32,7 +32,7 @@ import { onMount } from "svelte";
   // Once the map is loaded, add the source
   map.addSource("boston_parcels_source", {
     type: 'geojson',
-    data: "file:///C:/Users/rache/OneDrive/Documents/GitHub/Geodata/Boston_sales_2021/Boston_sales_since_2010.geojson",
+    data: "http://127.0.0.1:5500/Boston_sales_2021/Boston_sales_since_2010.geojson",
   });
 
   // After adding the source, add the layer
