@@ -74,7 +74,7 @@ async function loadMaps() {
         container: 'salesTimeMap',
         style: 'mapbox://styles/rachelmb/cluisi2c0003o01p2c4mdf1k2',
         center: [-71.0955, 42.3314],
-        zoom: 11
+        zoom: 16
       });
 
       salesTimeMap.on('load', () => resolve(salesTimeMap));
@@ -84,7 +84,7 @@ async function loadMaps() {
         container: 'permitTimeMap',
         style: 'mapbox://styles/rachelmb/cluisi2c0003o01p2c4mdf1k2',
         center: [-71.0955, 42.3314],
-        zoom: 11
+        zoom: 16
       });
 
       permitTimeMap.on('load', () => resolve(permitTimeMap));
