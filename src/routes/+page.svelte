@@ -15,7 +15,7 @@
       {#each filteredSales as sale}
         <circle { ...getCoords(sale) }
             r={radiusScale(sale.saleprice)}
-            fill="#0087EC"
+            fill="#F6517A"
             fill-opacity="0.6"
             stroke="white"
             stroke-width="0.5">
@@ -33,7 +33,7 @@
       {#each filteredPermits as permit}
         <circle { ...getPermitCoords(permit) }
             r={permitRadiusScale(permit.valuation)}
-            fill="#F6517A"
+            fill="#0087EC"
             fill-opacity="0.6"
             stroke="white"
             stroke-width="0.5">
