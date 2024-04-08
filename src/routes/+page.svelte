@@ -1,52 +1,148 @@
 <svelte:head>
 	<title>Interactive Map</title>
 </svelte:head>
+<h2> Comparing Sales Prices to Building Permit Valuation </h2>
+<style>
+  circle {
+    pointer-events: auto;
+  }
+</style>
+<h3>Boston Yearly Sales</h3>
 
-<h1>Interactive Map</h1>
+<div id="salesTimeMap">
+  <svg>
+    {#key mapViewChanged}
+      {#each filteredSales as sale}
+        <circle { ...getCoords(sale) }
+            r={radiusScale(sale.saleprice)}
+            fill="#0087EC"
+            fill-opacity="0.6"
+            stroke="white"
+            stroke-width="0.5">
+          <title> Sale Price {sale.saleprice}</title>
+        </circle>
+      {/each}
+    {/key}
+  </svg>
+</div>
 
-<div id="map" />
+<h3> Boston Yearly Building Permits </h3>
+<div id="permitTimeMap">
+  <svg>
+    {#key mapViewChanged}
+      {#each filteredPermits as permit}
+        <circle { ...getPermitCoords(permit) }
+            r={permitRadiusScale(permit.valuation)}
+            fill="#F6517A"
+            fill-opacity="0.6"
+            stroke="white"
+            stroke-width="0.5">
+          <title> Permit Value {permit.valuation}</title>
+        </circle>
+      {/each}
+    {/key}
+  </svg>
+</div>
+
+
+<div id="slider">
+  <label for="timeSlider">Filter by Year:</label>
+  <input type="range" id="timeSlider" min="2009" max="2022" bind:value={timeFilter}>
+  <time id="selectedTime" style="display: block;">{timeFilter === 2009 ? "Total" : timeFilter}</time>
+</div>
 
 <script>
 import mapboxgl from "mapbox-gl";
 import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
 mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
-
+import * as d3 from 'd3';
 import { onMount } from "svelte";
 
-  async function loadMap() {
-    return new Promise(resolve => {
-      const map = new mapboxgl.Map({
-        container: 'map',
+let sale = [];
+let permit = [];
+let salesTimeMap;
+let permitTimeMap;
+let mapViewChanged = 0;
+let radiusScale;
+let permitRadiusScale;
+let timeFilter = 2009;
+
+async function loadMaps() {
+  return Promise.all([
+    new Promise(resolve => {
+      salesTimeMap = new mapboxgl.Map({
+        container: 'salesTimeMap',
         style: 'mapbox://styles/rachelmb/cluisi2c0003o01p2c4mdf1k2',
-        center: [-71.0589, 42.3601],
-        zoom: 12
+        center: [-71.0955, 42.3314],
+        zoom: 11
       });
 
-      map.on('load', () => resolve(map));
-    });
-  }
+      salesTimeMap.on('load', () => resolve(salesTimeMap));
+    }),
+    new Promise(resolve => {
+      permitTimeMap = new mapboxgl.Map({
+        container: 'permitTimeMap',
+        style: 'mapbox://styles/rachelmb/cluisi2c0003o01p2c4mdf1k2',
+        center: [-71.0955, 42.3314],
+        zoom: 11
+      });
 
-  onMount(async () => {
-  const map = await loadMap();
+      permitTimeMap.on('load', () => resolve(permitTimeMap));
+    })
+  ]);
+}
 
-  // Once the map is loaded, add the source
-  map.addSource("boston_parcels_source", {
-    type: 'geojson',
-    data: "http://127.0.0.1:5500/Boston_sales_2021/Boston_sales_since_2010.geojson",
+onMount(async () => {
+  [salesTimeMap, permitTimeMap] = await loadMaps();
+  sale = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/sales_parcels_timeseries_pivoted.csv');
+  sale.forEach(d => {
+    d.saleprice = parseFloat(d.saleprice);
+  });
+  permit = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/permit_valuation_lat_long.csv');
+  permit.forEach(d => {
+    d.valuation = parseFloat(d.valuation);  
   });
 
-  // After adding the source, add the layer
-  map.addLayer({
-    id: "boston_parcels_layer", // A unique name for the layer
-    type: "fill", // The layer type, in this case, it's a fill layer
-    source: "boston_parcels_source", // The id of the source we added earlier
-    paint: { 
-      "fill-color": "blue", // Fill color for the polygons
-      "fill-opacity": 0.5 // Opacity of the fill
-    },
-  });
+  let maxsaleprice = d3.max(sale, d => d.saleprice);
+  console.log("Max sale price is", maxsaleprice);
+
+  let maxvaluation = d3.max(permit, d => d.valuation);
+  console.log("Max permit valuation is", maxvaluation);
+
+  radiusScale = d3.scaleSqrt()
+    .domain([0, maxsaleprice])
+    .range([1, 30]);
+
+  permitRadiusScale = d3.scaleSqrt()
+    .domain([0, maxvaluation])
+    .range([1, 30]);
+
+  salesTimeMap?.on("move", evt => mapViewChanged++);
+  permitTimeMap?.on("move", evt => mapViewChanged++);
 });
 
+function getCoords(sale) {
+  let point = new mapboxgl.LngLat(+sale.Long, +sale.Lat);
+  let { x, y } = salesTimeMap.project(point);
+  return { cx: x, cy: y };
+}
+
+function getPermitCoords(permit) {
+  let point = new mapboxgl.LngLat(+permit.Long, +permit.Lat);
+  let { x, y } = permitTimeMap.project(point);
+  return { cx: x, cy: y };
+   
+}
+
+let filteredSales = [];
+let filteredPermits = []; 
+
+$: {
+  filteredSales = timeFilter === 2009 ? [...sale] : sale.filter(sale => {
+    return parseInt(sale.Year) === timeFilter;
+  });
+  filteredPermits = timeFilter === 2009 ? [...permit] : permit.filter(permit => {
+    return parseInt(permit.Year) === timeFilter;
+  });
+}
 </script>
-
-
