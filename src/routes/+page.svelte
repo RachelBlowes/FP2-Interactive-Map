@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Interactive Map</title>
 </svelte:head>
-<h2> Comparing Sales Prices to Building Permit Valuation </h2>
+<h3> Comparing Sales Prices to Building Permit Valuation </h3>
 <style>
   circle {
     pointer-events: auto;
