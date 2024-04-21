@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Interactive Map</title>
 </svelte:head>
-<h3> Comparing Sales Prices to Building Permit Valuation </h3>
+<h3> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h3>
 <style>
   circle {
     pointer-events: auto;
