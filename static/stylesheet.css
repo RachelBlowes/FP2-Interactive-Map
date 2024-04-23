@@ -1,6 +1,6 @@
 html {
     color: canvastext;
-    background-color: canvas;
+    background-color: #eae2c8ec;
 }
 
 body {
@@ -55,9 +55,12 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
-h3 {
-    color: var(--color-accent);
-    font-weight: 500;
+h1 {
+    color: #F6517A;
+}
+
+p {
+    font: 100%/1.5 courier;
 }
 
 nav {

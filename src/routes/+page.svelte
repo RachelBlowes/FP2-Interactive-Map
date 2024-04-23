@@ -1,12 +1,16 @@
 <svelte:head>
 	<title>Interactive Map</title>
 </svelte:head>
-<h3> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h3>
+<h1> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h1>
 <style>
   circle {
     pointer-events: auto;
   }
 </style>
+
+<h3>Between 2010 and 2022, housing prices in Boston have increased by xx%</h3>
+<p>We use public building permit data from 2010-2023 in addition to sales and assessment data to better understand the relationship between fiscal and physical investment in the housing market.</p>
+
 <h3>Boston Yearly Sales</h3>
 
 <div id="salesTimeMap">
