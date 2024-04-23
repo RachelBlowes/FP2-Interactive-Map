@@ -1,5 +1,12 @@
 <svelte:head>
-	<title>Renovation | Speculation</title>
+	  <title>Renovation | Speculation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Mapbox GL JS and its plugins -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css" type="text/css">
 </svelte:head>
 <h1>Renovation | Speculation</h1>
 <h2> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h2>
@@ -23,6 +30,7 @@
 
 
 <TimeSliderMaps />
+<MapComparison />
 
 <script>
   //TimeSlider Maps
@@ -32,5 +40,9 @@
     mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
     import * as d3 from 'd3';
 
+
+  //Comparison Maps
+    import { onMount } from 'svelte';
+    import MapComparison from '$lib/MapComparison.svelte';
 
 </script>
