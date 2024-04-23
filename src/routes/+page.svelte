@@ -1,13 +1,11 @@
 <svelte:head>
-	  <title>Renovation | Speculation</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Include Mapbox GL JS and its plugins -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css" type="text/css">
+  <title>Renovation | Speculation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
 </svelte:head>
+
 <h1>Renovation | Speculation</h1>
 <h2> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h2>
 
@@ -28,21 +26,11 @@
     We look at flipped sales transactions, declared works valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
 </div>
 
-
 <TimeSliderMaps />
 <MapComparison />
 
 <script>
-  //TimeSlider Maps
-    import TimeSliderMaps from "$lib/TimeSliderMaps.svelte";
-    import mapboxgl from "mapbox-gl";
-    import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
-    mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
-    import * as d3 from 'd3';
-
-
-  //Comparison Maps
-    import { onMount } from 'svelte';
-    import MapComparison from '$lib/MapComparison.svelte';
-
+  // Import the TimeSliderMaps and MapComparison components
+  import TimeSliderMaps from "$lib/TimeSliderMaps.svelte";
+  import MapComparison from '$lib/MapComparison.svelte';
 </script>
