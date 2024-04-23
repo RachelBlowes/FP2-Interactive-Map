@@ -3,14 +3,14 @@
     pointer-events: auto;
   }
 
-#salesTimeMap {
+#salesCensusTimeMap {
     width: 50%; /* Adjust the width of each map */
     height: 400px; /* Set a fixed height for each map */
     margin-bottom: 20px; /* Add space between the maps */
     
   }
 
-#salesTimeMap svg {
+#salesCensusTimeMap svg {
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -18,14 +18,14 @@
     pointer-events: none;
 }
 
-#permitTimeMap {
+#permitCensusTimeMap {
     width: 50%; /* Adjust the width of each map */
     height: 400px; /* Set a fixed height for each map */
     margin-bottom: 20px; /* Add space between the maps */
         
 }
 
-#permitTimeMap svg {
+#permitCensusTimeMap svg {
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -48,7 +48,7 @@
 
 <h3>Boston Yearly Sales</h3>
 
-  <div id="salesTimeMap">
+  <div id="salesCensusTimeMap">
   
     <svg>
       {#key mapViewChanged}
@@ -59,7 +59,7 @@
               fill-opacity="0.6"
               stroke="white"
               stroke-width="0.5">
-            <title> Sale Price {sale.saleprice}</title>
+            <title> Average Sale Price {sale.price_avg}</title>
           </circle>
         {/each}
       {/key}
@@ -67,17 +67,17 @@
   </div>
 
   <h3> Boston Yearly Building Permits </h3>
-  <div id="permitTimeMap">
+  <div id="permitCensusTimeMap">
     <svg>
       {#key mapViewChanged}
         {#each filteredPermits as permit}
           <circle { ...getPermitCoords(permit) }
-              r={permitRadiusScale(permit.valuation)}
+              r={permitRadiusScale(permit.permit_value_avg)}
               fill="#0087EC"
               fill-opacity="0.6"
               stroke="white"
               stroke-width="0.5">
-            <title> Permit Value {permit.valuation}</title>
+            <title> Permit Value {permit.permit_value_avg}</title>
           </circle>
         {/each}
       {/key}
@@ -100,8 +100,8 @@ import { onMount } from "svelte";
 
 let sale = [];
 let permit = [];
-let salesTimeMap;
-let permitTimeMap;
+let salesCensusTimeMap;
+let permitCensusTimeMap;
 let mapViewChanged = 0;
 let radiusScale;
 let permitRadiusScale;
@@ -110,66 +110,66 @@ let timeFilter = 2009;
 async function loadMaps() {
   return Promise.all([
     new Promise(resolve => {
-      salesTimeMap = new mapboxgl.Map({
+      salesCensusTimeMap = new mapboxgl.Map({
         container: 'salesTimeMap',
         style: 'mapbox://styles/rachelmb/cluq9tisq01ed01pbebh1c7np',
         center: [-71.0955, 42.3314],
         zoom: 11
       });
 
-      salesTimeMap.on('load', () => resolve(salesTimeMap));
+      salesCensusTimeMap.on('load', () => resolve(salesCensusTimeMap));
     }),
     new Promise(resolve => {
-      permitTimeMap = new mapboxgl.Map({
+      permitCensusTimeMap = new mapboxgl.Map({
         container: 'permitTimeMap',
         style: 'mapbox://styles/rachelmb/cluisi2c0003o01p2c4mdf1k2',
         center: [-71.0955, 42.3314],
         zoom: 11
       });
 
-      permitTimeMap.on('load', () => resolve(permitTimeMap));
+      permitCensusTimeMap.on('load', () => resolve(permitCensusTimeMap));
     })
   ]);
 }
 
 onMount(async () => {
-  [salesTimeMap, permitTimeMap] = await loadMaps();
-  sale = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/sales_parcels_timeseries_pivoted.csv');
+  [salesCensusTimeMap, permitCensusTimeMap] = await loadMaps();
+  sale = await d3.csv('https://rachelblowes.github.io/Geodata/demographic_data/census_price_permit_spatial.csv');
   sale.forEach(d => {
-    d.saleprice = parseFloat(d.saleprice);
+    d.saleprice = parseFloat(d.price_avg);
   });
-  permit = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/permit_valuation_lat_long_new.csv');
+  permit = await d3.csv('https://rachelblowes.github.io/Geodata/demographic_data/census_price_permit_spatial.csv');
   permit.forEach(d => {
-    d.valuation = parseFloat(d.valuation);  
+    d.valuation = parseFloat(d.permit_value_avg);  
   });
 
-  let maxsaleprice = d3.max(sale, d => d.saleprice);
-  console.log("Max sale price is", maxsaleprice);
+  let maxavgsaleprice = d3.max(sale, d => d.price_avg);
+  console.log("Max average sale price is", maxavgsaleprice);
 
-  let maxvaluation = d3.max(permit, d => d.valuation);
-  console.log("Max permit valuation is", maxvaluation);
+  let maxavgvaluation = d3.max(permit, d => d.permit_value_avg);
+  console.log("Max average permit valuation is", maxavgvaluation);
 
   radiusScale = d3.scaleSqrt()
-    .domain([0, maxsaleprice])
+    .domain([0, maxavgsaleprice])
     .range([1, 30]);
 
   permitRadiusScale = d3.scaleSqrt()
-    .domain([0, maxvaluation])
+    .domain([0, maxavgvaluation])
     .range([1, 30]);
 
-  salesTimeMap?.on("move", evt => mapViewChanged++);
-  permitTimeMap?.on("move", evt => mapViewChanged++);
+  salesCensusTimeMap?.on("move", evt => mapViewChanged++);
+  permitCensusTimeMap?.on("move", evt => mapViewChanged++);
 });
 
 function getCoords(sale) {
   let point = new mapboxgl.LngLat(+sale.Long, +sale.Lat);
-  let { x, y } = salesTimeMap.project(point);
+  let { x, y } = salesCensusTimeMap.project(point);
   return { cx: x, cy: y };
 }
 
 function getPermitCoords(permit) {
   let point = new mapboxgl.LngLat(+permit.Long, +permit.Lat);
-  let { x, y } = permitTimeMap.project(point);
+  let { x, y } = permitCensusTimeMap.project(point);
   return { cx: x, cy: y };
    
 }
