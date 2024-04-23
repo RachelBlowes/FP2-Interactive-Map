@@ -42,3 +42,14 @@ p {
     font: 100%/1.5 courier;
     max-width: 300px;
 }
+
+/* Inge's World */
+.graph-title {
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: underline;
+  }
+
+  .graph-text {
+    font-family: system-ui, sans-serif;
+    font-size: 0.75em;
+  }
