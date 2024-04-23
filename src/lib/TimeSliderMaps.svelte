@@ -3,12 +3,12 @@
     pointer-events: auto;
   }
 
-  #salesTimeMap {
-    flex: 1;
-    width: 50%;
-    height: 50%;
-    margin: auto; /* Center horizontally */
-}
+#salesTimeMap {
+    width: 50%; /* Adjust the width of each map */
+    height: 400px; /* Set a fixed height for each map */
+    margin-bottom: 20px; /* Add space between the maps */
+    
+  }
 
 #salesTimeMap svg {
     position: absolute;
@@ -19,10 +19,10 @@
 }
 
 #permitTimeMap {
-    flex: 1;
-    width: 50%;
-    height: 50%;
-    margin: auto; /* Center horizontally */
+    width: 50%; /* Adjust the width of each map */
+    height: 400px; /* Set a fixed height for each map */
+    margin-bottom: 20px; /* Add space between the maps */
+        
 }
 
 #permitTimeMap svg {
@@ -33,44 +33,56 @@
     pointer-events: none;
 }
 
+/* #mapgrid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+    gap: 1em;
+} */
+
 </style>
+
 
 <h3>Boston Yearly Sales</h3>
 
-<div id="salesTimeMap">
-  <svg>
-    {#key mapViewChanged}
-      {#each filteredSales as sale}
-        <circle { ...getCoords(sale) }
-            r={radiusScale(sale.saleprice)}
-            fill="#F6517A"
-            fill-opacity="0.6"
-            stroke="white"
-            stroke-width="0.5">
-          <title> Sale Price {sale.saleprice}</title>
-        </circle>
-      {/each}
-    {/key}
-  </svg>
-</div>
+  <div id="salesTimeMap">
+  
+    <svg>
+      {#key mapViewChanged}
+        {#each filteredSales as sale}
+          <circle { ...getCoords(sale) }
+              r={radiusScale(sale.saleprice)}
+              fill="#F6517A"
+              fill-opacity="0.6"
+              stroke="white"
+              stroke-width="0.5">
+            <title> Sale Price {sale.saleprice}</title>
+          </circle>
+        {/each}
+      {/key}
+    </svg>
+  </div>
 
-<h3> Boston Yearly Building Permits </h3>
-<div id="permitTimeMap">
-  <svg>
-    {#key mapViewChanged}
-      {#each filteredPermits as permit}
-        <circle { ...getPermitCoords(permit) }
-            r={permitRadiusScale(permit.valuation)}
-            fill="#0087EC"
-            fill-opacity="0.6"
-            stroke="white"
-            stroke-width="0.5">
-          <title> Permit Value {permit.valuation}</title>
-        </circle>
-      {/each}
-    {/key}
-  </svg>
-</div>
+  <h3> Boston Yearly Building Permits </h3>
+  <div id="permitTimeMap">
+    <svg>
+      {#key mapViewChanged}
+        {#each filteredPermits as permit}
+          <circle { ...getPermitCoords(permit) }
+              r={permitRadiusScale(permit.valuation)}
+              fill="#0087EC"
+              fill-opacity="0.6"
+              stroke="white"
+              stroke-width="0.5">
+            <title> Permit Value {permit.valuation}</title>
+          </circle>
+        {/each}
+      {/key}
+    </svg>
+  </div>
 
 
 <div id="slider">
