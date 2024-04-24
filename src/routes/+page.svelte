@@ -39,6 +39,8 @@
     mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
     import * as d3 from 'd3';
 
+    import WordCloud from "../lib/WordCloud.svelte";
+
 
   //Comparison Maps
     import { onMount } from 'svelte';
