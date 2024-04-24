@@ -29,8 +29,21 @@
 <TimeSliderMaps />
 <MapComparison />
 
+<WordCloud />
+
 <script>
-  // Import the TimeSliderMaps and MapComparison components
-  import TimeSliderMaps from "$lib/TimeSliderMaps.svelte";
-  import MapComparison from '$lib/MapComparison.svelte';
+  //TimeSlider Maps
+    import TimeSliderMaps from "$lib/TimeSliderMaps.svelte";
+    import mapboxgl from "mapbox-gl";
+    import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
+    mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
+    import * as d3 from 'd3';
+
+    import WordCloud from "../lib/WordCloud.svelte";
+
+
+  //Comparison Maps
+    import { onMount } from 'svelte';
+    import MapComparison from '$lib/MapComparison.svelte';
+
 </script>
