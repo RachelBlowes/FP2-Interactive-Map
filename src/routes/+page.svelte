@@ -28,12 +28,13 @@
 
 <script>
   //TimeSlider Maps
-    import Owner_linegraph from "$lib/Owner_linegraph.svelte";
-    import OwnerLinegraphSales from "../lib/Owner_linegraph_sales.svelte";
     import TimeSliderMaps from "$lib/TimeSliderMaps.svelte";
     import mapboxgl from "mapbox-gl";
     import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
     mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
     import * as d3 from 'd3';
   
+  //Line graphs
+    import Owner_linegraph from "$lib/Owner_linegraph.svelte";
+    import OwnerLinegraphSales from "../lib/Owner_linegraph_sales.svelte";
 </script>
