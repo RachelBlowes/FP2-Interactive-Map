@@ -21,13 +21,15 @@
     We look at flipped sales transactions, declared works valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
 </div>
 
-
-<TimeSliderMaps />
+<!-- 
+<TimeSliderMaps /> -->
 <Owner_linegraph />
+<OwnerLinegraphSales />
 
 <script>
   //TimeSlider Maps
     import Owner_linegraph from "$lib/Owner_linegraph.svelte";
+    import OwnerLinegraphSales from "../lib/Owner_linegraph_sales.svelte";
     import TimeSliderMaps from "$lib/TimeSliderMaps.svelte";
     import mapboxgl from "mapbox-gl";
     import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
