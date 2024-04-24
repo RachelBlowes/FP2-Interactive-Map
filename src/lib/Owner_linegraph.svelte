@@ -7,7 +7,7 @@
   export let dataUrl = "https://raw.githubusercontent.com/RachelBlowes/Geodata/main/owner_data/corporate_timeseries.csv";
 
   // Define margin and dimensions for the graph
-  let margin = { top: 50, right: 100, bottom: 20, left: 60 };
+  let margin = { top: 50, right: 100, bottom: 30, left: 60 };
   let width = 500 - margin.left - margin.right;
   let height = 400 - margin.top - margin.bottom;
 
