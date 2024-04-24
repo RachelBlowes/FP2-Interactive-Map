@@ -21,7 +21,7 @@
     
     While renovation may improve living conditions in a given building, it can also reveal speculation patterns. </p>
   <p class="columntext">
-    Almost 90% of sold flipped properties, have a documented permit. 
+    Almost 90% of sold flipped properties have a documented permit. 
 
     We look at flipped sales transactions, declared works valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
 </div>
