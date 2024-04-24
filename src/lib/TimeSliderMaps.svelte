@@ -3,51 +3,104 @@
     pointer-events: auto;
   }
 
-#salesTimeMap {
+  #salesTimeMap {
+    flex: 1;
     width: 50%; /* Adjust the width of each map */
-    height: 400px; /* Set a fixed height for each map */
-    margin-bottom: 20px; /* Add space between the maps */
-    
+    height: 100%; /* Set a fixed height for each map */
   }
 
-#salesTimeMap svg {
+  #salesTimeMap svg {
     position: absolute;
     z-index: 1;
     width: 100%;
     height: 100%;
     pointer-events: none;
-}
+  }
 
-#permitTimeMap {
+  #permitTimeMap {
+    flex: 1;
     width: 50%; /* Adjust the width of each map */
-    height: 400px; /* Set a fixed height for each map */
-    margin-bottom: 20px; /* Add space between the maps */
-        
-}
+    height: 100%; /* Set a fixed height for each map */
+  }
 
-#permitTimeMap svg {
+  #permitTimeMap svg {
     position: absolute;
     z-index: 1;
     width: 100%;
     height: 100%;
     pointer-events: none;
+  }
+
+  #mapcontainer {
+    display: flex;
+    width: 100%;
+    height: 400px; /* Set a fixed height for both maps */
+    margin-bottom: 20px; /* Add space between the maps */
+    justify-content: space-around;
+  }
+
+  #maptitles {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  /* Slider styles */
+  #slider {
+    width: 100%; /* Width of the outside container */
+    margin-bottom: 20px;
+  }
+
+  #timeSlider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 10px; /* Specified height */
+    background: whitesmoke; /* Grey background */
+    border-radius: 5px; /*Rounded*/
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+
+  /* Mouse-over effects */
+  #timeSlider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  #timeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 5cqi;
+    width: 20px; /* Set a specific slider handle width */
+    height: 10px; /* Slider handle height */
+    background: #3a3a3a; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  #timeSlider::-moz-range-thumb {
+    width: 20px; /* Set a specific slider handle width */
+    height: 10px; /* Slider handle height */
+    border-radius: 5cqi;
+    background: #3a3a3a; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+ #selectedTime, #timesliderlabel {
+  display: block;
+  text-align: center; /* Center the text */
+  font-weight: bold; /* Make the text bold */
 }
-
-/* #mapgrid {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    justify-content: space-evenly;
-    justify-items: center;
-    align-content: space-evenly;
-    align-items: center;
-    gap: 1em;
-} */
-
 </style>
 
+<div id="maptitles">
+  <h3>Boston Yearly Sales</h3>
+  <h3> Boston Yearly Building Permits </h3>
+</div>
 
-<h3>Boston Yearly Sales</h3>
-
+<div id="mapcontainer">
   <div id="salesTimeMap">
   
     <svg>
@@ -66,7 +119,6 @@
     </svg>
   </div>
 
-  <h3> Boston Yearly Building Permits </h3>
   <div id="permitTimeMap">
     <svg>
       {#key mapViewChanged}
@@ -83,13 +135,14 @@
       {/key}
     </svg>
   </div>
-
+</div>
 
 <div id="slider">
-  <label for="timeSlider">Filter by Year:</label>
+  <label id="timesliderlabel" for="timeSlider">Filter by Year:</label>
   <input type="range" id="timeSlider" min="2009" max="2022" bind:value={timeFilter}>
   <time id="selectedTime" style="display: block;">{timeFilter === 2009 ? "Total" : timeFilter}</time>
 </div>
+
 
 <script>
 import mapboxgl from "mapbox-gl";
