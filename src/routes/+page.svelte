@@ -32,6 +32,8 @@
 <TimeSliderMaps />
 <MapComparison />
 
+<WordCloud />
+
 <script>
   //TimeSlider Maps
     import TimeSliderMaps from "$lib/TimeSliderMaps.svelte";
@@ -44,5 +46,6 @@
   //Comparison Maps
     import { onMount } from 'svelte';
     import MapComparison from '$lib/MapComparison.svelte';
+    import WordCloud from "../lib/WordCloud.svelte";
 
 </script>
