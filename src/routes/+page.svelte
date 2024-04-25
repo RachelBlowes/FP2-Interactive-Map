@@ -104,9 +104,9 @@
 
 
 <WordCloud />
-
+<!-- 
 <Owner_linegraph />
-<OwnerLinegraphSales />
+<OwnerLinegraphSales /> -->
 
 <script>
 
