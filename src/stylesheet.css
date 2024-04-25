@@ -1,0 +1,122 @@
+html {
+    color: canvastext;
+    background-color: #eae2c8ec;
+    overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+body {
+    font: 100%/1.5 system-ui, sans-serif;
+    max-width: min(120ch, 80vw);
+    margin-inline: max(1em, (100% - 120ch) / 2);
+	align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    text-wrap: balance;
+    text-align: justify;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #F6517A;
+}
+
+h4 {
+    color: whitesmoke;
+    max-width: 50%;
+    flex:1;
+
+}
+
+p {
+    font: 100%/1.5 courier;
+    max-width: 600px;
+    margin: 0 auto; /* Center the paragraph horizontally */
+}
+
+.text-container {
+    justify-content: center; /* Center the items horizontally */
+    column-count: 2; /* Number of columns */
+    column-gap: 20px; /* Gap between columns */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.columntext {
+    font: 100%/1.5 courier;
+    max-width: 300px;
+}
+
+section {
+    height: 80vh;
+  }
+
+  #cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    
+}
+
+#cover h1 {
+  font-size: xx-large;
+  position: absolute;   
+}
+
+  #coverphoto {
+    max-width: 100%;       
+  }
+
+  #fadedcoverphoto {
+    max-width: 100%;
+    opacity: 0.4;  
+  }
+
+  #definitions {
+    display: flex;
+    align-content: space-around;
+    max-width: 100%;
+    margin: 50px;
+  }
+
+  #physical, #fiscal {
+    flex: 1; 
+    max-width: 50%; 
+    padding: 0 90px;     
+  }
+
+  #physicaltitle {
+    color: #0087EC;
+    font-weight: bold;
+  }
+  #fiscaltitle {
+    color: #EE6553;
+    font-weight: bold;
+  }
+
+  #fiscalvsphysical{
+    max-width: 100%;
+    display: flex;
+    align-content: space-around;
+    background-color: #EE6553;
+
+  }
+
+  #divline {
+    background-color: whitesmoke;
+    width: 2px;
+  }
+
+  .divided {
+    max-width: 100%;
+    display: flex;
+    align-content: space-around;
+  }
+  
+  .dividedtitle {
+    flex: 1; 
+    max-width: 50%;
+  }
