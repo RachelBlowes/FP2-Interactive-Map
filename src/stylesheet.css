@@ -6,14 +6,9 @@ html {
 
 body {
     font: 100%/1.5 system-ui, sans-serif;
-	display: flex;
-	flex-flow: column;
-	max-width: 80em;
-	min-height: 100vh;
-	box-sizing: border-box;
-	margin: auto;
-	padding: 1em;
-    align-items: center; /* Center vertically */
+    max-width: min(120ch, 80vw);
+    margin-inline: max(1em, (100% - 120ch) / 2);
+	align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
 }
 
@@ -31,15 +26,20 @@ h1, h2 {
 p {
     font: 100%/1.5 courier;
     max-width: 600px;
+    margin: 0 auto; /* Center the paragraph horizontally */
 }
 
 .text-container {
+    justify-content: center; /* Center the items horizontally */
     column-count: 2; /* Number of columns */
     column-gap: 20px; /* Gap between columns */
-    align-items: flex-start;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .columntext {
     font: 100%/1.5 courier;
     max-width: 300px;
 }
+
+
