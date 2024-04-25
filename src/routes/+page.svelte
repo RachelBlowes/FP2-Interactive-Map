@@ -121,15 +121,6 @@
     mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
     import * as d3 from 'd3';
 
-  //WordCloud 
-  import WordCloud from '$lib/WordCloud.svelte';
 
-  //Owner Linegraph   
-  import Owner_linegraph from '$lib/Owner_linegraph.svelte';
-
-  //Owner Linegraph Sales
-  import OwnerLinegraphSales from '$lib/OwnerLinegraphSales.svelte';
-
-  
 </script>
 
