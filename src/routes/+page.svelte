@@ -75,8 +75,7 @@
 <!-- DOT CHART - TOTAL INVESTMENT PHYSICAL VS. FISCAL -->
 
 <!-- SLIDEY MAP -->
- 
-<MapComparison />
+ <MapComparison />
   <div class="divided">
     <div class="dividedtitle">
       <h5>Boston sales 2010-2022, gradient by sale price</h5>
@@ -101,12 +100,17 @@
   </div>
 <TimeSliderMaps />
 
-
-
-<WordCloud />
-
 <Owner_linegraph />
 <OwnerLinegraphSales />
+
+<!-- WHERE? -->
+
+
+
+<!-- WHAT? -->
+<WordCloud />
+
+
 
 <script>
 
