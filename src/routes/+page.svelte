@@ -104,7 +104,7 @@
 <OwnerLinegraphSales />
 
 <!-- WHERE? -->
-
+<Census_Maps />
 
 
 <!-- WHAT? -->
@@ -136,6 +136,10 @@
 
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
+
+  //Census_Maps
+  import Census_Maps from '$lib/Census_Maps.svelte';
+
 
 </script>
 
