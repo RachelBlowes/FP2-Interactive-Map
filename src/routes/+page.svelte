@@ -122,13 +122,16 @@
     import * as d3 from 'd3';
 
   //WordCloud
-  import Owner_linegraph from '$lib/WordCloud.svelte';
+  import WordCloud from '$lib/WordCloud.svelte';
 
-    //Owner Linegraph
+  //Owner Linegraph
     import Owner_linegraph from '$lib/Owner_linegraph.svelte';
 
-    //Owner Linegraph Sales
+  //Owner Linegraph Sales
     import OwnerLinegraphSales from '$lib/Owner_linegraph_sales.svelte';
+
+    import Scroller from "@sveltejs/svelte-scroller";
+    let index, offset, progress;
 
 </script>
 
