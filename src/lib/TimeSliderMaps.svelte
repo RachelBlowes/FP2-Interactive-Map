@@ -95,10 +95,6 @@
 }
 </style>
 
-<div id="maptitles">
-  <h3>Boston Yearly Sales</h3>
-  <h3> Boston Yearly Building Permits </h3>
-</div>
 
 <div id="mapcontainer">
   <div id="salesTimeMap">
@@ -135,6 +131,11 @@
       {/key}
     </svg>
   </div>
+</div>
+
+<div id="maptitles">
+  <h5>Boston Yearly Sales</h5>
+  <h5> Boston Yearly Building Permits </h5>
 </div>
 
 <div id="slider">

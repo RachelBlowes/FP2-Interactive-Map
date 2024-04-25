@@ -42,6 +42,7 @@ p {
     column-gap: 20px; /* Gap between columns */
     max-width: 600px;
     margin: 0 auto;
+    margin-bottom: 50px;
 }
 
 .columntext {

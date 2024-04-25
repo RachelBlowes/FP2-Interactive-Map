@@ -64,7 +64,7 @@
     We look at flipped sales transactions, declared works valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
 </div>
 
-<header id="fiscalvsphysical">
+<header id="fiscalvsphysical" style="position: sticky; top: 0; z-index: 1000;">
   <h4>Physical</h4>
   <div id="divline"></div>
   <h4>Fiscal</h4>
@@ -76,6 +76,7 @@
 
 <!-- SLIDEY MAP -->
  
+<MapComparison />
   <div class="divided">
     <div class="dividedtitle">
       <h5>Boston sales 2010-2022, gradient by sale price</h5>
@@ -85,10 +86,22 @@
       <h5>Building permits 2010-2022, gradient by permit valuation</h5>
     </div>
   </div>
-  <MapComparison />
 
 
+  
+  <!-- WHO? -->
+  <div class="divided">
+    <div class="dividedtitle">
+      <h3>WHO IS BUILDING?</h3>
+    </div>
+    <div id="divline"></div>
+    <div class="dividedtitle">
+      <h3>WHO IS BUYING?</h3>
+    </div>
+  </div>
 <TimeSliderMaps />
+
+
 
 <WordCloud />
 
