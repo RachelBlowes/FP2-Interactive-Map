@@ -23,6 +23,13 @@ h1, h2 {
     color: #F6517A;
 }
 
+h4 {
+    color: whitesmoke;
+    max-width: 50%;
+    flex:1;
+
+}
+
 p {
     font: 100%/1.5 courier;
     max-width: 600px;
@@ -55,20 +62,17 @@ section {
 }
 
 #cover h1 {
-  font-size: x-large;
-  position: absolute;
-
+  font-size: xx-large;
+  position: absolute;   
 }
 
   #coverphoto {
-    max-width: 100%;
-       
+    max-width: 100%;       
   }
 
   #fadedcoverphoto {
     max-width: 100%;
-    opacity: 0.5;
-  
+    opacity: 0.4;  
   }
 
   #definitions {
@@ -76,14 +80,12 @@ section {
     align-content: space-around;
     max-width: 100%;
     margin: 50px;
-
   }
 
   #physical, #fiscal {
     flex: 1; 
     max-width: 50%; 
-    padding: 0 90px; 
-    
+    padding: 0 90px;     
   }
 
   #physicaltitle {
@@ -95,3 +97,26 @@ section {
     font-weight: bold;
   }
 
+  #fiscalvsphysical{
+    max-width: 100%;
+    display: flex;
+    align-content: space-around;
+    background-color: #EE6553;
+
+  }
+
+  #divline {
+    background-color: whitesmoke;
+    width: 2px;
+  }
+
+  .divided {
+    max-width: 100%;
+    display: flex;
+    align-content: space-around;
+  }
+  
+  .dividedtitle {
+    flex: 1; 
+    max-width: 50%;
+  }

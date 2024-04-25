@@ -51,10 +51,7 @@
   </div>
 </Scroller>
 
-
-
-
-<h4>Why building permits?</h4>
+<h3>Why building permits?</h3>
 
 <div class="text-container">
   <p class="columntext">
@@ -67,13 +64,41 @@
     We look at flipped sales transactions, declared works valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
 </div>
 
+<header id="fiscalvsphysical">
+  <h4>Physical</h4>
+  <div id="divline"></div>
+  <h4>Fiscal</h4>
+</header>
+
+<!-- NARRATIVE EXAMPLE -->
+
+<!-- DOT CHART - TOTAL INVESTMENT PHYSICAL VS. FISCAL -->
+
+<!-- SLIDEY MAP -->
+ 
+  <div class="divided">
+    <div class="dividedtitle">
+      <h5>Boston sales 2010-2022, gradient by sale price</h5>
+    </div>
+    <div id="divline"></div>
+    <div class="dividedtitle">
+      <h5>Building permits 2010-2022, gradient by permit valuation</h5>
+    </div>
+  </div>
+  <MapComparison />
+
 
 <TimeSliderMaps />
-<MapComparison />
+
 <WordCloud />
 
 
 <script>
+
+  //Comparison Maps
+  import { onMount } from 'svelte';
+    import MapComparison from '$lib/MapComparison.svelte';
+
   //TimeSlider Maps
     import TimeSliderMaps from "$lib/TimeSliderMaps.svelte";
     import mapboxgl from "mapbox-gl";
@@ -84,10 +109,7 @@
     import WordCloud from "../lib/WordCloud.svelte";
 
 
-  //Comparison Maps
-    import { onMount } from 'svelte';
-    import MapComparison from '$lib/MapComparison.svelte';
-
+  
     //Scroller
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
