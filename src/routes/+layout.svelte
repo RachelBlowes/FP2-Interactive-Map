@@ -23,7 +23,6 @@
 nav {
     display: flex;
     justify-content: center; 
-    margin-bottom: 5%;
     border-bottom-width: 0.1em;
     border-bottom-style: solid;
     border-bottom-color: #BBB4B1;
