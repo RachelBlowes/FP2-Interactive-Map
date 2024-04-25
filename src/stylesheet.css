@@ -42,4 +42,56 @@ p {
     max-width: 300px;
 }
 
+section {
+    height: 80vh;
+  }
+
+  #cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    
+}
+
+#cover h1 {
+  font-size: x-large;
+  position: absolute;
+
+}
+
+  #coverphoto {
+    max-width: 100%;
+       
+  }
+
+  #fadedcoverphoto {
+    max-width: 100%;
+    opacity: 0.5;
+  
+  }
+
+  #definitions {
+    display: flex;
+    align-content: space-around;
+    max-width: 100%;
+    margin: 50px;
+
+  }
+
+  #physical, #fiscal {
+    flex: 1; 
+    max-width: 50%; 
+    padding: 0 90px; 
+    
+  }
+
+  #physicaltitle {
+    color: #0087EC;
+    font-weight: bold;
+  }
+  #fiscaltitle {
+    color: #EE6553;
+    font-weight: bold;
+  }
 
