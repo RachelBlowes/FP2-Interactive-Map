@@ -31,52 +31,90 @@
     </section>
     <section>
       <!-- This is the 4th section. -->
-      <p>We use public building permit data from 2010-2023 in addition to sales and assessment data to better understand the relationship between <strong>fiscal</strong> and <strong>physical</strong> investment in the housing market.</p>
+      <p>We use public building permit data from 2010-2023 in addition to sales and assessment data to better understand the relationship between <strong>physical</strong> and <strong>fiscal</strong> investment in the housing market.</p>
     </section>
     <section>
       <!-- This is the 5th section. -->
       <div id="definitions">
-        <div id="fiscal">
-          <p id="fiscaltitle">Fiscal (adj)</p>
-          <p><em>relating to financial matters</em></p>
-          <p>In our analysis, fiscal investments refer to residential real estate transactions</p>
-        </div> 
         <div id="physical">
           <p id="physicaltitle">Physical (adj)</p>
           <p><em>tangible or concrete</em></p>
           <p>In our analysis, physical investments refer to money spent on physical improvements to a given property</p>
-        </div>    
+        </div>
+        <div id="fiscal">
+          <p id="fiscaltitle">Fiscal (adj)</p>
+          <p><em>relating to financial matters</em></p>
+          <p>In our analysis, fiscal investments refer to residential real estate transactions</p>
+        </div>     
       </div>
     </section>
-  </div>
+    <section>
+      <!-- Why Permits? -->
+      <h3>Why building permits?</h3>
+
+      <div class="text-container">
+        <p class="columntext">
+          Boston is in the midst of a housing availability and affordability crisis. Its housing stock is relatively static, with few new developments.
+          
+          While renovation may improve living conditions in a given building, it can also reveal speculation patterns. </p>
+        <p class="columntext">
+          Almost 90% of sold flipped properties have a documented permit. 
+      
+          We look at flipped sales transactions, declared works valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
+      </div>
+    </section>
+    <section>
+      <!-- Example - intro -->
+      <p>Flipping is buying a property to <strong id="physicaltitle">renovate</strong> and then <strong id="fiscaltitle">sell</strong> - in the shortest time possible. In our dataset, within less than two years from the previous sale.</p>
+      <br><br> 
+      <p id="centered-text"><strong>Let's explore a flipped house.</strong></p>
+    </section>
+    <section>
+      <!-- Example 01-->
+      <div id="definitions" class="collage">
+        <div id="physical">
+          <h1 id="example_header" style="color: black; text-align: left;">11 Joseph St</h1>
+          <h5 id="example_typology_header" style="text-align: left">2 Family Residential House</h5>
+          <p id="paragraph_sale1">Mr. O'Malley bought 11 Joseph st. <strong id="physicaltitle">2-Family residential building</strong> in July 2015 for <strong id="fiscaltitle">238,000$.</strong></p>
+          <br>
+          <img src="src/lib/11_JosephSt/11Joseph_2014.png" alt="11 Joseph St 2014" class="GSV">
+          <p><em>Google Street View Image, 2014</em></p>
+        </div>
+        <div id="fiscal">
+          
+        </div>
+      </div>
+           <!-- Example 02 - renovation -->
+           <div id="definitions" class="collage">
+            <div id="physical">
+              <h1 id="example_header" style="color: black;">11 Joseph St</h1>
+              <h5 id="example_typology_header" style="text-align: left">2 Family Residential House</h5>
+              <p id="paragraph_sale1">Mr. O'Malley bought 11 Joseph st. <strong id="physicaltitle">2-Family residential building</strong> in July 2015 for <strong id="fiscaltitle">238,000$.</strong></p>
+              <img src="src/lib/11_JosephSt/11Joseph_2014.png" alt="11 Joseph St 2014" class="GSV">
+              <p><em>Google Street View Image, 2014</em></p>
+            </div>
+            <div id="fiscal">
+
+            </div>   
+          </div>
+    </section>
 </Scroller>
 
-<h3>Why building permits?</h3>
 
-<div class="text-container">
-  <p class="columntext">
-    Boston is in the midst of a housing availability and affordability crisis. Its housing stock is relatively static, with few new developments.
-    
-    While renovation may improve living conditions in a given building, it can also reveal speculation patterns. </p>
-  <p class="columntext">
-    Almost 90% of sold flipped properties have a documented permit. 
-
-    We look at flipped sales transactions, declared works valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
-</div>
 
 <header id="fiscalvsphysical" style="position: sticky; top: 0; z-index: 1000;">
-  <h4>Fiscal</h4>
-  <div id="divline"></div>
   <h4>Physical</h4>
+  <div id="divline"></div>
+  <h4>Fiscal</h4>
 </header>
 
 <!-- NARRATIVE EXAMPLE -->
 
 <!-- DOT CHART - TOTAL INVESTMENT PHYSICAL VS. FISCAL -->
-<DotAnimation />
 
 <!-- SLIDEY MAP -->
- <MapComparison />
+ 
+<MapComparison />
   <div class="divided">
     <div class="dividedtitle">
       <h5>Boston sales 2010-2022, gradient by sale price</h5>
@@ -101,6 +139,7 @@
   </div>
 <TimeSliderMaps />
 
+<<<<<<< Updated upstream
   <!-- WHO? -->
   <div class="divided">
     <div class="dividedtitle">
@@ -139,7 +178,12 @@
 
   <!-- WHAT? -->
   <WordCloud/>
+=======
+<WordCloud />
+>>>>>>> Stashed changes
 
+<Owner_linegraph />
+<OwnerLinegraphSales />
 
 <script>
 
@@ -166,28 +210,22 @@
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
 
-  //Census_Maps
-  import Census_Maps from '$lib/Census_Maps.svelte';
-
-  //DotAnimation
-    import DotAnimation from '$lib/DotAnimation.svelte';
-
-
-  //Bar charts
-    import CensusBarChart from '$lib/CensusBarChart.svelte';
-    import CensusBarChartFiscal from '../lib/CensusBarChartFiscal.svelte';
+    //example
 
 </script>
 
 <style>
   .cover_header {
-    font-size: 100em;
     background-color: white;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 7px;
     padding-top: 7px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-    
   }
+
+  .GSV{
+    width: 100%;
+  }
+
 </style>

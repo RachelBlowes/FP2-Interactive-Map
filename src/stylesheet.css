@@ -1,6 +1,6 @@
 html {
     color: canvastext;
-    background-color: #eae2c8ec;
+    background-color:hsla(45, 37%, 67%, 0.16) ;
     overflow-y: scroll; /* Enable vertical scrolling */
 }
 
@@ -23,11 +23,19 @@ h1, h2 {
     color: #F6517A;
 }
 
+
+
 h4 {
     color: whitesmoke;
     max-width: 50%;
     flex:1;
 
+}
+
+h5{
+  color: #F6517A;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12pt;
 }
 
 p {
@@ -90,12 +98,13 @@ section {
   }
 
   #physicaltitle {
-    color: #0087EC;
+    color: #F6517A;
     font-weight: bold;
   }
   #fiscaltitle {
-    color: #EE6553;
+    color: #78B48C;
     font-weight: bold;
+    background-color: ;
   }
 
   #fiscalvsphysical{
@@ -103,7 +112,10 @@ section {
     display: flex;
     align-content: space-around;
     background-color: #EE6553;
+  }
 
+  #centered-text {
+    text-align: center;
   }
 
   #divline {
