@@ -123,7 +123,8 @@
   </div>
 
 
-  
+<TimeSliderMaps />
+
   <!-- WHO? -->
   <div class="divided">
     <div class="dividedtitle">
@@ -134,7 +135,33 @@
       <h3>WHO IS BUYING?</h3>
     </div>
   </div>
-<TimeSliderMaps />
+
+  <div class="divided">
+    <div class="dividedchart">
+      <Owner_linegraph />
+    </div>
+    <div id="divline"></div>
+    <div class="dividedchart">
+      <OwnerLinegraphSales />
+    </div>
+  </div>
+
+  <div style="height: 100px;"></div>
+
+  <!-- WHERE? -->
+  <div class="divided">
+    <div class="dividedtitle">
+      <h3>WHERE ARE WE BUILDING?</h3>
+      <CensusBarChart />
+    </div>
+    <div id="divline"></div>
+    <div class="dividedtitle">
+      <h3>WHERE ARE WE BUYING?</h3>
+      <!-- <CensusBarChartFiscal /> -->
+    </div>
+  </div>
+
+  <!-- WHAT? -->
 
 <WordCloud />
 
