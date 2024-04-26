@@ -266,12 +266,13 @@ function render(csvData) {
 
   #slider_line_graph {
 
-    margin: 50px;
+    margin: 20px;
   }
 
   .slider-container {
+  
   position: absolute;
-  bottom: 0;
+  bottom: -10;
   left: 0;
   width: 100%; /* Ensure slider takes full width */
 }
