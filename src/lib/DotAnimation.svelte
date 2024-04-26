@@ -1,35 +1,71 @@
-<!-- CircleVisualization.svelte -->
+<!-- CombinedComponent.svelte -->
 <script>
-  let counter = 0; // Counter to cycle through radii
+  import { onMount, onDestroy } from 'svelte';
+  import { slide } from 'svelte/transition';
 
-  // Calculate the radius based on the counter
+  // Greetings array and index for cycling greetings
+  let greetings = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+  let index = 0;
+  let roller;
+
+  // Calculate the radius based on the index
   const calculateRadius = () => {
-    const radii = [50, 70, 100]; // Predefined radii
+    const radii = [40, 70, 200, 300, 350, 375, 400, 415, 450, 500, 550]; // Predefined radii
     const numRadii = radii.length;
-    return radii[counter % numRadii]; // Cycling through radii based on the counter
+    return radii[index % numRadii]; // Cycling through radii based on the index
   };
 
-  // Function to update counter and trigger animation
-  const updateCounter = () => {
-    counter++; // Increment the counter
+  // Function to update index and trigger animation
+  const updateIndex = () => {
+    if (index === greetings.length - 1) index = 0;
+    else index++;
   };
 
-  // Function to reset the counter
-  const resetCounter = () => {
-    counter = 0; // Reset counter to start the cycle again
-  };
+  // Automatically start animation when component is mounted
+  onMount(() => {
+    roller = setInterval(() => {
+      updateIndex();
+    }, 1150);
+  });
+
+  // Clean up the interval when the component is destroyed
+  onDestroy(() => {
+    clearInterval(roller);
+  });
 </script>
 
 <style>
-  .circle {
-    display: inline-block;
+    .container {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Set the desired height */
+  }
+
+  .leftcircle-container {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .leftcircle {
+    position: relative;
     border-radius: 50%;
-    background-color: blue; /* You can customize colors */
-    margin-right: 20px; /* Adjust spacing between circles */
+    background-color: rgb(255, 255, 255); /* You can customize colors */
     transition: width 0.5s, height 0.5s; /* Define transition animation */
   }
+
 </style>
 
-<div on:click={updateCounter} on:animationend={resetCounter}>
-  <div class="circle" style="width: {calculateRadius()}px; height: {calculateRadius()}px;"></div>
+<div class="container">
+  <div>
+    {#key index}
+    <br> 
+      <h1 transition:slide>{greetings[index]}</h1>
+    {/key}
+  </div>
+
+  <div class="leftcircle-container">
+    <div class="leftcircle" style="width: {calculateRadius()}px; height: {calculateRadius()}px;"></div>
+  </div>
 </div>
