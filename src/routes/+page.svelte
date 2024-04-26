@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Renovation | Speculation</title>
+  <title>Speculation | Renovation</title>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <section> 
       <!-- This is the 1st section -->
       <div id="cover">
-        <h1>Renovation | Speculation</h1>
+        <h1 class="cover_header">Speculation | Renovation</h1>
         <img id="coverphoto" src="src/lib/coverphoto.png" alt=""> 
       </div>
     </section>
@@ -73,10 +73,10 @@
 <!-- NARRATIVE EXAMPLE -->
 
 <!-- DOT CHART - TOTAL INVESTMENT PHYSICAL VS. FISCAL -->
+<DotAnimation />
 
 <!-- SLIDEY MAP -->
- 
-<!-- <MapComparison /> -->
+ <MapComparison />
   <div class="divided">
     <div class="dividedtitle">
       <h5>Boston sales 2010-2022, gradient by sale price</h5>
@@ -99,12 +99,7 @@
       <h3>WHO IS BUYING?</h3>
     </div>
   </div>
-
-  <!-- <TimeSliderMaps /> -->
-
-
-
-<!-- <WordCloud /> -->
+<TimeSliderMaps />
 
   <!-- WHO? -->
   <div class="divided">
@@ -159,9 +154,28 @@
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
 
+  //Census_Maps
+  import Census_Maps from '$lib/Census_Maps.svelte';
+
+  //DotAnimation
+    import DotAnimation from '$lib/DotAnimation.svelte';
+
+
   //Bar charts
     import CensusBarChart from '$lib/CensusBarChart.svelte';
     import CensusBarChartFiscal from '../lib/CensusBarChartFiscal.svelte';
 
 </script>
 
+<style>
+  .cover_header {
+    font-size: 100em;
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    
+  }
+</style>
