@@ -106,14 +106,14 @@
       container: 'salesMap',
       style: currentStyle,
       center: [-71.0955, 42.3314],
-      zoom: 11
+      zoom: 10
     });
 
     permitMap = new mapboxgl.Map({ // Assign to permitMap variable
       container: 'permitMap',
       style: currentPermitStyle,
       center: [-71.0955, 42.3314],
-      zoom: 11
+      zoom: 10
     });
 
     const container = '#mapcontainer';
