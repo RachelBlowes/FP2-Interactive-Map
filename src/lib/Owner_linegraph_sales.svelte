@@ -64,7 +64,7 @@
       .range([height, 0]);
 
     // Create SVG element
-    svg = d3.select("#slider_line_graph")
+    svg = d3.select("#slider_line_graph_sales")
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -80,14 +80,14 @@
     svg.append("g")
       .call(d3.axisLeft(y));
 
-    // Add title text
-    svg.append("text")
-      .attr("class", "graph-title")
-      .attr("x", width / 2)
-      .attr("y", -20)
-      .attr("text-anchor", "middle")
-      .style("font-size", "16px")
-      .text("Who's Buying?");
+    // // Add title text
+    // svg.append("text")
+    //   .attr("class", "graph-title")
+    //   .attr("x", width / 2)
+    //   .attr("y", -20)
+    //   .attr("text-anchor", "middle")
+    //   .style("font-size", "16px")
+    //   .text("Who's Buying?");
 
     // Add lines
     ["Small", "NonInvestor", "Institutional", "Large", "Medium"].forEach((value, index) => {
@@ -203,7 +203,7 @@
 
   // Function to create legend
   function createLegend(svg) {
-    const legend = d3.select("#legend-container")  // Selecting the legend container div
+    const legend = d3.select("#legend-container-sales")  // Selecting the legend container div
       .append('svg')  // Appending an SVG element to it
       .attr("width", width)
       .attr("height", 100);  // Increase height to accommodate vertical stacking
@@ -262,21 +262,40 @@
     font-family: Arial, sans-serif;
   }
 
-  .graph-container {
+  .graph-container-sales {
         position: relative;
+        display: inline-block;
+              
     }
 
-    #slider-container {
-        position: absolute;
-        bottom: 0;
-        left: 0; /* Adjust left position as needed */
-    }
+  #slider_line_graph {
+      margin: 20px;
+  }
+
+  .slider-container-sales {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensure slider takes full width */
+}
+
+#legend-container-sales {
+  position: absolute;
+  bottom: -120px; /* Adjust as needed to position the legend below the slider */
+  left: 0;
+  width: 100%;
+  text-align: center; /* Center the legend */
+}
+
 </style>
 
-<div id="slider_line_graph"></div>
+<div class="graph-container-sales">
+<div id="slider_line_graph_sales"></div>
 
 <!-- Time slider -->
+<div id="slider-container-sales">
 <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:change={() => updateChart(selectedYear)} />
-
+</div>
 <!-- Legend container -->
-<div id="legend-container"></div>
+<div id="legend-container-sales"></div>
+</div>

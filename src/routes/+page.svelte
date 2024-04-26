@@ -105,14 +105,24 @@
   <div class="divided">
     <div class="dividedtitle">
       <h3>WHO IS BUILDING?</h3>
-      <Owner_linegraph />
     </div>
     <div id="divline"></div>
     <div class="dividedtitle">
       <h3>WHO IS BUYING?</h3>
+    </div>
+  </div>
+
+  <div class="divided">
+    <div class="dividedchart">
+      <Owner_linegraph />
+    </div>
+    <div id="divline"></div>
+    <div class="dividedchart">
       <OwnerLinegraphSales />
     </div>
   </div>
+
+  <div style="height: 100px;"></div>
 
   <!-- WHERE? -->
   <div class="divided">
@@ -127,6 +137,8 @@
     </div>
   </div>
 
+  <!-- WHAT? -->
+  <WordCloud/>
 
 
 <script>

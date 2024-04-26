@@ -115,7 +115,8 @@ section {
     max-width: 100%;
     display: flex;
     align-content: space-around;
-  }
+    
+    }
   
   .dividedtitle {
     flex: 1; 
@@ -126,3 +127,12 @@ section {
     font-family: 'Courier New', Courier, monospace;
     font-size: small;
 }
+
+.dividedchart {
+   
+    flex:1;
+    max-width: 50%;
+    
+}
+
+

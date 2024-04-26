@@ -75,14 +75,14 @@ function render(csvData) {
   svg.append("g")
     .call(d3.axisLeft(y));
 
-  // Add title text
-  svg.append("text")
-    .attr("class", "graph-title")
-    .attr("x", width / 2)
-    .attr("y", -20)
-    .attr("text-anchor", "middle")
-    .style("font-size", "16px")
-    .text("Who's Building?");
+  // // Add title text
+  // svg.append("text")
+  //   .attr("class", "graph-title")
+  //   .attr("x", width / 2)
+  //   .attr("y", -20)
+  //   .attr("text-anchor", "middle")
+  //   .style("font-size", "16px")
+  //   .text("Who's Building?");
 
   // Add lines
   ["Value", "Value1", "Value2", "Value3"].forEach((value, index) => {
@@ -255,13 +255,44 @@ function render(csvData) {
   .legend text {
     font-size: 12px;
     font-family: Arial, sans-serif;
+    
   }
+
+  .graph-container {
+        position: relative;
+        display: inline-block;
+       
+    }
+
+  #slider_line_graph {
+
+    margin: 50px;
+  }
+
+  .slider-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensure slider takes full width */
+}
+
+#legend-container {
+  position: absolute;
+  bottom: -120px; /* Adjust as needed to position the legend below the slider */
+  left: 0;
+  width: 100%;
+  text-align: center; /* Center the legend */
+}
+
 </style>
 
+<div class="graph-container">
 <div id="slider_line_graph"></div>
 
 <!-- Time slider -->
+<div class="slider-container">
 <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:change={() => updateChart(selectedYear)} />
-
+</div>
 <!-- Legend container -->
 <div id="legend-container"></div>
+</div>
