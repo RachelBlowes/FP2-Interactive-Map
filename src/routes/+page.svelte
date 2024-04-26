@@ -193,7 +193,10 @@
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
 
-    //example
+    //bar chart
+    import CensusBarChart from '$lib/CensusBarChart.svelte';
+
+
 
 </script>
 
