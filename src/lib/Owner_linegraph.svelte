@@ -261,6 +261,7 @@ function render(csvData) {
   .graph-container {
         position: relative;
         display: inline-block;
+        margin: 0 auto;
        
     }
 

@@ -265,6 +265,7 @@
   .graph-container-sales {
         position: relative;
         display: inline-block;
+        margin: 0 auto;
               
     }
 
