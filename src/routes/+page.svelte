@@ -31,21 +31,21 @@
     </section>
     <section>
       <!-- This is the 4th section. -->
-      <p>We use public building permit data from 2010-2023 in addition to sales and assessment data to better understand the relationship between <strong>physical</strong> and <strong>fiscal</strong> investment in the housing market.</p>
+      <p>We use public building permit data from 2010-2023 in addition to sales and assessment data to better understand the relationship between <strong>fiscal</strong> and <strong>physical</strong> investment in the housing market.</p>
     </section>
     <section>
       <!-- This is the 5th section. -->
       <div id="definitions">
-        <div id="physical">
-          <p id="physicaltitle">Physical (adj)</p>
-          <p><em>tangible or concrete</em></p>
-          <p>In our analysis, physical investments refer to money spent on physical improvements to a given property</p>
-        </div>
         <div id="fiscal">
           <p id="fiscaltitle">Fiscal (adj)</p>
           <p><em>relating to financial matters</em></p>
           <p>In our analysis, fiscal investments refer to residential real estate transactions</p>
-        </div>     
+        </div> 
+        <div id="physical">
+          <p id="physicaltitle">Physical (adj)</p>
+          <p><em>tangible or concrete</em></p>
+          <p>In our analysis, physical investments refer to money spent on physical improvements to a given property</p>
+        </div>    
       </div>
     </section>
   </div>
@@ -65,9 +65,9 @@
 </div>
 
 <header id="fiscalvsphysical" style="position: sticky; top: 0; z-index: 1000;">
-  <h4>Physical</h4>
-  <div id="divline"></div>
   <h4>Fiscal</h4>
+  <div id="divline"></div>
+  <h4>Physical</h4>
 </header>
 
 <!-- NARRATIVE EXAMPLE -->
