@@ -73,6 +73,7 @@
 <!-- NARRATIVE EXAMPLE -->
 
 <!-- DOT CHART - TOTAL INVESTMENT PHYSICAL VS. FISCAL -->
+<DotAnimation />
 
 <!-- SLIDEY MAP -->
  <MapComparison />
@@ -139,6 +140,9 @@
 
   //Census_Maps
   import Census_Maps from '$lib/Census_Maps.svelte';
+
+  //DotAnimation
+    import DotAnimation from '$lib/DotAnimation.svelte';
 
 
 </script>
