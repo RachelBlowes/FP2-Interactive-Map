@@ -80,9 +80,6 @@
           <img src="src/lib/11_JosephSt/11Joseph_2014.png" alt="11 Joseph St 2014" class="GSV">
           <p><em>Google Street View Image, 2014</em></p>
         </div>
-        <div id="fiscal">
-          
-        </div>
       </div>
            <!-- Example 02 - renovation -->
            <div id="definitions" class="collage">
@@ -139,48 +136,7 @@
   </div>
 <TimeSliderMaps />
 
-<<<<<<< Updated upstream
-  <!-- WHO? -->
-  <div class="divided">
-    <div class="dividedtitle">
-      <h3>WHO IS BUILDING?</h3>
-    </div>
-    <div id="divline"></div>
-    <div class="dividedtitle">
-      <h3>WHO IS BUYING?</h3>
-    </div>
-  </div>
-
-  <div class="divided">
-    <div class="dividedchart">
-      <Owner_linegraph />
-    </div>
-    <div id="divline"></div>
-    <div class="dividedchart">
-      <OwnerLinegraphSales />
-    </div>
-  </div>
-
-  <div style="height: 100px;"></div>
-
-  <!-- WHERE? -->
-  <div class="divided">
-    <div class="dividedtitle">
-      <h3>WHERE ARE WE BUILDING?</h3>
-      <CensusBarChart />
-    </div>
-    <div id="divline"></div>
-    <div class="dividedtitle">
-      <h3>WHERE ARE WE BUYING?</h3>
-      <!-- <CensusBarChartFiscal /> -->
-    </div>
-  </div>
-
-  <!-- WHAT? -->
-  <WordCloud/>
-=======
 <WordCloud />
->>>>>>> Stashed changes
 
 <Owner_linegraph />
 <OwnerLinegraphSales />
