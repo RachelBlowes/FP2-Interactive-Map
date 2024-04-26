@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Renovation | Speculation</title>
+  <title>Speculation | Renovation</title>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <section> 
       <!-- This is the 1st section -->
       <div id="cover">
-        <h1>Renovation | Speculation</h1>
+        <h1 class="cover_header">Speculation | Renovation</h1>
         <img id="coverphoto" src="src/lib/coverphoto.png" alt=""> 
       </div>
     </section>
@@ -75,8 +75,7 @@
 <!-- DOT CHART - TOTAL INVESTMENT PHYSICAL VS. FISCAL -->
 
 <!-- SLIDEY MAP -->
- 
-<MapComparison />
+ <MapComparison />
   <div class="divided">
     <div class="dividedtitle">
       <h5>Boston sales 2010-2022, gradient by sale price</h5>
@@ -101,12 +100,17 @@
   </div>
 <TimeSliderMaps />
 
-
-
-<WordCloud />
-
 <Owner_linegraph />
 <OwnerLinegraphSales />
+
+<!-- WHERE? -->
+<Census_Maps />
+
+
+<!-- WHAT? -->
+<WordCloud />
+
+
 
 <script>
 
@@ -133,5 +137,21 @@
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
 
+  //Census_Maps
+  import Census_Maps from '$lib/Census_Maps.svelte';
+
+
 </script>
 
+<style>
+  .cover_header {
+    font-size: 100em;
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    
+  }
+</style>

@@ -59,12 +59,12 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-    
 }
 
 #cover h1 {
   font-size: xx-large;
-  position: absolute;   
+  position: absolute; 
+  transform: translateY(-90px);  
 }
 
   #coverphoto {
