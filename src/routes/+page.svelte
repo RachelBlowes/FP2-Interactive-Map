@@ -101,15 +101,31 @@
   </div>
 <TimeSliderMaps />
 
-<Owner_linegraph />
-<OwnerLinegraphSales />
+  <!-- WHO? -->
+  <div class="divided">
+    <div class="dividedtitle">
+      <h3>WHO IS BUILDING?</h3>
+      <Owner_linegraph />
+    </div>
+    <div id="divline"></div>
+    <div class="dividedtitle">
+      <h3>WHO IS BUYING?</h3>
+      <OwnerLinegraphSales />
+    </div>
+  </div>
 
-<!-- WHERE? -->
-<Census_Maps />
-
-
-<!-- WHAT? -->
-<WordCloud />
+  <!-- WHERE? -->
+  <div class="divided">
+    <div class="dividedtitle">
+      <h3>WHERE ARE WE BUILDING?</h3>
+      <CensusBarChart />
+    </div>
+    <div id="divline"></div>
+    <div class="dividedtitle">
+      <h3>WHERE ARE WE BUYING?</h3>
+      <!-- <CensusBarChartFiscal /> -->
+    </div>
+  </div>
 
 
 
@@ -144,6 +160,10 @@
   //DotAnimation
     import DotAnimation from '$lib/DotAnimation.svelte';
 
+
+  //Bar charts
+    import CensusBarChart from '$lib/CensusBarChart.svelte';
+    import CensusBarChartFiscal from '../lib/CensusBarChartFiscal.svelte';
 
 </script>
 

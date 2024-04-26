@@ -121,3 +121,8 @@ section {
     flex: 1; 
     max-width: 50%;
   }
+
+  .legendText {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+}
