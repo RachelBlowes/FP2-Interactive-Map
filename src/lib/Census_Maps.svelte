@@ -42,9 +42,11 @@
 </div>
 
 <script>
-
   import { onMount } from 'svelte';
   import SalesMapStyleButton from './SalesMapStyleButton.svelte';
+
+  let salesMap; // Define salesMap globally
+  let permitMap; // Define permitMap globally
 
   onMount(() => {
     // Load Mapbox styles
@@ -71,26 +73,24 @@
     compareScript.async = true;
     document.head.appendChild(compareScript);
 
-
     // Initialize maps and compare plugin once both scripts are loaded
     Promise.all([loadScript(mapboxScript), loadScript(compareScript)]).then(() => {
       initializeMap();
     });
   });
 
-let currentStyle = 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2';
-let currentPermitStyle = 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m';
-let styles = [
-    { name: 'Average Sale Price', style: 'mapbox://styles/mapbox/streets-v11' },
-    { name: 'Total Number of Sales', style: 'mapbox://styles/mapbox/outdoors-v11' },
-    { name: 'Median Income', style: 'mapbox://styles/mapbox/satellite-v9' },
+  let currentStyle = 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp';
+  let currentPermitStyle = 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m';
+  let styles = [
+    { name: 'Average Sale Price', style: 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp' },
+    { name: 'Total Number of Sales', style: 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m' },
+    { name: 'Median Income', style: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
   ];
 
   function setStyle(style) {
-    currentStyle = style;
+    currentStyle = style.style; // Update currentStyle with the selected style URL
+    salesMap.setStyle(currentStyle); // Update the salesMap style
   }
-
-
 
   function loadScript(script) {
     return new Promise((resolve, reject) => {
@@ -102,24 +102,24 @@ let styles = [
   function initializeMap() {
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA';
 
-    const salesMap = new mapboxgl.Map({
+    salesMap = new mapboxgl.Map({ // Assign to salesMap variable
       container: 'salesMap',
-      style:currentStyle,
-          center: [-71.0955, 42.3314],
-          zoom: 11
+      style: currentStyle,
+      center: [-71.0955, 42.3314],
+      zoom: 11
     });
 
-    const permitMap = new mapboxgl.Map({
+    permitMap = new mapboxgl.Map({ // Assign to permitMap variable
       container: 'permitMap',
-          style:currentPermitStyle,
-          center: [-71.0955, 42.3314],
-          zoom: 11
+      style: currentPermitStyle,
+      center: [-71.0955, 42.3314],
+      zoom: 11
     });
 
     const container = '#mapcontainer';
-
-
   }
 </script>
 
-
+{#each styles as style}
+  <button on:click={() => setStyle(style)}>{style.name}</button>
+{/each}
