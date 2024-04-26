@@ -47,54 +47,6 @@
     justify-content: space-around;
   }
 
-  /* Slider styles */
-  #slider {
-    width: 100%; /* Width of the outside container */
-    margin-bottom: 20px;
-  }
-
-  #timeSlider {
-    -webkit-appearance: none; /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height: 10px; /* Specified height */
-    background: whitesmoke; /* Grey background */
-    border-radius: 5px; /*Rounded*/
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-  }
-
-  /* Mouse-over effects */
-  #timeSlider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-  #timeSlider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    border-radius: 5cqi;
-    width: 20px; /* Set a specific slider handle width */
-    height: 10px; /* Slider handle height */
-    background: #3a3a3a; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-
-  #timeSlider::-moz-range-thumb {
-    width: 20px; /* Set a specific slider handle width */
-    height: 10px; /* Slider handle height */
-    border-radius: 5cqi;
-    background: #3a3a3a; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-
- #selectedTime, #timesliderlabel {
-  display: block;
-  text-align: center; /* Center the text */
-  font-weight: bold; /* Make the text bold */
-}
 </style>
 
 
@@ -105,12 +57,12 @@
       {#key mapViewChanged}
         {#each filteredSales as sale}
           <circle { ...getCoords(sale) }
-              r={radiusScale(sale.CurrentSalesColumn)}
+              r={radiusScale(sale.avg_sales_value)}
               fill="#F6517A"
               fill-opacity="0.6"
               stroke="white"
               stroke-width="0.5">
-            <title> Sale Price {sale.CurrentSalesColumn}</title>
+            <title> Sale Price {sale.avg_sales_value}</title>
           </circle>
         {/each}
       {/key}
@@ -122,12 +74,12 @@
       {#key mapViewChanged}
         {#each filteredPermits as permit}
           <circle { ...getPermitCoords(permit) }
-              r={permitRadiusScale(permit.CurrentPermitColumn)}
+              r={permitRadiusScale(permit.avg_permit_val)}
               fill="#0087EC"
               fill-opacity="0.6"
               stroke="white"
               stroke-width="0.5">
-            <title> Permit Value {permit.CurrentPermitColumn}</title>
+            <title> Permit Value {permit.avg_permit_val}</title>
           </circle>
         {/each}
       {/key}
@@ -138,22 +90,6 @@
 <div id="maptitles">
   <h5>Census Tract Sales</h5>
   <h5> Census Tract Permits </h5>
-</div>
-
-<div>
-  <!-- Buttons to switch between columns for Sales map -->
-  <button on:click={() => switchSalesColumn('avg_sales_value')}>Avg Transaction Value</button>
-  <button on:click={() => switchSalesColumn('num_sales_transactions')}>Total Number of Sales</button>
-
-  <!-- Add more buttons for other columns as needed -->
-</div>
-
-<div style="display: flex; justify-content: flex-end;">
-  <!-- Buttons to switch between columns for Permit map -->
-  <button on:click={() => switchPermitColumn('avg_permits_val')}>Avg Permit Value</button>
-  <button on:click={() => switchPermitColumn('total_num_permits')}>Total Number of Permits</button>
-
-  <!-- Add more buttons for other columns as needed -->
 </div>
 
 
@@ -169,8 +105,7 @@
   let mapViewChanged = 0;
   let radiusScale;
   let permitRadiusScale;
-  let currentSalesColumn = 'avg_sales_value'; // Default column names
-  let currentPermitColumn = 'avg_permit_val'; // Default column names
+
 
   async function loadMaps() {
     return Promise.all([
@@ -198,32 +133,51 @@
   }
 
   onMount(async () => {
-    [salesCensusMap, permitCensusMap] = await loadMaps();
-    const data = await d3.csv('https://raw.githubusercontent.com/your_username/your_repository/your_branch/your_file.csv');
+  [salesCensusMap, permitCensusMap] = await loadMaps();
+  sale = await d3.csv('https://rachelblowes.github.io/Geodata/demographic_data/master_census_data_lat_long.csv');
+  sale.forEach(d => {
+    d.avg_sales_value = parseFloat(d.avg_sales_value);
+    d.Lat = parseFloat(d.Lat);
+    d.Long = parseFloat(d.Long);
+  });
+  permit = await d3.csv('https://rachelblowes.github.io/Geodata/demographic_data/master_census_data_lat_long.csv');
+  permit.forEach(d => {
+    d.avg_permit_val = parseFloat(d.avg_permit_val);  
+    d.Lat = parseFloat(d.Lat);
+    d.Long = parseFloat(d.Long); 
+  });
 
-    sale = data.map(d => ({ ...d, CurrentSalesColumn: parseFloat(d.CurrentSalesColumn) }));
-    permit = data.map(d => ({ ...d, CurrentPermitColumn: parseFloat(d.CurrentPermitColumn) }));
 
-    let maxCurrentSalesColumn = d3.max(sale, d => d.CurrentSalesColumn);
-    let maxCurrentPermitColumn = d3.max(permit, d => d.CurrentPermitColumn);
+    let maxavg_sales_value = d3.max(sale, d => d.avg_sales_value);
+    let maxavg_permit_val = d3.max(permit, d => d.avg_permit_val);
+    
+
+    console.log(maxavg_sales_value);
+    console.log(maxavg_permit_val);
 
     radiusScale = d3.scaleSqrt()
-      .domain([0, maxCurrentSalesColumn])
+      .domain([0, maxavg_sales_value])
       .range([1, 30]);
 
     permitRadiusScale = d3.scaleSqrt()
-      .domain([0, maxCurrentPermitColumn])
+      .domain([0, maxavg_permit_val])
       .range([1, 30]);
 
     salesCensusMap?.on("move", evt => mapViewChanged++);
     permitCensusMap?.on("move", evt => mapViewChanged++);
   });
 
+
   function getCoords(sale) {
-    let point = new mapboxgl.LngLat(+sale.Long, +sale.Lat);
-    let { x, y } = salesCensusMap.project(point);
-    return { cx: x, cy: y };
-  }
+  // Create a Mapbox GL JS LngLat object from the sale's longitude and latitude
+  let point = new mapboxgl.LngLat(+sale.Long, +sale.Lat);
+  
+  // Project the LngLat object onto the map to get pixel coordinates
+  let { x, y } = salesCensusMap.project(point);
+
+  // Return the pixel coordinates as an object with 'cx' and 'cy' properties
+  return { cx: x, cy: y };
+}
 
   function getPermitCoords(permit) {
     let point = new mapboxgl.LngLat(+permit.Long, +permit.Lat);
@@ -231,19 +185,9 @@
     return { cx: x, cy: y };
   }
 
-  export let filteredSales = [];
-  export let filteredPermits = [];
 
-  $: {
-    filteredSales = sale.map(sale => ({ ...sale, CurrentSalesColumn: sale[currentSalesColumn] }));
-    filteredPermits = permit.map(permit => ({ ...permit, CurrentPermitColumn: permit[currentPermitColumn] }));
-  }
+export let filteredSales = sale;
+export let filteredPermits = permit; 
 
-  function switchSalesColumn(columnName) {
-    currentSalesColumn = columnName;
-  }
 
-  function switchPermitColumn(columnName) {
-    currentPermitColumn = columnName;
-  }
 </script>
