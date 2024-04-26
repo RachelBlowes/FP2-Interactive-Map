@@ -76,7 +76,7 @@
 
 <!-- SLIDEY MAP -->
  
-<MapComparison />
+<!-- <MapComparison /> -->
   <div class="divided">
     <div class="dividedtitle">
       <h5>Boston sales 2010-2022, gradient by sale price</h5>
@@ -99,14 +99,40 @@
       <h3>WHO IS BUYING?</h3>
     </div>
   </div>
-<TimeSliderMaps />
+
+  <!-- <TimeSliderMaps /> -->
 
 
 
-<WordCloud />
+<!-- <WordCloud /> -->
 
-<Owner_linegraph />
-<OwnerLinegraphSales />
+  <!-- WHO? -->
+  <div class="divided">
+    <div class="dividedtitle">
+      <h3>WHO IS BUILDING?</h3>
+      <Owner_linegraph />
+    </div>
+    <div id="divline"></div>
+    <div class="dividedtitle">
+      <h3>WHO IS BUYING?</h3>
+      <OwnerLinegraphSales />
+    </div>
+  </div>
+
+  <!-- WHERE? -->
+  <div class="divided">
+    <div class="dividedtitle">
+      <h3>WHERE ARE WE BUILDING?</h3>
+      <CensusBarChart />
+    </div>
+    <div id="divline"></div>
+    <div class="dividedtitle">
+      <h3>WHERE ARE WE BUYING?</h3>
+      <!-- <CensusBarChartFiscal /> -->
+    </div>
+  </div>
+
+
 
 <script>
 
@@ -132,6 +158,10 @@
 
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
+
+  //Bar charts
+    import CensusBarChart from '$lib/CensusBarChart.svelte';
+    import CensusBarChartFiscal from '../lib/CensusBarChartFiscal.svelte';
 
 </script>
 
