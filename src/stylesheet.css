@@ -147,16 +147,15 @@ section {
 }
 
 div .collage #gallery {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); 
-  gap: 1em; 
-  width: 100%; 
-  padding: 1em; 
-  img {
-    width: 100%; 
-    height: auto; 
-    display: inline-block;
-  }
-  
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 0.7fr));
+  grid-auto-rows: minmax(100px, auto);
+  gap: 10em;
+  padding: 1em;   
 }
-
+img .collage #gallery{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  width: 100%;
+  }
