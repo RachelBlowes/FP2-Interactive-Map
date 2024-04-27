@@ -17,13 +17,12 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
     text-align: justify;
     text-align: center;
+    z-index: 10;
 }
 
 h1, h2 {
     color: #F6517A;
 }
-
-
 
 h4 {
     color: whitesmoke;
@@ -147,4 +146,17 @@ section {
     
 }
 
+div .collage #gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 1em; 
+  width: 100%; 
+  padding: 1em; 
+  img {
+    width: 100%; 
+    height: auto; 
+    display: inline-block;
+  }
+  
+}
 

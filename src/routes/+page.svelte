@@ -68,6 +68,7 @@
       <p>Flipping is buying a property to <strong id="physicaltitle">renovate</strong> and then <strong id="fiscaltitle">sell</strong> - in the shortest time possible. In our dataset, within less than two years from the previous sale.</p>
       <br><br> 
       <p id="centered-text"><strong>Let's explore a flipped house.</strong></p>
+      <p id="centered-text"><strong>Can you calculate the profit in your head?</strong></p>
     </section>
     <section>
       <!-- Example 01-->
@@ -75,25 +76,43 @@
         <div id="physical">
           <h1 id="example_header" style="color: black; text-align: left;">11 Joseph St</h1>
           <h5 id="example_typology_header" style="text-align: left">2 Family Residential House</h5>
-          <p id="paragraph_sale1">Mr. O'Malley bought 11 Joseph st. <strong id="physicaltitle">2-Family residential building</strong> in July 2015 for <strong id="fiscaltitle">238,000$.</strong></p>
+          <p id="paragraph_sale1">Mr. O'Malley bought 11 Joseph st. in July 2015 for <strong id="fiscaltitle">238,000$.</strong></p>
           <br>
           <img src="src/lib/11_JosephSt/11Joseph_2014.png" alt="11 Joseph St 2014" class="GSV">
-          <p><em>Google Street View Image, 2014</em></p>
+          <p><em>Google Street View, 2014</em></p>
         </div>
+        <div id="fiscal">
+          <img src="src/lib/11_JosephSt/1st.png" alt="Ground Floor plan" class="arch_plan"  style="margin-top: 5em">
+          <p >He then immediately started off with an investment of <strong id="physicaltitle">12,975$</strong> (fees included) installing vinyl sidings on the entire exterior, repaired the front porch, and re-issued a gaz permit.</p>
+        </div>  
       </div>
-           <!-- Example 02 - renovation -->
-           <div id="definitions" class="collage">
-            <div id="physical">
-              <h1 id="example_header" style="color: black;">11 Joseph St</h1>
-              <h5 id="example_typology_header" style="text-align: left">2 Family Residential House</h5>
-              <p id="paragraph_sale1">Mr. O'Malley bought 11 Joseph st. <strong id="physicaltitle">2-Family residential building</strong> in July 2015 for <strong id="fiscaltitle">238,000$.</strong></p>
-              <img src="src/lib/11_JosephSt/11Joseph_2014.png" alt="11 Joseph St 2014" class="GSV">
-              <p><em>Google Street View Image, 2014</em></p>
-            </div>
-            <div id="fiscal">
-
-            </div>   
-          </div>
+    </section>
+    <section>
+      <!-- Example 02 - sale + 2nd renovation -->
+      <div id="definitions" class="collage">
+        <div id="physical" style="margin-top: -3em">
+          <p id="paragraph_sale1" style="margin-top: 10em">A year from purchasing, he sold the renovated first floor in August 2015 as a standalone dwelling unit for <strong id="fiscaltitle">425,000$.</strong></p>
+          <br>
+          <img src="src/lib/11_JosephSt/11Joseph_2019.png" alt="11 Joseph St 2019" class="GSV">
+          <p><em>Google Street View, 2019</em></p>
+        </div>
+        <div id="fiscal" style="margin-top:40em">
+          <p style="position: relative; top: -14.5em;">In the next step he invested <strong id="physicaltitle">17,700$</strong> in a Face-Lift for the second and third floors: retiling the 2 bathrooms on both floors, replacing kitchen cabinets, replacing interior doors, and painting.</p>
+          <img src="src/lib/11_JosephSt/3rd.png" alt="Second Floor plan" class="arch_plan"  style="margin-top: -29em">
+        </div>  
+      </div>
+    </section>
+    <section>
+      <div id="gallery" class="collage">
+        <img id="gallery" class="collage" src="src/lib/11_JosephSt/2017_details_bathroom2.jpeg" alt="retiling of bathroom">
+        <img id="gallery" class="collage" src="src/lib/11_JosephSt/2017details.jpeg" alt="retiling of bathroom">
+        <img id="gallery" class="collage" src="src/lib/11_JosephSt/2017details_kitchen2.jpeg" alt="retiling of bathroom">
+        <img id="gallery" class="collage" src="src/lib/11_JosephSt/2017details_kitchen.jpeg" alt="retiling of bathroom">
+        <img id="gallery" class="collage" src="src/lib/11_JosephSt/2017details_bathroom.jpeg" alt="retiling of bathroom">
+      </div>
+    </section>
+    <section>
+      <br>
     </section>
 </Scroller>
 
@@ -212,6 +231,11 @@
 
   .GSV{
     width: 100%;
+  }
+
+  .arch_plan{
+    width: 180%;
+    z-index: 3;
   }
 
 </style>
