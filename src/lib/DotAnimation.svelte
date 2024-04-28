@@ -67,6 +67,15 @@ let rightCaptions = ['$48,445', '$930,066', '$54,726', '$88,506', '$75,389', '$6
     justify-content: space-around;
   }
 
+
+  .captioncontainer {
+      display: flex;
+    width: 100%;
+    height: 20px; /* Set a fixed height for both maps */
+    margin-bottom: 20px; /* Add space between the maps */
+    justify-content: space-around;
+  }
+
   .leftcircle-container,
 .rightcircle-container {
   position: relative; /* Ensure circles are positioned relative to their containers */
@@ -120,14 +129,23 @@ let rightCaptions = ['$48,445', '$930,066', '$54,726', '$88,506', '$75,389', '$6
 <div class="container">
   <div class="leftcircle-container">
     <div class="leftcircle" style="width: {calculateLeftRadius()}px; height: {calculateLeftRadius()}px;"></div>
-    <div>{leftCaptions[index]}</div> <!-- Caption for left circle -->
   </div>
 
   <div class="rightcircle-container">
     <div class="rightcircle" style="width: {calculateRightRadius()}px; height: {calculateRightRadius()}px;"></div>
-    <div>{rightCaptions[index]}</div> <!-- Caption for right circle -->
   </div>
 </div>
+
+
+<div class="captioncontainer">
+  <div class="leftcircle-container">
+    <div>{leftCaptions[index]}</div> <!-- Caption for left circle -->
+  </div>
+
+  <div class="rightcircle-container">
+    <div>{rightCaptions[index]}</div> <!-- Caption for right circle -->
+  </div>
+  </div>
 
 
 
