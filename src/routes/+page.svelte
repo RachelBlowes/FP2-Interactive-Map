@@ -25,6 +25,7 @@
       <!-- This is the 2nd section -->
       <h2> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h2>
     </section>
+    <DotAnimation />
     <section>
       <!-- This is the 3rd section. -->
       <h3>Between 2010 and 2022, housing prices in Boston have increased by xx%</h3>
@@ -206,6 +207,8 @@
     </div>
   </div>
 
+  <Census_Maps />
+
   <!-- WHAT? -->
 
 <WordCloud />
@@ -241,6 +244,11 @@
     //bar chart
     import CensusBarChart from '$lib/CensusBarChart.svelte';
 
+    //Census_Maps
+    import Census_Maps from '$lib/Census_Maps.svelte';
+
+    //DotAnimation
+    import DotAnimation from '$lib/DotAnimation.svelte';
 
 
 </script>
