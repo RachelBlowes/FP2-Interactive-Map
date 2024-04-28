@@ -18,7 +18,7 @@
       <!-- This is the 1st section -->
       <div id="cover">
         <h1 class="cover_header">Speculation | Renovation</h1>
-        <img id="coverphoto" src="src/lib/coverphoto.png" alt=""> 
+        <img id="coverphoto" src="https://rachelblowes.github.io/Geodata/Images/coverphoto.png" alt="Split picture showing an apartment before and after renovation"> 
       </div>
     </section>
     <section> 
