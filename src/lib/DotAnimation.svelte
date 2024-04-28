@@ -4,13 +4,19 @@
   import { slide } from 'svelte/transition';
 
   // Greetings array and index for cycling greetings
-  let greetings = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+  let greetings = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'];
   let index = 0;
   let roller;
 
+
+// Define captions for left and right circles
+let leftCaptions = ['$1,430,916', '$1,361,000', '$1,640,443', '$616,903', '$1,158,921', '$2,161,774', '$1,470,719', '$2,000,017', '$4,143,219', '$1,503,139', '$2,430,189', '$1,558,764', '$4,480,961']; // Add captions as needed
+let rightCaptions = ['$48,445', '$930,066', '$54,726', '$88,506', '$75,389', '$61,566', '$88,758', '$66,782', '$111,714', '$201,577', '$147,805', '$164,442', '$2,196,733']; // Add captions as needed
+
+
   // Calculate the radius based on the index
   const calculateLeftRadius = () => {
-    const radii = [40, 70, 200, 300, 310, 325, 350, 360, 370, 380, 390]; // Predefined radii
+    const radii = [150, 142, 180, 56, 281, 275, 102, 203, 310, 54, 242, 96, 431]; // Predefined radii
     const numRadii = radii.length;
     return radii[index % numRadii]; // Cycling through radii based on the index
   };
@@ -18,7 +24,7 @@
   
   // Calculate the radius based on the index
   const calculateRightRadius = () => {
-    const radii = [10, 20, 30, 40, 50, 75, 100, 150, 160, 170, 200]; // Predefined radii
+    const radii = [5, 97, 6, 8, 18, 8, 6, 7, 8, 7, 14, 10, 211]; // Predefined radii
     const numRadii = radii.length;
     return radii[index % numRadii]; // Cycling through radii based on the index
   };
@@ -43,13 +49,7 @@
 </script>
 
 <style>
-    .container {
-      display: flex;
-    width: 100%;
-    height: 400px; /* Set a fixed height for both maps */
-    margin-bottom: 20px; /* Add space between the maps */
-    justify-content: space-around;
-  }
+
 
   .tickercontainer {
       display: flex;
@@ -67,31 +67,38 @@
     justify-content: space-around;
   }
 
-  .leftcircle-container {
-    flex: 1;
-    width: 50%; /* Adjust the width of each map */
-    height: 100%; /* Set a fixed height for each map */
-  }
+  .leftcircle-container,
+.rightcircle-container {
+  position: relative; /* Ensure circles are positioned relative to their containers */
+  display: flex;
+  justify-content: center; /* Center circles horizontally */
+  align-items: center; /* Center circles vertically */
+  width: 50%; /* Adjust the width of each circle container */
+}
 
-  .rightcircle-container {
-    flex: 1;
-    width: 50%; /* Adjust the width of each map */
-    height: 100%; /* Set a fixed height for each map */
-  }
+.leftcircle {
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255); /* You can customize colors */
+  transition: width 0.5s, height 0.5s; /* Define transition animation */
+}
 
-  .leftcircle {
-    position: relative;
-    border-radius: 50%;
-    background-color: rgb(255, 255, 255); /* You can customize colors */
-    transition: width 0.5s, height 0.5s; /* Define transition animation */
-  }
 
-  .rightcircle {
-    position: relative;
-    border-radius: 50%;
-    background-color: rgb(255, 255, 255); /* You can customize colors */
-    transition: width 0.5s, height 0.5s; /* Define transition animation */
-  }
+
+.rightcircle {
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0); /* You can customize colors */
+  transition: width 0.5s, height 0.5s; /* Define transition animation */
+}
+
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 400px; /* Set a fixed height for the container */
+  margin-bottom: 20px; /* Add space below the container */
+  justify-content: space-around; /* Distribute space evenly around child elements */
+}
+
 
   #maptitles {
     display: flex;
@@ -110,24 +117,24 @@
   </div>
 
 </div>
-
 <div class="container">
-
-
   <div class="leftcircle-container">
     <div class="leftcircle" style="width: {calculateLeftRadius()}px; height: {calculateLeftRadius()}px;"></div>
+    <div>{leftCaptions[index]}</div> <!-- Caption for left circle -->
   </div>
 
   <div class="rightcircle-container">
     <div class="rightcircle" style="width: {calculateRightRadius()}px; height: {calculateRightRadius()}px;"></div>
+    <div>{rightCaptions[index]}</div> <!-- Caption for right circle -->
   </div>
 </div>
 
 
+
 <div class="titlecontainer">
   <div id="maptitles">
-    <h5>Boston Total Yearly Sales</h5>
-    <h5> Boston Total Yearly Building Permit Valuation </h5>
+    <h5>Average sale price</h5>
+    <h5> Average permit valuation </h5>
   </div>
 
 
