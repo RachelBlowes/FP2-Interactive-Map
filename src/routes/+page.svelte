@@ -9,7 +9,7 @@
 <Scroller top="{0.0}" bottom="{0.7}" bind:index bind:offset bind:progress>
   <div slot="background">
     
-    <img id="fadedcoverphoto" src="src/lib/coverphoto.png" alt="Split picture showing an apartment before and after renovation"> 
+    <img id="fadedcoverphoto" src="https://rachelblowes.github.io/Geodata/Images/coverphoto.png" alt="Split picture showing an apartment before and after renovation"> 
     
   </div>
 
