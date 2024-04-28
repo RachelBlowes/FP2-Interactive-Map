@@ -28,6 +28,26 @@
     justify-content: space-around;
   }
 
+  #legend {
+    display: flex;
+    width: 100%;
+    height: 100px; /* Set a fixed height for both maps */
+    margin-bottom: 20px; /* Add space between the maps */
+    justify-content: space-around;
+  }
+
+  #salesLegend {
+    flex: 1;
+    width: 50%; /* Adjust the width of each map */
+    height: 100%; /* Set a fixed height for each map */
+  }
+
+  #permitLegend {
+    flex: 1;
+    width: 50%; /* Adjust the width of each map */
+    height: 100%; /* Set a fixed height for each map */
+  }
+
 </style>
 
 <div id="mapcontainer">
@@ -41,9 +61,14 @@
   <h5> Census Tract Permits </h5>
 </div>
 
+<div id="legend">
+  <div id="salesLegend"></div>
+  <div id="permitLegend"></div>
+</div>
+
+
 <script>
   import { onMount } from 'svelte';
-  import SalesMapStyleButton from './SalesMapStyleButton.svelte';
 
   let salesMap; // Define salesMap globally
   let permitMap; // Define permitMap globally
@@ -80,16 +105,27 @@
   });
 
   let currentStyle = 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp';
-  let currentPermitStyle = 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m';
+  let currentPermitStyle = 'mapbox://styles/rachelmb/clvg1kepc02ez01qlfeoz3xyh';
   let styles = [
     { name: 'Average Sale Price', style: 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp' },
     { name: 'Total Number of Sales', style: 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m' },
-    { name: 'Median Income', style: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
+    { name: 'Median Income', style: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' } ];
+  let permitstyles = [
+    { name: 'Average Permit Valuation', permitstyle: 'mapbox://styles/rachelmb/clvg1kepc02ez01qlfeoz3xyh' },
+    { name: 'Total Number of Permits', permitstyle: 'mapbox://styles/rachelmb/clvg29i9t02i701pe8v03emw8' },
+    { name: 'Median Income', permitstyle: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
   ];
 
   function setStyle(style) {
     currentStyle = style.style; // Update currentStyle with the selected style URL
     salesMap.setStyle(currentStyle); // Update the salesMap style
+    updatesalesLegend(style); // Update legend based on the selected style
+  }
+
+  function setPermitStyle(permitstyle) {
+    currentPermitStyle = permitstyle.permitstyle; // Update currentStyle with the selected style URL
+    permitMap.setStyle(currentPermitStyle); // Update the salesMap style
+    updatepermitLegend(permitstyle); // Update legend based on the selected style
   }
 
   function loadScript(script) {
@@ -118,8 +154,56 @@
 
     const container = '#mapcontainer';
   }
+
+  function updatesalesLegend(style) {
+  const legendElement = document.getElementById('salesLegend');
+  legendElement.innerHTML = ''; // Clear previous legend content
+
+  // Define legend information based on the selected style
+  let salesLegendContent = '';
+  if (style.name === 'Average Sale Price') {
+    salesLegendContent = '<strong>Legend for Average Sale Price:</strong><br>' +
+  '<div><span style="background-color: #FF80ED; width: 20px; height: 20px; display: inline-block;"></span> $0 - $100k</div>' +
+  '<div><span style="background-color: #1d42dc; width: 20px; height: 20px; display: inline-block;"></span> $100k - $200k</div>' 
+  } else if (style.name === 'Total Number of Sales') {
+    salesLegendContent = '<strong>Legend for Total Number of Sales:</strong><br>Put legend content here.';
+  } else if (style.name === 'Median Income') {
+    salesLegendContent = '<strong>Legend for Median Income:</strong><br>Put legend content here.';
+  }
+
+  // Update legend element with the legend content
+  legendElement.innerHTML = salesLegendContent;
+}
+
+
+function updatepermitLegend(permitstyle) {
+  const legendElement = document.getElementById('permitLegend');
+  legendElement.innerHTML = ''; // Clear previous legend content
+
+  // Define legend information based on the selected style
+  let permitLegendContent = '';
+  if (permitstyle.name === 'Average Permit Valuatution') {
+    permitLegendContent = '<strong>Legend for Average Permit Valuation:</strong><br>' +
+  '<div><span style="background-color: #FF80ED; width: 20px; height: 20px; display: inline-block;"></span> $0 - $100k</div>' +
+  '<div><span style="background-color: #1d42dc; width: 20px; height: 20px; display: inline-block;"></span> $100k - $200k</div>' 
+  } else if (permitstyle.name === 'Total Number of Permits') {
+    permitLegendContent = '<strong>Legend for Total Number of Permits:</strong><br>Put legend content here.';
+  } else if (permitstyle.name === 'Median Income') {
+    permitLegendContent = '<strong>Legend for Median Income:</strong><br>Put legend content here.';
+  }
+
+  // Update legend element with the legend content
+  legendElement.innerHTML = permitLegendContent;
+}
+
+
+
 </script>
 
 {#each styles as style}
   <button on:click={() => setStyle(style)}>{style.name}</button>
+{/each}
+
+{#each permitstyles as permitstyle}
+  <button on:click={() => setPermitStyle(permitstyle)}>{permitstyle.name}</button>
 {/each}

@@ -1,8 +1,8 @@
 <!-- SalesMapStyleButton.svelte -->
 <script>
-  export let currentStyle;
+  export let currentSaleStyle;
   export let styles;
-  export let setStyle;
+  export let setSaleStyle;
 
   function changeStyle(style) {
     setStyle(style.style);
@@ -10,7 +10,7 @@
 </script>
 
 {#each styles as style}
-  <button on:click={() => changeStyle(style)}>{style.name}</button>
+  <button on:click={() => changeSaleStyle(style)}>{style.name}</button>
 {/each}
 
 <style>
