@@ -24,9 +24,10 @@
     <section> 
       <!-- This is the 2nd section -->
       <h2> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h2>
-    </section>
+
     <DotAnimation />
-    <section>
+  </section>
+  <section>
       <!-- This is the 3rd section. -->
       <h3>Between 2010 and 2022, housing prices in Boston have increased by xx%</h3>
     </section>

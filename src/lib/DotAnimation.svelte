@@ -9,8 +9,15 @@
   let roller;
 
   // Calculate the radius based on the index
-  const calculateRadius = () => {
+  const calculateLeftRadius = () => {
     const radii = [40, 70, 200, 300, 350, 375, 400, 415, 450, 500, 550]; // Predefined radii
+    const numRadii = radii.length;
+    return radii[index % numRadii]; // Cycling through radii based on the index
+  };
+
+  // Calculate the radius based on the index
+  const calculateRightRadius = () => {
+    const radii = [10, 20, 30, 40, 50, 75, 100, 150, 160, 170, 200]; // Predefined radii
     const numRadii = radii.length;
     return radii[index % numRadii]; // Cycling through radii based on the index
   };
@@ -36,16 +43,31 @@
 
 <style>
     .container {
-    position: relative;
+      display: flex;
     width: 100%;
-    height: 600px; /* Set the desired height */
+    height: 400px; /* Set a fixed height for both maps */
+    margin-bottom: 20px; /* Add space between the maps */
+    justify-content: space-around;
+  }
+
+  .tickercontainer {
+      display: flex;
+    width: 100%;
+    height: 100px; /* Set a fixed height for both maps */
+    margin-bottom: 20px; /* Add space between the maps */
+    justify-content: space-around;
   }
 
   .leftcircle-container {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    flex: 1;
+    width: 50%; /* Adjust the width of each map */
+    height: 100%; /* Set a fixed height for each map */
+  }
+
+  .rightcircle-container {
+    flex: 1;
+    width: 50%; /* Adjust the width of each map */
+    height: 100%; /* Set a fixed height for each map */
   }
 
   .leftcircle {
@@ -55,9 +77,18 @@
     transition: width 0.5s, height 0.5s; /* Define transition animation */
   }
 
+  .rightcircle {
+    position: relative;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255); /* You can customize colors */
+    transition: width 0.5s, height 0.5s; /* Define transition animation */
+  }
+
+  
+
 </style>
 
-<div class="container">
+<div class="tickercontainer">
   <div>
     {#key index}
     <br> 
@@ -65,7 +96,16 @@
     {/key}
   </div>
 
+</div>
+
+<div class="container">
+
+
   <div class="leftcircle-container">
-    <div class="leftcircle" style="width: {calculateRadius()}px; height: {calculateRadius()}px;"></div>
+    <div class="leftcircle" style="width: {calculateLeftRadius()}px; height: {calculateLeftRadius()}px;"></div>
+  </div>
+
+  <div class="rightcircle-container">
+    <div class="leftcircle" style="width: {calculateRightRadius()}px; height: {calculateRightRadius()}px;"></div>
   </div>
 </div>
