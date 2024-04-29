@@ -167,8 +167,8 @@ async function loadMaps() {
       salesTimeMap = new mapboxgl.Map({
         container: 'salesTimeMap',
         style: 'mapbox://styles/rachelmb/cluq9tisq01ed01pbebh1c7np',
-        center: [-71.036923, 42.374823],
-        zoom: 13
+        center: [-71.0368795, 42.370097],
+        zoom: 15.5
       });
 
       salesTimeMap.on('load', () => resolve(salesTimeMap));
@@ -177,8 +177,8 @@ async function loadMaps() {
       permitTimeMap = new mapboxgl.Map({
         container: 'permitTimeMap',
         style: 'mapbox://styles/rachelmb/cluisi2c0003o01p2c4mdf1k2',
-        center: [-71.036923, 42.374823],
-        zoom: 13
+        center: [-71.0368795, 42.370097],
+        zoom: 15.5
       });
 
       permitTimeMap.on('load', () => resolve(permitTimeMap));
