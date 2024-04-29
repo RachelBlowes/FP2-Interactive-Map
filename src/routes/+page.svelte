@@ -212,8 +212,11 @@
 
   <!-- WHAT? -->
 
-<WordCloud class="component"/>
-<div id="divline"></div>
+<div calss="component">
+  <WordCloud class="component"/>
+  <div id="divline"></div>
+</div>
+
 
 <Owner_linegraph />
 <OwnerLinegraphSales />

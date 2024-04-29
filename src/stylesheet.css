@@ -4,6 +4,10 @@ html {
     overflow-y: scroll; /* Enable vertical scrolling */
 }
 
+:root {
+  --textCloud-color: red; /* Define the variable for text color */
+}
+
 body {
     font: 100%/1.5 system-ui, sans-serif;
     max-width: min(120ch, 80vw);
@@ -125,11 +129,13 @@ section {
     max-width: 100%;
     display: flex;
     align-content: space-around;
-        
 }
 
 .component {
-    margin: 100em;}
+    margin: 100em;
+    max-width: 100%;
+    display: flex;
+  }
   
   .dividedtitle {
     flex: 1; 

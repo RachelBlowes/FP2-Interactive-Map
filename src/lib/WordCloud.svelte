@@ -15,21 +15,14 @@
 <svelte:component this={selected} />
 <h5>Show what is renovated in:</h5>
 <button  class:active={current === 'NonSold'} on:click={() => selectShape('NonSold', NonSold)}>
-	Flipped 
+	Owned 
 </button>
 <button class:active={current === 'Flipped'} on:click={() => selectShape('Flipped', Flipped)}>
-	Owned
+	Flipped
 </button>
 
 
 
 <style>
-	:global(svg) {
-		max-width: flex;
-		display: block
-	}
-	text {
-        font-family: Courier;
-		fill: #BBB4B1;
-            }   
+
 </style>
