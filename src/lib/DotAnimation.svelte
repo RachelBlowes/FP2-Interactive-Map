@@ -87,7 +87,7 @@ let rightCaptions = ['$48,445', '$930,066', '$54,726', '$88,506', '$75,389', '$6
 
 .leftcircle {
   border-radius: 50%;
-  background-color: rgb(255, 255, 255); /* You can customize colors */
+  background-color: #438b5b; /* You can customize colors */
   transition: width 0.5s, height 0.5s; /* Define transition animation */
 }
 
@@ -95,7 +95,7 @@ let rightCaptions = ['$48,445', '$930,066', '$54,726', '$88,506', '$75,389', '$6
 
 .rightcircle {
   border-radius: 50%;
-  background-color: rgb(0, 0, 0); /* You can customize colors */
+  background-color:  #0087EC; /* You can customize colors */
   transition: width 0.5s, height 0.5s; /* Define transition animation */
 }
 

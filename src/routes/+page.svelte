@@ -158,7 +158,7 @@
 
 <!-- SLIDEY MAP -->
  
-<MapComparison />
+<MapComparison class="component"/>
   <div class="divided">
     <div class="dividedtitle">
       <h5>Boston sales 2010-2022, gradient by sale price</h5>
@@ -170,7 +170,7 @@
   </div>
 
 
-<TimeSliderMaps />
+<TimeSliderMaps class="component"/>
 
   <!-- WHO? -->
   <div class="divided">
@@ -208,11 +208,11 @@
     </div>
   </div>
 
-  <Census_Maps />
+  <Census_Maps class="component"/>
 
   <!-- WHAT? -->
 
-<WordCloud />
+<WordCloud class="component"/>
 <div id="divline"></div>
 
 <Owner_linegraph />

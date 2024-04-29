@@ -97,7 +97,7 @@ section {
   }
 
   #physicaltitle {
-    color: #F6517A;
+    color: #0087EC;
     font-weight: bold;
   }
   #fiscaltitle {
@@ -109,7 +109,7 @@ section {
     max-width: 100%;
     display: flex;
     align-content: space-around;
-    background-color: #EE6553;
+    background-color: #BBB4B1;
   }
 
   #centered-text {
@@ -127,6 +127,9 @@ section {
     align-content: space-around;
         
 }
+
+.component {
+    margin: 100em;}
   
   .dividedtitle {
     flex: 1; 
@@ -159,3 +162,21 @@ img .collage #gallery{
   justify-content: space-between; 
   width: 100%;
   }
+
+  .active {
+		background-color: #BBB4B1;
+		color: white;
+	}
+	button {
+		background-color: #f1f1f1;
+		border: none;
+		color: black;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-family: 'Courier';
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}

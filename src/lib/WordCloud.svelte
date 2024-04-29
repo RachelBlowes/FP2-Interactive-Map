@@ -13,12 +13,12 @@
 </script>
 
 <svelte:component this={selected} />
-
+<h5>Show what is renovated in:</h5>
 <button  class:active={current === 'NonSold'} on:click={() => selectShape('NonSold', NonSold)}>
-	Show the Homes
+	Flipped 
 </button>
 <button class:active={current === 'Flipped'} on:click={() => selectShape('Flipped', Flipped)}>
-	Show the Flipped
+	Owned
 </button>
 
 
@@ -28,20 +28,8 @@
 		max-width: flex;
 		display: block
 	}
-    .active {
-		background-color: #0087EC;
-		color: white;
-	}
-	button {
-		background-color: #f1f1f1;
-		border: none;
-		color: black;
-		padding: 15px 32px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 16px;
-		margin: 4px 2px;
-		cursor: pointer;
-	}
+	text {
+        font-family: Courier;
+		fill: #BBB4B1;
+            }   
 </style>
