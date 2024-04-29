@@ -21,20 +21,26 @@
         <img id="coverphoto" src="https://rachelblowes.github.io/Geodata/Images/coverphoto.png" alt="Split picture showing an apartment before and after renovation"> 
       </div>
     </section>
+
     <section> 
       <!-- This is the 2nd section -->
       <h2> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h2>
-
     <DotAnimation />
   </section>
+
   <section>
-      <!-- This is the 3rd section. -->
-      <h6>Between 2010 and 2022, housing prices in Boston have increased by 200%.</h6>
-    </section>
+      <h6>Between 2010 and 2022, housing prices in Boston have increased by over 200%. </h6>
+      <h6>Investment in housing is not confined just to the buying and selling of properties - 
+        Boston is an old city with limited new construction, meaning that investment also takes 
+        the form of renovation and remodeling.  </h6>
+  </section>
+
     <section>
       <!-- This is the 4th section. -->
-      <p>We use public building permit data from 2010-2022 in addition to sales data to better understand the relationship between <strong>physical</strong> and <strong>fiscal</strong> investment in the housing market.</p>
+      <p> We use public building permit data in addition to sales data from 2010 - 2022 to better 
+        understand the relationship between physical and fiscal investment in the housing market.</p>
     </section>
+
     <section>
       <!-- This is the 5th section. -->
       <div id="definitions">
@@ -51,18 +57,20 @@
       </div>
     </section>
     <section>
+
       <!-- Why Permits? -->
       <h3>Why building permits?</h3>
 
       <div class="text-container">
         <p class="columntext">
-          Boston is in the midst of a housing availability and affordability crisis. Its housing stock is relatively static, with few new developments.
-          
-          While renovation may improve living conditions in a given building, it can also reveal speculation patterns. </p>
+          Building permits can give insight on the physical changes that are being made to properties that have sales 
+          transactions, helping us understand whether significant improvements are being made to properties that have 
+          a wide margin between purchase and sale price, or properties that are classified as "flipped". </p>
         <p class="columntext">
           Almost 90% of sold flipped properties have a documented permit. 
       
-          We look at flipped and non-flipped sales transactions, permit declared work valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
+          We look at flipped and non-flipped sales transactions, permit declared work 
+          valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
       </div>
     </section>
     <section>
@@ -174,13 +182,15 @@
   </div>
 
 <section>
-  <h6>Investment in both buying and building has been increasing since 2010, with patterns of building foreshadowing patterns of buying. </h6>
+  <h6>Investment in both buying and building has been increasing since 2010, with patterns of 
+    building foreshadowing patterns of buying. </h6>
 </section>
 
 <TimeSliderMaps class="component"/>
 
 <section>
-  <h6> While investors only account for a small percentage of sales, the valuation of building permits with corporate owners has increased drastically. </h6>
+  <h6> While investors only account for a small percentage of sales, the valuation of building 
+    permits with corporate owners has increased drastically. </h6>
 </section>
 
   <!-- WHO? -->
@@ -204,14 +214,22 @@
     </div>
   </div>
 
-  <div style="height: 100px;"></div>
-
   <section>
-    <h6> Corporate owners' investment in single-family properties is increasing, both in terms of new builds and building permits. </h6>
-    <h6> Houses owned by corporate owners are more likely to be flipped. </h6>
+    <h6> Corporate investors are investing heavily in the construction and renovation of single-family units, 
+      which are more profitable. </h6>
+    <h6> Properties owned by corporate owners are more likely to be flipped. </h6>
   </section>
 
   <!-- WHERE? -->
+
+  <section>
+    <h6> What are the spatial patterns of investment around Boston?  </h6>
+  </section>
+
+  <Census_Maps class="component"/>
+
+    <div style="height: 100px;"></div>
+
   <div class="divided">
     <div class="dividedtitle">
       <h3>WHERE ARE WE BUILDING?</h3>
@@ -225,20 +243,29 @@
   </div>
 
   <section>
-    <h6> Both building permits and sales increase for census tracts with higher median household income. How does the spatial distribution of permit types vary? </h6>
+    <h6> Sales are distributed relatively evenly across census tracts, 
+      whereas building permits are more infrequent for the lowest-income and highest-income census parcels.  </h6>
   </section>
-
-  <Census_Maps class="component"/>
 
   <!-- WHAT? -->
   <section>
-    <h6> Permits also give insight on speculation - flipped properties are more likely to have superficial work done, possibly putting further pressure on the market without increasing the quality of the property. </h6>
+    <h6> Permits also give insight on speculation - flipped properties are more likely to have superficial 
+      work done, possibly putting further pressure on the market without increasing the quality of the property. </h6>
   </section>
 
 <div calss="component">
   <WordCloud class="component"/>
   <div id="divline"></div>
 </div>
+
+<img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/raster_graphs/Flipped-01.jpg" alt="line graph" width="500" height="600">
+
+
+<section>
+  <h6> We found that physical investment did not have a major impact on the sale price of flipped parcels, although parcels 
+    we classified as renovated were always slightly more expensive. In 2020, flipped parcels were less likely to have building 
+    permits, indicating a decoupling of fiscal and physical investment.  </h6>
+</section>
 
 <script>
 
