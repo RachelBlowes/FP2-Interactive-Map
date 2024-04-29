@@ -80,7 +80,7 @@
           <h5 id="example_typology_header" style="text-align: left">2 Family Residential House</h5>
           <p id="paragraph_sale1">Mr. O'Malley bought 11 Joseph st. in July 2015 for <strong id="fiscaltitle">$238,000.</strong></p>
           <br>
-          <img src="../lib/11_JosephSt/11Joseph_2014.png" alt="11 Joseph St 2014" class="GSV">
+          <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/11Joseph_2014.png?raw=true" alt="11 Joseph St 2014" class="GSV">
           <p><em>Google Street View, 2014</em></p>
         </div>
         <div id="fiscal">
@@ -95,12 +95,12 @@
         <div id="physical" style="margin-top: -3em">
           <p id="paragraph_sale1" style="margin-top: 10em">A year from purchasing, he sold the renovated first floor in August 2015 as a standalone dwelling unit for <strong id="fiscaltitle">$425,000.</strong></p>
           <br>
-          <img src="../lib/11_JosephSt/11Joseph_2019.png" alt="11 Joseph St 2019" class="GSV">
+          <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/11Joseph_2019.png?raw=true" alt="11 Joseph St 2019" class="GSV">
           <p><em>Google Street View, 2019</em></p>
         </div>
         <div id="fiscal" style="margin-top:40em">
           <p style="position: relative; top: -14.5em;">In the next step he invested <strong id="physicaltitle">$17,700</strong> in a Face-Lift for the second and third floors: retiling the 2 bathrooms on both floors, replacing kitchen cabinets, replacing interior doors, and painting.</p>
-          <img src="../lib/11_JosephSt/3rd.png" alt="Second Floor plan" class="arch_plan"  style="margin-top: -29em">
+          <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/3rd.png?raw=true" alt="Second Floor plan" class="arch_plan"  style="margin-top: -29em">
         </div>  
       </div>
     </section>
@@ -120,13 +120,13 @@
           <p id="paragraph_sale1" style="margin-top: 10em">He sold the apartment on the second floor on March 2017 for <strong id="fiscaltitle">$727,000.</strong>, and the third floor as a studio flat for <strong id="fiscaltitle">$144,641</strong> on Dec 2018. 
             The last sale also converted the property from a two-family residential housing to <strong id="physicaltitle">a 3 family residential housing.</p>
           <br>
-          <img src="../lib/11_JosephSt/reno_img/2017details_kitchen2.jpeg" width=400px>
+          <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/reno_img/2017details_kitchen2.jpeg?raw=true" width=400px>
           <p><em>REDFIN Real Estate</em></p>
-          <img src="../lib/11_JosephSt/reno_img/2017details.jpeg" style="position: relative; top: 2em; left:0em" width=400px>
+          <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/reno_img/2017details.jpeg?raw=true" style="position: relative; top: 2em; left:0em" width=400px>
         </div>
         <div id="fiscal" style="margin-top:40em">
           <p style="position: relative; top: -14.5em; left:-2em;">Between the 2nd and the 3rd sales, he also invested <strong id="physicaltitle">$7,187</strong> in upgrading the electricity infrastructure and adding 1 public meter, as well as replacing 3 windows. </p>
-          <img src="../lib/11_JosephSt/reno_img/2017details_bathroom.jpeg" style="position: relative; top: -13em; left:-8em" width=500px>
+          <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/reno_img/2017details_bathroom.jpeg?raw=true" style="position: relative; top: -13em; left:-8em" width=500px>
         </div>  
       </div>
     </section>
