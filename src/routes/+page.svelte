@@ -29,11 +29,11 @@
   </section>
   <section>
       <!-- This is the 3rd section. -->
-      <h3>Between 2010 and 2022, housing prices in Boston have increased by xx%</h3>
+      <h6>Between 2010 and 2022, housing prices in Boston have increased by 200%.</h6>
     </section>
     <section>
       <!-- This is the 4th section. -->
-      <p>We use public building permit data from 2010-2023 in addition to sales and assessment data to better understand the relationship between <strong>physical</strong> and <strong>fiscal</strong> investment in the housing market.</p>
+      <p>We use public building permit data from 2010-2022 in addition to sales data to better understand the relationship between <strong>physical</strong> and <strong>fiscal</strong> investment in the housing market.</p>
     </section>
     <section>
       <!-- This is the 5th section. -->
@@ -62,7 +62,7 @@
         <p class="columntext">
           Almost 90% of sold flipped properties have a documented permit. 
       
-          We look at flipped sales transactions, declared works valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
+          We look at flipped and non-flipped sales transactions, permit declared work valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
       </div>
     </section>
     <section>
@@ -136,7 +136,7 @@
       <h1 style="position: relative; top: 30em;"><strong id="fiscaltitle">Over $1MM</strong></h1>
     </section>
     <section>
-      <h3 style="position: relative; top: 40em;">What does it mean for the city?</h3>
+      <h6>What does it mean for the city?</h6>
     </section>
     <section>
       <br>
@@ -157,6 +157,10 @@
 <!-- DOT CHART - TOTAL INVESTMENT PHYSICAL VS. FISCAL -->
 
 <!-- SLIDEY MAP -->
+
+<section>
+  <h6>Let's explore the spatial distribution of sales and building permits. </h6>
+</section>
  
 <MapComparison class="component"/>
   <div class="divided">
@@ -169,8 +173,15 @@
     </div>
   </div>
 
+<section>
+  <h6>Investment in both buying and building has been increasing since 2010, with patterns of building foreshadowing patterns of buying. </h6>
+</section>
 
 <TimeSliderMaps class="component"/>
+
+<section>
+  <h6> While investors only account for a small percentage of sales, the valuation of building permits with corporate owners has increased drastically. </h6>
+</section>
 
   <!-- WHO? -->
   <div class="divided">
@@ -195,6 +206,11 @@
 
   <div style="height: 100px;"></div>
 
+  <section>
+    <h6> Corporate owners' investment in single-family properties is increasing, both in terms of new builds and building permits. </h6>
+    <h6> Houses owned by corporate owners are more likely to be flipped. </h6>
+  </section>
+
   <!-- WHERE? -->
   <div class="divided">
     <div class="dividedtitle">
@@ -204,22 +220,25 @@
     <div id="divline"></div>
     <div class="dividedtitle">
       <h3>WHERE ARE WE BUYING?</h3>
-      <!-- <CensusBarChartFiscal /> -->
+      <CensusBarChartFiscal />
     </div>
   </div>
+
+  <section>
+    <h6> Both building permits and sales increase for census tracts with higher median household income. How does the spatial distribution of permit types vary? </h6>
+  </section>
 
   <Census_Maps class="component"/>
 
   <!-- WHAT? -->
+  <section>
+    <h6> Permits also give insight on speculation - flipped properties are more likely to have superficial work done, possibly putting further pressure on the market without increasing the quality of the property. </h6>
+  </section>
 
 <div calss="component">
   <WordCloud class="component"/>
   <div id="divline"></div>
 </div>
-
-
-<Owner_linegraph />
-<OwnerLinegraphSales />
 
 <script>
 
@@ -246,8 +265,11 @@
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
 
-    //bar chart
+    //bar chart fiscal
     import CensusBarChart from '$lib/CensusBarChart.svelte';
+
+     //bar chart
+    import CensusBarChartFiscal from '$lib/CensusBarChartFiscal.svelte';
 
     //Census_Maps
     import Census_Maps from '$lib/Census_Maps.svelte';

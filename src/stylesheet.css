@@ -41,6 +41,11 @@ h5{
   font-size: 12pt;
 }
 
+h6{
+  color: black;
+  font-size: 30pt;
+}
+
 p {
     font: 100%/1.5 courier;
     max-width: 600px;
@@ -186,3 +191,13 @@ img .collage #gallery{
 		margin: 4px 2px;
 		cursor: pointer;
 	}
+
+  /* Inge's World */
+.graph-title {
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration: underline;
+}
+.graph-text {
+  font-family: system-ui, sans-serif;
+  font-size: 0.75em;
+}

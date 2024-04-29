@@ -8,7 +8,7 @@
   function createChart(data, width, height) {
 
     // Create SVG element
-    var svg = d3.select("#my_dataviz")
+    var svg = d3.select("#my_fiscal_chart")
         .append("svg")
         .attr("width", width+margin.left+margin.right)
         .attr("height", height + margin.top+margin.bottom)
@@ -121,7 +121,7 @@
             .attr("transform", "rotate(-90)")
             .attr("y", -margin.left+20)
             .attr("x", -margin.top)
-            .text("Total Number of Permits")
+            .text("Total Number of Sales")
   
     // Add legend
     var legendWidth = width,
@@ -236,12 +236,12 @@ onMount(async () => {
 
 </script>
 
-<div id="my_dataviz">
+<div id="my_fiscal_chart">
 <!-- SVG will be appended here -->
 </div>
 
 <style>
-#my_dataviz {
+#my_fiscal_chart {
     display: flex;
     justify-content: center; /* Horizontally center */
 }
