@@ -22,33 +22,20 @@
       </div>
     </section>
 
-    <section> 
+  <section> 
       <!-- This is the 2nd section -->
       <h2> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h2>
     <DotAnimation />
   </section>
 
-  <section>
+      <h3>Between 2010 and 2022, housing prices in Boston have increased by over 200%. </h3>
+      <h3>Investment in housing is not confined just to the buying and selling of properties - 
+        Boston is an old city with limited new construction, meaning that investment also takes 
+        the form of renovation and remodeling.  </h3>
 
-    <div id="definitions">
-      <div id="fiscal">
-        <h6>Between 2010 and 2022, housing prices in Boston have increased by over 200%. </h6>        
-      </div>
-      <div id="physical">
-        <h6>Investment in housing is not confined just to the buying and selling of properties - 
-          Boston is an old city with limited new construction, meaning that investment also takes 
-          the form of renovation and remodeling.  </h6>
-      </div>     
-    </div>
-
-          
-  </section>
-
-    <section>
       <!-- This is the 4th section. -->
-      <p> We use public building permit data in addition to sales data from 2010 - 2022 to better 
-        understand the relationship between physical and fiscal investment in the housing market.</p>
-    </section>
+      <h3> We use public building permit data in addition to sales data from 2010 - 2022 to better 
+        understand the relationship between physical and fiscal investment in the housing market.</h3>
 
     <section>
       <!-- This is the 5th section. -->
@@ -65,7 +52,6 @@
         </div>     
       </div>
     </section>
-    <section>
 
       <!-- Why Permits? -->
       <h3>Why building permits?</h3>
@@ -81,7 +67,7 @@
           We look at flipped and non-flipped sales transactions, permit declared work 
           valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
       </div>
-    </section>
+
     <section>
       <!-- Example - intro -->
       <p>Flipping is buying a property to <strong id="physicaltitle">renovate</strong> and then <strong id="fiscaltitle">sell</strong> - in the shortest time possible. In our dataset, within less than two years from the previous sale.</p>
@@ -89,6 +75,7 @@
       <p id="centered-text"><strong>Let's explore a flipped house.</strong></p>
       <p id="centered-text"><strong>Can you calculate the profit in your head?</strong></p>
     </section>
+
     <section>
       <!-- Example 01-->
       <div id="definitions" class="collage">
@@ -153,7 +140,7 @@
       <h1 style="position: relative; top: 30em;"><strong id="fiscaltitle">Over $1MM</strong></h1>
     </section>
     <section>
-      <h6>What does it mean for the city?</h6>
+      <h3>What does it mean for the city?</h3>
     </section>
     <section>
       <br>
@@ -175,9 +162,7 @@
 
 <!-- SLIDEY MAP -->
 
-<section>
-  <h6>Let's explore the spatial distribution of sales and building permits. </h6>
-</section>
+<h3>Let's explore the spatial distribution of sales and building permits. </h3>
  
 <MapComparison class="component"/>
   <div class="divided">
@@ -190,17 +175,13 @@
     </div>
   </div>
 
-<section>
-  <h6>Investment in both buying and building has been increasing since 2010, with patterns of 
-    building foreshadowing patterns of buying. </h6>
-</section>
+  <h3>Investment in both buying and building has been increasing since 2010, with patterns of 
+    building foreshadowing patterns of buying. </h3>
 
 <TimeSliderMaps class="component"/>
 
-<section>
-  <h6> While investors only account for a small percentage of sales, the valuation of building 
-    permits with corporate owners has increased drastically. </h6>
-</section>
+  <h3> While investors only account for a small percentage of sales, the valuation of building 
+    permits with corporate owners has increased drastically. </h3>
 
   <!-- WHO? -->
   <div class="divided">
@@ -222,18 +203,15 @@
       <OwnerLinegraphSales />
     </div>
   </div>
+  <p>Move the slider to see changes in owner over time.</p>
 
-  <section>
-    <h6> Corporate investors are investing heavily in the construction and renovation of single-family units, 
-      which are more profitable. </h6>
-    <h6> Properties owned by corporate owners are more likely to be flipped. </h6>
-  </section>
+    <h3> Corporate investors are investing heavily in the construction and renovation of single-family units, 
+      which are more profitable. </h3>
+    <h3> Properties owned by corporate owners are more likely to be flipped. </h3>
 
   <!-- WHERE? -->
 
-  <section>
-    <h6> What are the spatial patterns of investment around Boston?  </h6>
-  </section>
+    <h2> What are the spatial patterns of investment around Boston?  </h2>
 
   <Census_Maps class="component"/>
 
@@ -250,17 +228,14 @@
       <CensusBarChartFiscal />
     </div>
   </div>
+  <p>Hover over the bars to see more information. </p>
 
-  <section>
-    <h6> Sales are distributed relatively evenly across census tracts, 
-      whereas building permits are more infrequent for the lowest-income and highest-income census parcels.  </h6>
-  </section>
+    <h3> Sales are distributed relatively evenly across census tracts, 
+      whereas building permits are more infrequent for the lowest-income and highest-income census parcels.  </h3>
 
   <!-- WHAT? -->
-  <section>
-    <h6> Permits also give insight on speculation - flipped properties are more likely to have superficial 
-      work done, possibly putting further pressure on the market without increasing the quality of the property. </h6>
-  </section>
+    <h3> Permits also give insight on speculation - flipped properties are more likely to have superficial 
+      work done, possibly putting further pressure on the market without increasing the quality of the property. </h3>
 
 <div calss="component">
   <WordCloud class="component"/>
@@ -269,12 +244,9 @@
 
 <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/raster_graphs/Flipped-01.jpg" alt="line graph" width="500" height="600">
 
-
-<section>
-  <h6> We found that physical investment did not have a major impact on the sale price of flipped parcels, although parcels 
+  <h3> We found that physical investment did not have a major impact on the sale price of flipped parcels, although parcels 
     we classified as renovated were always slightly more expensive. In 2020, flipped parcels were less likely to have building 
-    permits, indicating a decoupling of fiscal and physical investment.  </h6>
-</section>
+    permits, indicating a decoupling of fiscal and physical investment.  </h3>
 
 <script>
 
