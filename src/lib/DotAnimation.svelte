@@ -10,21 +10,20 @@
 
 
 // Define captions for left and right circles
-let leftCaptions = ['$1,430,916', '$1,361,000', '$1,640,443', '$616,903', '$1,158,921', '$2,161,774', '$1,470,719', '$2,000,017', '$4,143,219', '$1,503,139', '$2,430,189', '$1,558,764', '$4,480,961']; // Add captions as needed
-let rightCaptions = ['$48,445', '$930,066', '$54,726', '$88,506', '$75,389', '$61,566', '$88,758', '$66,782', '$111,714', '$201,577', '$147,805', '$164,442', '$2,196,733']; // Add captions as needed
+let leftCaptions = ['$369,096', '$377,898', '$387,295', '$442,950', '$591,897', '$643,319', '$580,850', '$729,266', '$830,000', '$882,037', '$811,094', '$839,656', '$1,065,000']; // Add captions as needed
+let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300', '$16,070', '$18,400', '$18,000', '$20,600', '$21,244', '$42,072', '$33,442']; // Add captions as needed
 
 
   // Calculate the radius based on the index
   const calculateLeftRadius = () => {
-    const radii = [150, 142, 180, 56, 281, 275, 102, 203, 310, 54, 242, 96, 431]; // Predefined radii
+    const radii = [200, 204, 204, 228, 267, 217, 180, 151, 227, 212, 183, 207, 253]; // Predefined radii
     const numRadii = radii.length;
     return radii[index % numRadii]; // Cycling through radii based on the index
   };
 
-  
   // Calculate the radius based on the index
   const calculateRightRadius = () => {
-    const radii = [5, 97, 6, 8, 18, 8, 6, 7, 8, 7, 14, 10, 211]; // Predefined radii
+    const radii = [1, 4.3, 5.5, 3, 4.13, 5.16, 4.99, 7.335, 6.936, 8.963, 9.8, 10.37, 9.96]; // Predefined radii
     const numRadii = radii.length;
     return radii[index % numRadii]; // Cycling through radii based on the index
   };
@@ -151,8 +150,8 @@ let rightCaptions = ['$48,445', '$930,066', '$54,726', '$88,506', '$75,389', '$6
 
 <div class="titlecontainer">
   <div id="maptitles">
-    <h5>Average sale price</h5>
-    <h5> Average permit valuation </h5>
+    <h5>Median sale price</h5>
+    <h5> Median permit valuation </h5>
   </div>
 
 

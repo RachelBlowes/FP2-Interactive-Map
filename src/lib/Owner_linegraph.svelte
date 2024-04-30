@@ -122,7 +122,6 @@ function render(csvData) {
     .style('opacity', 0)
     .attr("stroke", "black")
     .attr('r', 5)
-    .style("opacity", 50);
 
   focusText = svg.append('g')
     .append('text')
@@ -250,7 +249,7 @@ function render(csvData) {
 
 <style>
   .custom-slider {
-    width: 400px;
+    width: 380px;
   }
   .legend text {
     font-size: 12px;
@@ -273,7 +272,7 @@ function render(csvData) {
   .slider-container {
   
   position: absolute;
-  bottom: -10;
+  bottom: 0;
   left: 0;
   width: 100%; /* Ensure slider takes full width */
 }
@@ -283,7 +282,7 @@ function render(csvData) {
   bottom: -120px; /* Adjust as needed to position the legend below the slider */
   left: 0;
   width: 100%;
-  text-align: center; /* Center the legend */
+  text-align: left; /* Center the legend */
 }
 
 </style>
