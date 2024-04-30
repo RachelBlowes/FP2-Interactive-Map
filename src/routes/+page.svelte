@@ -38,7 +38,6 @@
 
     <div style="height: 40px;"></div>
 
-    <section>
       <!-- This is the 5th section. -->
       <div id="definitions">
         <div id="fiscal">
@@ -52,7 +51,8 @@
           <p>In our analysis, physical investments refer to money spent on physical improvements to a given property</p>
         </div>     
       </div>
-    </section>
+
+      <div style="height: 40px;"></div>
 
       <!-- Why Permits? -->
       <h3>Why building permits?</h3>
