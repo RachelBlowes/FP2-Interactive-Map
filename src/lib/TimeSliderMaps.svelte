@@ -238,7 +238,7 @@ onMount(async () => {
   sale.forEach(d => {
     d.saleprice = parseFloat(d.saleprice);
   });
-  permit = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/permit_valuation_lat_long_new.csv');
+  permit = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/permit_values_owners.csv');
   permit.forEach(d => {
     d.valuation = parseFloat(d.valuation);  
   });
@@ -267,9 +267,9 @@ function updateLegendRadius() {
   legendRadius1 = radiusScale(423000000/10);
   legendRadius2 = radiusScale(423000000/2);
   legendRadius3 = radiusScale(423000000);
-  legendRadius4 = permitRadiusScale(1308023100/10);
-  legendRadius5 = permitRadiusScale(1308023100/2);
-  legendRadius6 = permitRadiusScale(1308023100);
+  legendRadius4 = permitRadiusScale(28301224/10);
+  legendRadius5 = permitRadiusScale(28301224/2);
+  legendRadius6 = permitRadiusScale(28301224);
 }
 
 function getCoords(sale) {
