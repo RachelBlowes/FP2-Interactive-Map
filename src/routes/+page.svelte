@@ -36,6 +36,8 @@
     <h3> We use public building permit data in addition to sales data from 2010 - 2022 to better 
       understand the relationship between physical and fiscal investment in the housing market.</h3>
 
+    <div style="height: 40px;"></div>
+
     <section>
       <!-- This is the 5th section. -->
       <div id="definitions">
@@ -148,16 +150,15 @@
 
 <br>
 
+<h2>Let's explore the spatial distribution of sales and building permits. </h2>
+
+<div style="height: 60px;"></div>
 
 <header id="fiscalvsphysical" style="position: sticky; top: 0; z-index: 1000;">
   <h4>Fiscal</h4>
   <div id="divline"></div>
   <h4>Physical</h4>
 </header>
-
-<div style="height: 40px;"></div>
-
-<h3>Let's explore the spatial distribution of sales and building permits. </h3>
 
 <div style="height: 40px;"></div>
 
@@ -229,6 +230,8 @@ building foreshadowing patterns of buying. </h3>
 
 <h2> What are the spatial patterns of investment around Boston?  </h2>
 
+<div style="height: 40px;"></div>
+
 <Census_Maps class="component"/>
 
 <div style="height: 100px;"></div>
@@ -240,29 +243,41 @@ building foreshadowing patterns of buying. </h3>
     </div>
     <div id="divline"></div>
     <div class="dividedtitle">
-      <h3>Where are we buying?</h3>
+      <h5>Where are we buying?</h5>
       <CensusBarChartFiscal />
     </div>
   </div>
   <p>Hover over the bars to see more information. </p>
 
+<div style="height: 40px;"></div>
+
 <h3> Sales are distributed relatively evenly across census tracts, 
 whereas building permits are more infrequent for the lowest-income and highest-income census parcels.  </h3>
+
+<div style="height: 40px;"></div>
 
  <!-- WHAT? ------------------------------------------------------------------->
 <h3> Permits also give insight on speculation - flipped properties are more likely to have superficial 
   work done, possibly putting further pressure on the market without increasing the quality of the property. </h3>
+
+<div style="height: 40px;"></div>
 
 <div calss="component">
   <WordCloud class="component"/>
   <div id="divline"></div>
 </div>
 
-<img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/raster_graphs/Flipped-01.jpg" alt="line graph" width="500" height="600">
+<div style="text-align: center;">
+  <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/raster_graphs/Flipped-01.jpg?raw=true" alt="line graph" width="600" height="600">
+</div>
+
+<div style="height: 20px;"></div>
 
 <h3> We found that physical investment did not have a major impact on the sale price of flipped parcels, although parcels 
     we classified as renovated were always slightly more expensive. In 2020, flipped parcels were less likely to have building 
     permits, indicating a decoupling of fiscal and physical investment.  </h3>
+
+<div style="height: 80px;"></div>
 
 <script>
 
