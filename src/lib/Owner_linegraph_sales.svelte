@@ -115,10 +115,10 @@
     svg.append("text")
       .attr("class", "y label")
       .attr("text-anchor", "end")
-      .attr("y", -40)
+      .attr("y", -60)
       .attr("dy", ".9em")
       .attr("transform", "rotate(-90)")
-      .text("Value");
+      .text("Value ($)");
 
     // Initialize focus and focusText elements
     focus = svg.append('g')
@@ -127,7 +127,7 @@
       .style('opacity', 0)
       .attr("stroke", "black")
       .attr('r', 5)
-      .style("opacity", 50);
+
 
     focusText = svg.append('g')
       .append('text')
@@ -255,7 +255,7 @@
 
 <style>
   .custom-slider {
-    width: 400px;
+    width: 380px;
   }
   .legend text {
     font-size: 12px;
@@ -269,13 +269,9 @@
               
     }
 
-  #slider_line_graph {
-      margin: 20px;
-  }
-
   .slider-container-sales {
   position: absolute;
-  bottom: -10;
+  bottom: 0;
   left: 0;
   width: 100%; /* Ensure slider takes full width */
 }
@@ -285,18 +281,22 @@
   bottom: -120px; /* Adjust as needed to position the legend below the slider */
   left: 0;
   width: 100%;
-  text-align: center; /* Center the legend */
+  text-align: left; /* Center the legend */
 }
 
 </style>
 
 <div class="graph-container-sales">
-<div id="slider_line_graph_sales"></div>
+  <div id="slider_line_graph_sales"></div>
 
-<!-- Time slider -->
-<div id="slider-container-sales">
-<input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:change={() => updateChart(selectedYear)} />
+  <!-- Container for the slider and legend -->
+  <div class="controls-container">
+      <!-- Time slider -->
+      <div id="slider-container-sales">
+          <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:change={() => updateChart(selectedYear)} />
+      </div>
+      <!-- Legend container -->
+      <div id="legend-container-sales"></div>
+  </div>
 </div>
-<!-- Legend container -->
-<div id="legend-container-sales"></div>
-</div>
+
