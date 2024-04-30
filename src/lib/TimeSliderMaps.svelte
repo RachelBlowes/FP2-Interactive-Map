@@ -56,10 +56,10 @@
     appearance: none;
     width: 100%; /* Full-width */
     height: 10px; /* Specified height */
-    background: whitesmoke; /* Grey background */
+    background: white; 
     border-radius: 5px; /*Rounded*/
     outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    opacity: 0.8; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
   }
@@ -93,6 +93,19 @@
   text-align: center; /* Center the text */
   font-weight: bold; /* Make the text bold */
 }
+
+#legendcontainer {
+  width: 100%; /* Width of the outside container */
+  display: flex;
+  justify-content: space-around;
+}
+
+.legend {
+  width: 50%; /* Width of the outside container */
+  flex: 1;
+}
+
+
 </style>
 
 
@@ -133,10 +146,36 @@
   </div>
 </div>
 
+<div id="legendcontainer">
+  <div class="legend">
+    <svg>
+      <circle class="legendcircle" r={legendRadius1} cx="20" cy="20" fill="#F6517A" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="25" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
+      <circle class="legendcircle" r={legendRadius2} cx="20" cy="45" fill="#F6517A" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
+      <circle class="legendcircle" r={legendRadius3} cx="20" cy="70" fill="#F6517A" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="75" font-family="Arial" font-size="12" fill="black">423000000</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <svg>
+      <circle class="legendcircle" r={legendRadius4} cx="20" cy="20" fill="#0087EC" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="25" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
+      <circle class="legendcircle" r={legendRadius5} cx="20" cy="45" fill="#0087EC" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
+      <circle class="legendcircle" r={legendRadius6} cx="20" cy="70" fill="#0087EC" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="75" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
+    </svg>
+  </div>
+</div>
+
+
+
 <div id="maptitles">
-  <h5>Boston Yearly Sales</h5>
+  <h5> Boston Yearly Sales </h5>
   <h5> Boston Yearly Building Permits </h5>
 </div>
+
 
 <div id="slider">
   <label id="timesliderlabel" for="timeSlider">Filter by Year:</label>
@@ -160,6 +199,13 @@ let mapViewChanged = 0;
 let radiusScale;
 let permitRadiusScale;
 let timeFilter = 2009;
+
+let legendRadius1 = 0;
+let legendRadius2 = 0;
+let legendRadius3 = 0;
+let legendRadius4 = 0;
+let legendRadius5 = 0;
+let legendRadius6 = 0;
 
 async function loadMaps() {
   return Promise.all([
@@ -213,7 +259,18 @@ onMount(async () => {
 
   salesTimeMap?.on("move", evt => mapViewChanged++);
   permitTimeMap?.on("move", evt => mapViewChanged++);
+
+  updateLegendRadius();
 });
+
+function updateLegendRadius() {
+  legendRadius1 = radiusScale(423000000/10);
+  legendRadius2 = radiusScale(423000000/2);
+  legendRadius3 = radiusScale(423000000);
+  legendRadius4 = permitRadiusScale(1308023100/10);
+  legendRadius5 = permitRadiusScale(1308023100/2);
+  legendRadius6 = permitRadiusScale(1308023100);
+}
 
 function getCoords(sale) {
   let point = new mapboxgl.LngLat(+sale.Long, +sale.Lat);
