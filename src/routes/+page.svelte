@@ -27,15 +27,7 @@
     
     <DotAnimation />
 
-<<<<<<< HEAD
     <h3>Between 2010 and 2022, housing prices in Boston have increased by over 200%. </h3>
-=======
-  
-      <h3>Between 2010 and 2022, housing prices in Boston have increased by over 200%. </h3>
-      <h3>Investment in housing is not confined just to the buying and selling of properties - 
-        Boston is an old city with limited new construction, meaning that investment also takes 
-        the form of renovation and remodeling.  </h3>
->>>>>>> 57255a90fe69e188c9936842525b0aa01b3983a1
 
     <h3>Investment in housing is not confined just to the buying and selling of properties - 
       Boston is an old city with limited new construction, meaning that investment also takes 
