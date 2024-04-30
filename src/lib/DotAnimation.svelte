@@ -24,7 +24,7 @@ let rightCaptions = ['$48,445', '$930,066', '$54,726', '$88,506', '$75,389', '$6
   
   // Calculate the radius based on the index
   const calculateRightRadius = () => {
-    const radii = [5, 97, 6, 8, 18, 8, 6, 7, 8, 7, 14, 10, 211]; // Predefined radii
+    const radii = [5, 97, 6, 8, 18, 7, 6, 6, 8, 7, 14, 10, 211]; // Predefined radii
     const numRadii = radii.length;
     return radii[index % numRadii]; // Cycling through radii based on the index
   };
