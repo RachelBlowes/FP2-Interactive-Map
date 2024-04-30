@@ -150,8 +150,8 @@ let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300
 
 <div class="titlecontainer">
   <div id="maptitles">
-    <h5>Average sale price</h5>
-    <h5> Average permit valuation </h5>
+    <h5>Median sale price</h5>
+    <h5> Median permit valuation </h5>
   </div>
 
 
