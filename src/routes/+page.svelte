@@ -29,10 +29,19 @@
   </section>
 
   <section>
-      <h6>Between 2010 and 2022, housing prices in Boston have increased by over 200%. </h6>
-      <h6>Investment in housing is not confined just to the buying and selling of properties - 
-        Boston is an old city with limited new construction, meaning that investment also takes 
-        the form of renovation and remodeling.  </h6>
+
+    <div id="definitions">
+      <div id="fiscal">
+        <h6>Between 2010 and 2022, housing prices in Boston have increased by over 200%. </h6>        
+      </div>
+      <div id="physical">
+        <h6>Investment in housing is not confined just to the buying and selling of properties - 
+          Boston is an old city with limited new construction, meaning that investment also takes 
+          the form of renovation and remodeling.  </h6>
+      </div>     
+    </div>
+
+          
   </section>
 
     <section>
