@@ -268,15 +268,14 @@ whereas building permits are more infrequent for the lowest-income and highest-i
     </section>
 </Scroller>
 
-<div style="text-align: center;">
-  <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/raster_graphs/Flipped-01.jpg?raw=true" alt="line graph" width="600" height="600">
-</div>
+<h3> We found that units with building permits generally had a higher profit, however this profit has increased from $16,000 to nearly $70,0000 
+  since 2010, an over fourfold increase. </h3>
 
-<div style="height: 20px;"></div>
+  <div style="height: 20px;"></div>
 
-<h3> We found that physical investment did not have a major impact on the sale price of flipped parcels, although parcels 
-    we classified as renovated were always slightly more expensive. In 2020, flipped parcels were less likely to have building 
-    permits, indicating a decoupling of fiscal and physical investment.  </h3>
+  <h5>Median profit (price diff - permit valuation - permit fees) for residential properties</h5>
+
+<PermitSalesDiffLineGraph />
 
 <div style="height: 80px;"></div>
 
@@ -316,6 +315,9 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
     //DotAnimation
     import DotAnimation from '$lib/DotAnimation.svelte';
+
+    //Bar chart 2
+    import PermitSalesDiffLineGraph from '$lib/PermitSalesDiffLineGraph.svelte';
 
 
 </script>
