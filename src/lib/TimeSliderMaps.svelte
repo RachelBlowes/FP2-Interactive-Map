@@ -238,7 +238,7 @@ onMount(async () => {
   sale.forEach(d => {
     d.saleprice = parseFloat(d.saleprice);
   });
-  permit = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/permit_values_owners.csv');
+  permit = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/permit_valuation_owners.csv');
   permit.forEach(d => {
     d.valuation = parseFloat(d.valuation);  
   });
