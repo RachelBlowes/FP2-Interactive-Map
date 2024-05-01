@@ -190,6 +190,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   <div id="divline"></div>
 </div>
 
+<<<<<<< Updated upstream
 <Scroller top="{0.0}" bottom="{0.7}" bind:index bind:offset bind:progress>
   <div slot="background">
     
@@ -272,13 +273,16 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/raster_graphs/Flipped-01.jpg?raw=true" alt="line graph" width="600" height="600">
 </div>
 
+=======
+>>>>>>> Stashed changes
 <div style="height: 20px;"></div>
 
-<h3> We found that physical investment did not have a major impact on the sale price of flipped parcels, although parcels 
-    we classified as renovated were always slightly more expensive. In 2020, flipped parcels were less likely to have building 
-    permits, indicating a decoupling of fiscal and physical investment.  </h3>
+<h3> We found that physical investment always results in a higher sales price difference for residential properties. Since 2010, 
+  this price difference has increased from $42,000 to nearly $140,000, demonstratrating a decoupling of investment and value. </h3>
 
 <div style="height: 80px;"></div>
+
+<PermitSalesDiffLineGraph />
 
 <script>
 
@@ -316,6 +320,9 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
     //DotAnimation
     import DotAnimation from '$lib/DotAnimation.svelte';
+
+    //permit sales line graph
+    import PermitSalesDiffLineGraph from '$lib/PermitSalesDiffLineGraph.svelte';
 
 
 </script>
