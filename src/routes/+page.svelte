@@ -193,9 +193,11 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 <div style="height: 20px;"></div>
 
 <h3> We found that physical investment always results in a higher sales price difference for residential properties. Since 2010, 
-  this price difference has increased from $42,000 to nearly $140,000, demonstratrating a decoupling of investment and value. </h3>
+  this price difference has increased from $16,000 to nearly $70,000, outpacing inflation and demonstratrating a decoupling of investment and value. </h3>
 
 <div style="height: 80px;"></div>
+
+<h5> Median profit (Sales profit - building permit valuation - permit fees) from 2010 - 2022. </h5>
 
 <PermitSalesDiffLineGraph />
 
