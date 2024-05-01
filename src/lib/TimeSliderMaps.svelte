@@ -146,8 +146,12 @@
         {#each filteredPermits as permit}
           <circle { ...getPermitCoords(permit) }
               r={permitRadiusScale(permit.valuation)}
-              fill="#0087EC"
-              fill-opacity="0.6"
+              fill={
+                (permit.ownerType === "c") ? "#FC96B3" :
+                (permit.ownerType === "t" ? "#0087EC" :
+                (permit.ownerType === "b" ? "#8D6E63" : "#78B48C"))
+              }
+              fill-opacity="0.7"
               stroke="white"
               stroke-width="0.5">
             <title> Permit Value {permit.valuation}</title>
@@ -174,21 +178,35 @@
     </svg>
     <svg class="legendsvg">
       <circle class="legendcircle" r={legendRadius1} cx="40" cy="20" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
-      <text x="80" y="25" font-family="Arial" font-size="12" fill="black">$1,000,000</text>
-      <circle class="legendcircle" r={legendRadius2} cx="40" cy="55" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
-      <text x="80" y="60" font-family="Arial" font-size="12" fill="black">$50,000,000</text>
-      <circle class="legendcircle" r={legendRadius3} cx="40" cy="90" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
-      <text x="80" y="95" font-family="Arial" font-size="12" fill="black">$332,000,000</text>
+      <text x="80" y="25" font-family="Arial" font-size="12" fill="black">$500,000</text>
+      <circle class="legendcircle" r={legendRadius2} cx="40" cy="45" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="50" font-family="Arial" font-size="12" fill="black">$5,000,000</text>
+      <circle class="legendcircle" r={legendRadius3} cx="40" cy="70" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="75" font-family="Arial" font-size="12" fill="black">$50,000,000</text>
+      <circle class="legendcircle" r={legendRadius4} cx="40" cy="95" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="100" font-family="Arial" font-size="12" fill="black">$332,000,000</text>
     </svg>
   </div>
   <div class="legend">
-    <svg>
-      <circle class="legendcircle" r={legendRadius4} cx="20" cy="20" fill="#0087EC" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
-      <text x="30" y="25" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
-      <circle class="legendcircle" r={legendRadius5} cx="20" cy="45" fill="#0087EC" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
-      <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
-      <circle class="legendcircle" r={legendRadius6} cx="20" cy="70" fill="#0087EC" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
-      <text x="30" y="75" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
+    <svg class="legendsvg">
+      <circle class="legendcircle" r=5 cx="20" cy="20" fill="#FC96B3" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="25" font-family="Arial" font-size="12" fill="black">Corporate</text>
+      <circle class="legendcircle" r=5 cx="20" cy="45" fill="#0087EC" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Trust</text>
+      <circle class="legendcircle" r=5 cx="20" cy="70" fill="#8D6E63" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="75" font-family="Arial" font-size="12" fill="black">Government</text>
+      <circle class="legendcircle" r=5 cx="20" cy="95" fill="#78B48C" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="100" font-family="Arial" font-size="12" fill="black">Individual/Other</text>
+    </svg>
+    <svg class="legendsvg">
+      <circle class="legendcircle" r={legendRadius5} cx="40" cy="20" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="25" font-family="Arial" font-size="12" fill="black">$50,000</text>
+      <circle class="legendcircle" r={legendRadius6} cx="40" cy="45" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="50" font-family="Arial" font-size="12" fill="black">$500,000</text>
+      <circle class="legendcircle" r={legendRadius7} cx="40" cy="70" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="75" font-family="Arial" font-size="12" fill="black">$5,000,000</text>
+      <circle class="legendcircle" r={legendRadius8} cx="40" cy="95" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="100" font-family="Arial" font-size="12" fill="black">$28,301,224</text>
     </svg>
   </div>
 </div>
@@ -230,6 +248,8 @@ let legendRadius3 = 0;
 let legendRadius4 = 0;
 let legendRadius5 = 0;
 let legendRadius6 = 0;
+let legendRadius7 = 0;
+let legendRadius8 = 0;
 
 async function loadMaps() {
   return Promise.all([
@@ -288,12 +308,15 @@ onMount(async () => {
 });
 
 function updateLegendRadius() {
-  legendRadius1 = radiusScale(1000000);
-  legendRadius2 = radiusScale(50000000);
-  legendRadius3 = radiusScale(332000000);
-  legendRadius4 = permitRadiusScale(28301224/10);
-  legendRadius5 = permitRadiusScale(28301224/2);
-  legendRadius6 = permitRadiusScale(28301224);
+  legendRadius1 = radiusScale(500000);
+  legendRadius2 = radiusScale(5000000);
+  legendRadius3 = radiusScale(50000000);
+  legendRadius4 = radiusScale(332000000);
+
+  legendRadius5 = permitRadiusScale(50000);
+  legendRadius6 = permitRadiusScale(500000);
+  legendRadius7 = permitRadiusScale(5000000);
+  legendRadius8 = permitRadiusScale(28301224);
 }
 
 function getCoords(sale) {
