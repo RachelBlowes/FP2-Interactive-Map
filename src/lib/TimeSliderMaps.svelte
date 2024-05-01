@@ -103,6 +103,13 @@
 .legend {
   width: 50%; /* Width of the outside container */
   flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+.legendsvg {
+  flex: 1;
+
 }
 
 
@@ -117,8 +124,13 @@
         {#each filteredSales as sale}
           <circle { ...getCoords(sale) }
               r={radiusScale(sale.saleprice)}
-              fill="#F6517A"
-              fill-opacity="0.6"
+              fill={
+                (sale.buyer_llc_ind === "1" || sale.buyer_llp_ind === "1" || sale.buyer_bus_ind === "1") ? "#FC96B3" :
+                (sale.buyer_trst_ind === "1" ? "#0087EC" :
+                (sale.buyer_bnk_ind === "1" || sale.buyer_gse_ind === "1") ? "#F69D2C" :
+                (sale.buyer_gov_ind === "1" ? "#8D6E63" : "#78B48C"))
+              }
+              fill-opacity="0.7"
               stroke="white"
               stroke-width="0.5">
             <title> Sale Price {sale.saleprice}</title>
@@ -148,13 +160,25 @@
 
 <div id="legendcontainer">
   <div class="legend">
-    <svg>
-      <circle class="legendcircle" r={legendRadius1} cx="20" cy="20" fill="#F6517A" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
-      <text x="30" y="25" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
-      <circle class="legendcircle" r={legendRadius2} cx="20" cy="45" fill="#F6517A" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
-      <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Legend Text 1</text>
-      <circle class="legendcircle" r={legendRadius3} cx="20" cy="70" fill="#F6517A" fill-opacity="0.6" stroke="white" stroke-width="0.5"></circle>
-      <text x="30" y="75" font-family="Arial" font-size="12" fill="black">423000000</text>
+    <svg class="legendsvg">
+      <circle class="legendcircle" r=5 cx="20" cy="20" fill="#FC96B3" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="25" font-family="Arial" font-size="12" fill="black">Corporate</text>
+      <circle class="legendcircle" r=5 cx="20" cy="45" fill="#0087EC" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Trust</text>
+      <circle class="legendcircle" r=5 cx="20" cy="70" fill="#F69D2C" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="75" font-family="Arial" font-size="12" fill="black">Bank</text>
+      <circle class="legendcircle" r=5 cx="20" cy="95" fill="#8D6E63" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="100" font-family="Arial" font-size="12" fill="black">Government</text>
+      <circle class="legendcircle" r=5 cx="20" cy="120" fill="#78B48C" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="125" font-family="Arial" font-size="12" fill="black">Individual/Other</text>
+    </svg>
+    <svg class="legendsvg">
+      <circle class="legendcircle" r={legendRadius1} cx="40" cy="20" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="25" font-family="Arial" font-size="12" fill="black">$1,000,000</text>
+      <circle class="legendcircle" r={legendRadius2} cx="40" cy="55" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="60" font-family="Arial" font-size="12" fill="black">$50,000,000</text>
+      <circle class="legendcircle" r={legendRadius3} cx="40" cy="90" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="80" y="95" font-family="Arial" font-size="12" fill="black">$332,000,000</text>
     </svg>
   </div>
   <div class="legend">
@@ -172,7 +196,7 @@
 
 
 <div id="maptitles">
-  <h5> Boston Yearly Sales </h5>
+  <h5> Boston Yearly Residential Sales </h5>
   <h5> Boston Yearly Building Permits </h5>
 </div>
 
@@ -234,7 +258,7 @@ async function loadMaps() {
 
 onMount(async () => {
   [salesTimeMap, permitTimeMap] = await loadMaps();
-  sale = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/sales_parcels_timeseries_pivoted.csv');
+  sale = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/salesprices_2010-2022.csv');
   sale.forEach(d => {
     d.saleprice = parseFloat(d.saleprice);
   });
@@ -264,9 +288,9 @@ onMount(async () => {
 });
 
 function updateLegendRadius() {
-  legendRadius1 = radiusScale(423000000/10);
-  legendRadius2 = radiusScale(423000000/2);
-  legendRadius3 = radiusScale(423000000);
+  legendRadius1 = radiusScale(1000000);
+  legendRadius2 = radiusScale(50000000);
+  legendRadius3 = radiusScale(332000000);
   legendRadius4 = permitRadiusScale(28301224/10);
   legendRadius5 = permitRadiusScale(28301224/2);
   legendRadius6 = permitRadiusScale(28301224);
