@@ -140,14 +140,14 @@ building foreshadowing patterns of buying. </h3>
   <p>Move the slider to see changes in owner over time.</p>
   <div style="height: 80px;"></div>
 
-  <h3> Corporate investors are investing heavily in the construction and renovation of single-family units, 
+  <!-- <h3> Corporate investors are investing heavily in the construction and renovation of single-family units, 
       which are more profitable. </h3>
 
   <div style="height: 40px;"></div>
   
   <h3> Properties owned by corporate owners are more likely to be flipped. </h3>
 
-  <div style="height: 40px;"></div>
+  <div style="height: 40px;"></div> -->
 
 <!-- WHERE? ------------------------------------------------------------------->
 
