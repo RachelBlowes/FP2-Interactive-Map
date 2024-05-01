@@ -221,7 +221,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
         </div>
         <div id="fiscal">
           <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/1st.png?raw=true" alt="Ground Floor plan" class="arch_plan"  style="margin-top: 5em">
-          <p >He then immediately started off with an investment of <strong id="physicaltitle">$12,975</strong> (fees included) installing vinyl sidings on the entire exterior, repaired the front porch, and re-issued a gaz permit.</p>
+          <p >They then immediately started off with an investment of <strong id="physicaltitle">$12,975</strong> (fees included) installing vinyl sidings on the entire exterior, repaired the front porch, and re-issued a gaz permit.</p>
         </div>  
       </div>
     </section>
@@ -235,7 +235,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
           <p><em>Google Street View, 2019</em></p>
         </div>
         <div id="fiscal" style="margin-top:40em">
-          <p style="position: relative; top: -14.5em;">In the next step he invested <strong id="physicaltitle">$17,700</strong> in a Face-Lift for the second and third floors: retiling the 2 bathrooms on both floors, replacing kitchen cabinets, replacing interior doors, and painting.</p>
+          <p style="position: relative; top: -14.5em;">In the next step they invested <strong id="physicaltitle">$17,700</strong> in a Face-Lift for the second and third floors: retiling the 2 bathrooms on both floors, replacing kitchen cabinets, replacing interior doors, and painting.</p>
           <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/3rd.png?raw=true" alt="Second Floor plan" class="arch_plan"  style="margin-top: -29em">
         </div>  
       </div>
@@ -244,7 +244,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
       <!-- Example 03 - 2 last sales -->
       <div id="definitions" class="collage">
         <div id="physical" style="margin-top: -3em">
-          <p id="paragraph_sale1" style="margin-top: 10em">He sold the apartment on the second floor on March 2017 for <strong id="fiscaltitle">$727,000.</strong>, and the third floor as a studio flat for <strong id="fiscaltitle">$144,641</strong> on Dec 2018. 
+          <p id="paragraph_sale1" style="margin-top: 10em">The investor sold the apartment on the second floor on March 2017 for <strong id="fiscaltitle">$727,000.</strong>, and the third floor as a studio flat for <strong id="fiscaltitle">$144,641</strong> on Dec 2018. 
             The last sale also converted the property from a two-family residential housing to <strong id="physicaltitle">a 3 family residential housing.</p>
           <br>
           <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/reno_img/2017details_kitchen2.jpeg?raw=true" width=400px>
@@ -252,19 +252,17 @@ whereas building permits are more infrequent for the lowest-income and highest-i
           <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/reno_img/2017details.jpeg?raw=true" style="position: relative; top: 2em; left:0em" width=400px>
         </div>
         <div id="fiscal" style="margin-top:40em">
-          <p style="position: relative; top: -14.5em; left:-2em;">Between the 2nd and the 3rd sales, he also invested <strong id="physicaltitle">$7,187</strong> in upgrading the electricity infrastructure and adding 1 public meter, as well as replacing 3 windows. </p>
+          <p style="position: relative; top: -14.5em; left:-2em;">Between the 2nd and the 3rd sales, they also invested <strong id="physicaltitle">$7,187</strong> in upgrading the electricity infrastructure and adding 1 public meter, as well as replacing 3 windows. </p>
           <img src="https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/11_JosephSt/reno_img/2017details_bathroom.jpeg?raw=true" style="position: relative; top: -13em; left:-8em" width=500px>
         </div>  
       </div>
     </section>
     <section>
-      <h3 style="position: relative; top: 30em;"> In less than 4 years, and an initial investment of <b>$250,975</b>, Mr. Investor made a profit of</h3> 
+      <h3 style="position: relative; top: 30em;"> In less than 4 years, and an initial investment of <b>$250,975</b>, the investor made a profit of</h3> 
       <!-- <br> -->
       <h1 style="position: relative; top: 30em;"><strong id="fiscaltitle">Over $1MM</strong></h1>
     </section>
-    <section>
-      <h3>What does it mean for the city?</h3>
-    </section>
+
     <section>
       <br>
     </section>
