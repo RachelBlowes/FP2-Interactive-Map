@@ -206,7 +206,7 @@
       <circle class="legendcircle" r={legendRadius7} cx="40" cy="70" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="80" y="75" font-family="Arial" font-size="12" fill="black">$5,000,000</text>
       <circle class="legendcircle" r={legendRadius8} cx="40" cy="95" fill="#BBB4B1" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
-      <text x="80" y="100" font-family="Arial" font-size="12" fill="black">$28,301,224</text>
+      <text x="80" y="100" font-family="Arial" font-size="12" fill="black">$20,000,000</text>
     </svg>
   </div>
 </div>
@@ -282,7 +282,7 @@ onMount(async () => {
   sale.forEach(d => {
     d.saleprice = parseFloat(d.saleprice);
   });
-  permit = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/permit_valuation_owners.csv');
+  permit = await d3.csv('https://rachelblowes.github.io/Geodata/Boston_sales_2021/permit_valuation_ownertype_2010-2022.csv');
   permit.forEach(d => {
     d.valuation = parseFloat(d.valuation);  
   });
@@ -316,7 +316,7 @@ function updateLegendRadius() {
   legendRadius5 = permitRadiusScale(50000);
   legendRadius6 = permitRadiusScale(500000);
   legendRadius7 = permitRadiusScale(5000000);
-  legendRadius8 = permitRadiusScale(28301224);
+  legendRadius8 = permitRadiusScale(20000000);
 }
 
 function getCoords(sale) {
