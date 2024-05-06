@@ -1,6 +1,58 @@
 
 
 <style>
+/* Style for the options container */
+#optionsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+/* Style the dropdown button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
 
   #salesMap {
     flex: 1;
@@ -51,14 +103,39 @@
 </style>
 
 <div id="mapcontainer">
+  <!-- Sales map -->
   <div id="salesMap"></div>
+
+  <!-- Permit map -->
   <div id="permitMap"></div>
 </div>
 
 
 <div id="maptitles">
-  <h5>Census Tract Sales</h5>
-  <h5> Census Tract Permits </h5>
+  <h5>{salesMapTitle}</h5>
+  <h5>{permitMapTitle}</h5>
+</div>
+
+<div id="optionsContainer">
+  <!-- Dropdown menu for Sales map -->
+  <div class="dropdown">
+    <button class="dropbtn">Sales Map Options</button>
+    <div class="dropdown-content">
+      {#each styles as style}
+        <a href="#" on:click|preventDefault={() => setStyle(style)}>{style.name}</a>
+      {/each}
+    </div>
+  </div>
+
+  <!-- Dropdown menu for Permit map -->
+  <div class="dropdown">
+    <button class="dropbtn">Permit Map Options</button>
+    <div class="dropdown-content">
+      {#each permitstyles as permitstyle}
+        <a href="#" on:click|preventDefault={() => setPermitStyle(permitstyle)}>{permitstyle.name}</a>
+      {/each}
+    </div>
+  </div>
 </div>
 
 <div id="legend">
@@ -113,19 +190,35 @@
   let permitstyles = [
     { name: 'Average Permit Valuation', permitstyle: 'mapbox://styles/rachelmb/clvg1kepc02ez01qlfeoz3xyh' },
     { name: 'Total Number of Permits', permitstyle: 'mapbox://styles/rachelmb/clvg29i9t02i701pe8v03emw8' },
-    { name: 'Median Income', permitstyle: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
-  ];
+    { name: 'Median Income', permitstyle: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },];
+  let salesMapTitle = 'Average Sale Price by Census Tract';
+  let permitMapTitle = 'Average Permit Valuation by Census Tract';
+
 
   function setStyle(style) {
-    currentStyle = style.style; // Update currentStyle with the selected style URL
-    salesMap.setStyle(currentStyle); // Update the salesMap style
-    updatesalesLegend(style); // Update legend based on the selected style
+    currentStyle = style.style;
+    salesMap.setStyle(currentStyle);
+    updatesalesLegend(style);
+    if (style.name === 'Average Sale Price') {
+      salesMapTitle = 'Average Sale Price by Census Tract';
+    } else if (style.name === 'Total Number of Sales') {
+      salesMapTitle = 'Total Number of Sales/Population by Census Tract';
+    } else if (style.name === 'Median Income') {
+      salesMapTitle = 'Median Income by Census Tract';
+    }
   }
 
   function setPermitStyle(permitstyle) {
-    currentPermitStyle = permitstyle.permitstyle; // Update currentStyle with the selected style URL
-    permitMap.setStyle(currentPermitStyle); // Update the salesMap style
-    updatepermitLegend(permitstyle); // Update legend based on the selected style
+    currentPermitStyle = permitstyle.permitstyle;
+    permitMap.setStyle(currentPermitStyle);
+    updatepermitLegend(permitstyle);
+    if (permitstyle.name === 'Average Permit Valuation') {
+      permitMapTitle = 'Average Permit Valuation by Census Tract';
+    } else if (permitstyle.name === 'Total Number of Permits') {
+      permitMapTitle = 'Total Number of Permits/Population by Census Tract';
+    } else if (permitstyle.name === 'Median Income') {
+      permitMapTitle = 'Median Income by Census Tract';
+    }
   }
 
   function loadScript(script) {
@@ -200,10 +293,3 @@ function updatepermitLegend(permitstyle) {
 
 </script>
 
-{#each styles as style}
-  <button on:click={() => setStyle(style)}>{style.name}</button>
-{/each}
-
-{#each permitstyles as permitstyle}
-  <button on:click={() => setPermitStyle(permitstyle)}>{permitstyle.name}</button>
-{/each}
