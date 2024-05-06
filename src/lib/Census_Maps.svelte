@@ -72,38 +72,47 @@
     justify-content: space-around;
   }
 
-  #legend {
-    display: flex;
-    width: 100%;
-    height: 100px; /* Set a fixed height for both maps */
-    margin-bottom: 20px; /* Add space between the maps */
-    justify-content: space-around;
-  }
+/**
+* Set rules for how the map overlays
+* (information box and legend) will be displayed
+* on the page. */
+.map-overlay {
+  position: absolute;
+  top: 10px; /* Adjust top positioning as needed */
+  left: 10px; /* Adjust left positioning as needed */
+  background: #fff;
+  font-family: Arial, sans-serif;
+  overflow: auto;
+  border-radius: 3px;
+  z-index: 1; /* Ensure the overlays are on top */
+}
 
-  #salesLegend {
-    flex: 1;
-    width: 50%; /* Adjust the width of each map */
-    height: 100%; /* Set a fixed height for each map */
-  }
+#features {
+  top: 0;
+  height: 100px;
+  margin-top: 20px;
+  width: 250px;
+}
 
-  #permitLegend {
-    flex: 1;
-    width: 50%; /* Adjust the width of each map */
-    height: 100%; /* Set a fixed height for each map */
-  }
 
 </style>
 
 <div id="mapcontainer">
-  <div id="salesMap"></div>
+  <div id="salesMap">
+    <div class="map-overlay" id="features">
+      <h2>{salesMapTitle}</h2>
+      <div id="pd"><p>Hover over a census tract!</p></div>
+    </div>
+    <div class="map-overlay" id="legend"></div>
+  </div>
 
-  <div id="permitMap"></div>
-</div>
-
-
-<div id="maptitles">
-  <h5>{salesMapTitle}</h5>
-  <h5>{permitMapTitle}</h5>
+  <div id="permitMap">
+    <div class="map-overlay" id="features">
+      <h2>{permitMapTitle}</h2>
+      <div id="pd"><p>Hover over a census tract!</p></div>
+    </div>
+    <div class="map-overlay" id="legend"></div>
+  </div>
 </div>
 
 <div id="optionsContainer">
@@ -124,11 +133,6 @@
       {/each}
     </div>
   </div>
-</div>
-
-<div id="legend">
-  <div id="salesLegend"></div>
-  <div id="permitLegend"></div>
 </div>
 
 
@@ -170,11 +174,13 @@
   let styles = [
     { name: 'Average Sale Price', style: 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp' },
     { name: 'Total Number of Sales', style: 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m' },
-    { name: 'Median Income', style: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' } ];
+    { name: 'Median Income', style: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
+    { name: 'Percent Renter Occupied - 2010', style: 'mapbox://styles/rachelmb/clvvcl90d066h01pe3bsm1inl' } ];
   let permitstyles = [
     { name: 'Average Permit Valuation', permitstyle: 'mapbox://styles/rachelmb/clvg1kepc02ez01qlfeoz3xyh' },
     { name: 'Total Number of Permits', permitstyle: 'mapbox://styles/rachelmb/clvg29i9t02i701pe8v03emw8' },
-    { name: 'Median Income', permitstyle: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },];
+    { name: 'Median Income', permitstyle: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
+    { name: 'Percent Renter Occupied - 2022', style: 'mapbox://styles/rachelmb/clvvcw5hm092301nu9kru48u3' } ];
   let salesMapTitle = 'Average Sale Price by Census Tract';
   let permitMapTitle = 'Average Permit Valuation by Census Tract';
 
@@ -189,6 +195,8 @@
       salesMapTitle = 'Total Number of Sales/Population by Census Tract';
     } else if (style.name === 'Median Income') {
       salesMapTitle = 'Median Income by Census Tract';
+    } else if (style.name === 'Percent Renter Occupied - 2010') {
+      salesMapTitle = 'Percent Renter Occupied - 2010 by Census Tract';
     }
   }
 
@@ -202,6 +210,8 @@
       permitMapTitle = 'Total Number of Permits/Population by Census Tract';
     } else if (permitstyle.name === 'Median Income') {
       permitMapTitle = 'Median Income by Census Tract';
+    } else if (style.name === 'Percent Renter Occupied - 2022') {
+      salesMapTitle = 'Percent Renter Occupied - 2022 by Census Tract';
     }
   }
 
@@ -221,6 +231,27 @@
       center: [-71.0955, 42.3314],
       zoom: 10
     });
+    salesMap.on('mouseenter', 'choropleth-fill', function (e) {
+  // Change the cursor style
+  salesMap.getCanvas().style.cursor = 'pointer';
+
+  // Get the first feature from the event
+  const feature = e.features[0];
+
+  // Display information for the hovered feature
+  const properties = feature.properties;
+  const featureInfo = `Feature ID: ${feature.id}<br>Property 1: ${properties}<br>Property 2: ${properties.property2}`;
+  document.getElementById('pd').innerHTML = featureInfo; // Update the content of your overlay with feature properties
+});
+
+salesMap.on('mouseleave', 'choropleth-fill', function () {
+  // Restore the default cursor style
+  salesMap.getCanvas().style.cursor = '';
+
+  // Remove the information from the overlay
+  document.getElementById('pd').innerHTML = "<p>Hover over a census tract!</p>";
+});
+
 
     permitMap = new mapboxgl.Map({ 
       container: 'permitMap',
@@ -268,7 +299,6 @@ function updatepermitLegend(permitstyle) {
 
   legendElement.innerHTML = permitLegendContent;
 }
-
 
 
 </script>

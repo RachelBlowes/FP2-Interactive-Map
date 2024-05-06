@@ -1,20 +1,15 @@
-
-
 <style>
-
-
   #Map {
     flex: 1;
-    width: 100%; /* Adjust the width of each map */
-    height: 100%; /* Set a fixed height for each map */
+    width: 100%;
+    height: 100%;
   }
-
 
   #mapcontainer {
     display: flex;
     width: 100%;
-    height: 400px; /* Set a fixed height for both maps */
-    margin-bottom: 20px; /* Add space between the maps */
+    height: 400px;
+    margin-bottom: 20px;
     justify-content: space-around;
   }
 
@@ -23,73 +18,79 @@
     width: 100%;
     justify-content: space-around;
   }
-
 </style>
 
 <div id="mapcontainer">
   <div id="Map"></div>
 </div>
 
-
 <div id="maptitles">
   <h5>{MapTitle}</h5>
 </div>
 
-
 <script>
   import { onMount } from 'svelte';
 
-  let Map; // Define salesMap globally
+  let Map;
+  let MapTitle = '% Renters by Census Tract';
 
-  onMount(() => {
+  onMount(async () => {
+    try {
+      const response = await fetch('https://rachelblowes.github.io/Geodata/demographic_data/percent_renters.geojson');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const geojsonData = await response.json();
 
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css';
-    document.head.appendChild(link);
+      geojsonData.features.forEach(feature => {
+        const value = parseFloat(feature.properties['Retained fields_2010_percent_renter']);
+        if (!isNaN(value)) {
+          feature.properties['Retained fields_2010_percent_renter'] = value;
+        } else {
+          feature.properties['Retained fields_2010_percent_renter'] = 1; 
+        }
 
-    const mapboxScript = document.createElement('script');
-    mapboxScript.src = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js';
-    mapboxScript.async = true;
-    document.head.appendChild(mapboxScript);
+        const geoidValue = parseInt(feature.properties['geoid']);
+        if (!isNaN(geoidValue)) {
+          feature.properties['geoid'] = geoidValue;
+        } else {
+          feature.properties['geoid'] = 1; 
+        }
+        
+        console.log('Feature Properties:', feature.properties);
+      });
 
-    const compareStylesheet = document.createElement('link');
-    compareStylesheet.rel = 'stylesheet';
-    compareStylesheet.href = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css';
-    document.head.appendChild(compareStylesheet);
-
-    const compareScript = document.createElement('script');
-    compareScript.src = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js';
-    compareScript.async = true;
-    document.head.appendChild(compareScript);
-
-    Promise.all([loadScript(mapboxScript), loadScript(compareScript)]).then(() => {
-      initializeMap();
-    });
+      initializeMap(geojsonData);
+    } catch (error) {
+      console.error('Error fetching census tract data:', error);
+    }
   });
 
-  let currentStyle = 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp';
-  let MapTitle = 'Profit by Census Tract';
-
-
-  function loadScript(script) {
-    return new Promise((resolve, reject) => {
-      script.onload = resolve;
-      script.onerror = reject;
-    });
-  }
-
-  function initializeMap() {
+  function initializeMap(geojsonData) {
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA';
 
     Map = new mapboxgl.Map({ 
       container: 'Map',
-      style: currentStyle,
+      style: 'mapbox://styles/mapbox/standard',
       center: [-71.0955, 42.3314],
       zoom: 10
     });
 
+    Map.on('load', () => {
+      Map.addLayer({
+        id: 'geoid',
+        type: 'fill',
+        source: {
+          type: 'geojson',
+          data: geojsonData
+        },
+        paint: {
+          'fill-extrusion-color': '#aaa', 
+          'fill-extrusion-height': ['get', 'Retained fields_2010_percent_renter'], 
+          'fill-extrusion-opacity': 0.6
+        }
+      });
+    });
   }
-
 </script>
 
