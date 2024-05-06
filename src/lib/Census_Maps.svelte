@@ -1,14 +1,12 @@
 
 
 <style>
-/* Style for the options container */
 #optionsContainer {
   display: flex;
   justify-content: space-around;
   margin-bottom: 10px;
 }
 
-/* Style the dropdown button */
 .dropbtn {
   background-color: #4CAF50;
   color: white;
@@ -18,12 +16,10 @@
   cursor: pointer;
 }
 
-/* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
   background-color: #3e8e41;
 }
 
-/* Style the dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -33,7 +29,6 @@
   z-index: 1;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -41,15 +36,12 @@
   display: block;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #f1f1f1}
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
@@ -103,10 +95,8 @@
 </style>
 
 <div id="mapcontainer">
-  <!-- Sales map -->
   <div id="salesMap"></div>
 
-  <!-- Permit map -->
   <div id="permitMap"></div>
 </div>
 
@@ -117,7 +107,6 @@
 </div>
 
 <div id="optionsContainer">
-  <!-- Dropdown menu for Sales map -->
   <div class="dropdown">
     <button class="dropbtn">Sales Map Options</button>
     <div class="dropdown-content">
@@ -127,7 +116,6 @@
     </div>
   </div>
 
-  <!-- Dropdown menu for Permit map -->
   <div class="dropdown">
     <button class="dropbtn">Permit Map Options</button>
     <div class="dropdown-content">
@@ -151,31 +139,27 @@
   let permitMap; // Define permitMap globally
 
   onMount(() => {
-    // Load Mapbox styles
+
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css';
     document.head.appendChild(link);
 
-    // Load Mapbox GL JS library
     const mapboxScript = document.createElement('script');
     mapboxScript.src = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js';
     mapboxScript.async = true;
     document.head.appendChild(mapboxScript);
 
-    // Load Mapbox GL Compare plugin stylesheet
     const compareStylesheet = document.createElement('link');
     compareStylesheet.rel = 'stylesheet';
     compareStylesheet.href = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css';
     document.head.appendChild(compareStylesheet);
 
-    // Load Mapbox GL Compare plugin script
     const compareScript = document.createElement('script');
     compareScript.src = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js';
     compareScript.async = true;
     document.head.appendChild(compareScript);
 
-    // Initialize maps and compare plugin once both scripts are loaded
     Promise.all([loadScript(mapboxScript), loadScript(compareScript)]).then(() => {
       initializeMap();
     });
@@ -231,14 +215,14 @@
   function initializeMap() {
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA';
 
-    salesMap = new mapboxgl.Map({ // Assign to salesMap variable
+    salesMap = new mapboxgl.Map({
       container: 'salesMap',
       style: currentStyle,
       center: [-71.0955, 42.3314],
       zoom: 10
     });
 
-    permitMap = new mapboxgl.Map({ // Assign to permitMap variable
+    permitMap = new mapboxgl.Map({ 
       container: 'permitMap',
       style: currentPermitStyle,
       center: [-71.0955, 42.3314],
@@ -250,9 +234,8 @@
 
   function updatesalesLegend(style) {
   const legendElement = document.getElementById('salesLegend');
-  legendElement.innerHTML = ''; // Clear previous legend content
+  legendElement.innerHTML = ''; 
 
-  // Define legend information based on the selected style
   let salesLegendContent = '';
   if (style.name === 'Average Sale Price') {
     salesLegendContent = '<strong>Legend for Average Sale Price:</strong><br>' +
@@ -264,16 +247,14 @@
     salesLegendContent = '<strong>Legend for Median Income:</strong><br>Put legend content here.';
   }
 
-  // Update legend element with the legend content
   legendElement.innerHTML = salesLegendContent;
 }
 
 
 function updatepermitLegend(permitstyle) {
   const legendElement = document.getElementById('permitLegend');
-  legendElement.innerHTML = ''; // Clear previous legend content
+  legendElement.innerHTML = ''; 
 
-  // Define legend information based on the selected style
   let permitLegendContent = '';
   if (permitstyle.name === 'Average Permit Valuatution') {
     permitLegendContent = '<strong>Legend for Average Permit Valuation:</strong><br>' +
@@ -285,7 +266,6 @@ function updatepermitLegend(permitstyle) {
     permitLegendContent = '<strong>Legend for Median Income:</strong><br>Put legend content here.';
   }
 
-  // Update legend element with the legend content
   legendElement.innerHTML = permitLegendContent;
 }
 

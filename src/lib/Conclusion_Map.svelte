@@ -42,31 +42,27 @@
   let Map; // Define salesMap globally
 
   onMount(() => {
-    // Load Mapbox styles
+
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css';
     document.head.appendChild(link);
 
-    // Load Mapbox GL JS library
     const mapboxScript = document.createElement('script');
     mapboxScript.src = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js';
     mapboxScript.async = true;
     document.head.appendChild(mapboxScript);
 
-    // Load Mapbox GL Compare plugin stylesheet
     const compareStylesheet = document.createElement('link');
     compareStylesheet.rel = 'stylesheet';
     compareStylesheet.href = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css';
     document.head.appendChild(compareStylesheet);
 
-    // Load Mapbox GL Compare plugin script
     const compareScript = document.createElement('script');
     compareScript.src = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js';
     compareScript.async = true;
     document.head.appendChild(compareScript);
 
-    // Initialize maps and compare plugin once both scripts are loaded
     Promise.all([loadScript(mapboxScript), loadScript(compareScript)]).then(() => {
       initializeMap();
     });
@@ -86,7 +82,7 @@
   function initializeMap() {
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA';
 
-    Map = new mapboxgl.Map({ // Assign to salesMap variable
+    Map = new mapboxgl.Map({ 
       container: 'Map',
       style: currentStyle,
       center: [-71.0955, 42.3314],
