@@ -279,6 +279,8 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
 <div style="height: 80px;"></div>
 
+<Conclusion_Map />
+
 <script>
 
   //Comparison Maps
@@ -318,6 +320,9 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
     //Bar chart 2
     import PermitSalesDiffLineGraph from '$lib/PermitSalesDiffLineGraph.svelte';
+
+     //Conclusion_Map
+     import Conclusion_Map from '$lib/Conclusion_Map.svelte';
 
 
 </script>
