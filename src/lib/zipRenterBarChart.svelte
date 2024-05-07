@@ -143,11 +143,11 @@
     // Add gradient stops
     linearGradient.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "lightblue");
+        .attr("stop-color", "#78B48C");
 
     linearGradient.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "blue");
+        .attr("stop-color", "#FC96B3");
 
     // Add legend rectangle
     legend.append("rect")
@@ -181,7 +181,7 @@ var margin = {top: 30, right: 30, bottom: 80, left: 60},
 // Declare colorScale globally
 var colorScale;
 var tooltip;
-var hoverColor = "pink";
+var hoverColor = "#F6517A";
 
 // Fetch data on component mount
 onMount(async () => {
@@ -209,7 +209,7 @@ onMount(async () => {
     // Calculate color scale domain
     colorScale = d3.scaleLinear()
         .domain([d3.min(newData, function(d) { return +d['% renter']; }), d3.max(newData, function(d) { return +d['% renter']; })])
-        .range(["lightblue", "blue"]);
+        .range(["#78B48C", "#FC96B3"]);
 
     // Define tooltip, hoverColor, and staticColor
     tooltip = d3.select("body")

@@ -19,8 +19,8 @@
   
     // Define legend data
     const legendData = [
-      { label: 'Permit', color: '#DC143C' },
-      { label: 'No Permit', color: '#2F4F4F' }
+      { label: 'Permit', color: '#0087EC' },
+      { label: 'No Permit', color: '#CABB8B' }
     ];
   
     // Function to fetch data and render graph
@@ -32,8 +32,8 @@
     function formatData(d) {
       return {
         Year: d3.timeParse("%Y")(d.Year),
-        Permit: parseInt(d.Permit),
-        NoPermit: parseInt(d["No Permit"])
+        Permit: parseInt(d['Permit adjusted for inflation']),
+        NoPermit: parseInt(d["No permit adjusted for inflation"])
       }
     }
   
@@ -47,7 +47,7 @@
       let filteredData = data.filter(d => d.Year.getFullYear() <= selectedYear);
   
       // Define colors
-      const colors = ['#DC143C', '#2F4F4F'];
+      const colors = ['#0087EC', '#CABB8B'];
   
       // Create scales
       x = d3.scaleTime()
@@ -109,9 +109,9 @@
       // Initialize focus and focusText elements
       focus = svg.append('g')
         .append('circle')
-        .style("fill", "white")
+        .style("fill", "#F6517A")
         .style('opacity', 0)
-        .attr("stroke", "black")
+        // .attr("stroke", "black")
         .attr('r', 5)
   
       focusText = svg.append('g')
