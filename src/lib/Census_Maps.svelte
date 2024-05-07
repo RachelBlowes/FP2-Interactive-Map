@@ -66,32 +66,38 @@
     justify-content: space-around;
   }
 
-  #maptitles {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-/**
-* Set rules for how the map overlays
-* (information box and legend) will be displayed
-* on the page. */
-.map-overlay {
+  .salemap-overlay {
   position: absolute;
-  top: 10px; /* Adjust top positioning as needed */
-  left: 10px; /* Adjust left positioning as needed */
+  top: 0;
+  left: 0;
   background: #fff;
-  font-family: Arial, sans-serif;
   overflow: auto;
-  border-radius: 3px;
-  z-index: 1; /* Ensure the overlays are on top */
+  z-index: 1;
+  width: 25%;
+  height: 30%;
 }
 
-#features {
+
+.permitmap-overlay {
+  position: absolute;
   top: 0;
-  height: 100px;
-  margin-top: 20px;
-  width: 250px;
+  left: 0;
+  background: #fff;
+  overflow: auto;
+  z-index: 1;
+  width: 25%;
+  height: 30%;
+}
+
+.legend-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fff;
+  overflow: auto;
+  z-index: 1;
+  width: 25%;
+  height: 15%;
 }
 
 
@@ -99,21 +105,23 @@
 
 <div id="mapcontainer">
   <div id="salesMap">
-    <div class="map-overlay" id="features">
+    
+    <div class="salemap-overlay" id="features">
       <h2>{salesMapTitle}</h2>
       <div id="pd"><p>Hover over a census tract!</p></div>
     </div>
-    <div class="map-overlay" id="legend"></div>
+    <div class="legend-overlay" id="salesLegend"></div> <!-- Add an ID for sales legend -->
   </div>
 
   <div id="permitMap">
-    <div class="map-overlay" id="features">
+    <div class="permitmap-overlay" id="features">
       <h2>{permitMapTitle}</h2>
       <div id="pd"><p>Hover over a census tract!</p></div>
     </div>
-    <div class="map-overlay" id="legend"></div>
+    <div class="legend-overlay" id="permitLegend"></div> <!-- Add an ID for permit legend -->
   </div>
 </div>
+
 
 <div id="optionsContainer">
   <div class="dropdown">
@@ -134,8 +142,6 @@
     </div>
   </div>
 </div>
-
-
 <script>
   import { onMount } from 'svelte';
 
@@ -166,54 +172,69 @@
 
     Promise.all([loadScript(mapboxScript), loadScript(compareScript)]).then(() => {
       initializeMap();
+      updatesalesLegend(defaultStyle); // Update the legend with default style
+      updatepermitLegend(defaultPermitStyle); // Update the legend with default style
     });
+
   });
 
-  let currentStyle = 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp';
-  let currentPermitStyle = 'mapbox://styles/rachelmb/clvg1kepc02ez01qlfeoz3xyh';
+  // Define your default map styles
+  let defaultStyle = {
+    name: 'Average Sale Price', 
+    style: 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp'
+  };
+
+  let defaultPermitStyle = {
+    name: 'Average Permit Valuation', 
+    style: 'mapbox://styles/rachelmb/clvg1kepc02ez01qlfeoz3xyh'
+  }
+
+  let currentStyle = defaultStyle;
+  let currentPermitStyle = defaultPermitStyle;
+  
   let styles = [
     { name: 'Average Sale Price', style: 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp' },
-    { name: 'Total Number of Sales', style: 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m' },
+    { name: 'Number of Sales/Population', style: 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m' },
     { name: 'Median Income', style: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
     { name: 'Percent Renter Occupied - 2010', style: 'mapbox://styles/rachelmb/clvvcl90d066h01pe3bsm1inl' } ];
   let permitstyles = [
     { name: 'Average Permit Valuation', permitstyle: 'mapbox://styles/rachelmb/clvg1kepc02ez01qlfeoz3xyh' },
-    { name: 'Total Number of Permits', permitstyle: 'mapbox://styles/rachelmb/clvg29i9t02i701pe8v03emw8' },
+    { name: 'Number of Permits/Population', permitstyle: 'mapbox://styles/rachelmb/clvg29i9t02i701pe8v03emw8' },
     { name: 'Median Income', permitstyle: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
     { name: 'Percent Renter Occupied - 2022', style: 'mapbox://styles/rachelmb/clvvcw5hm092301nu9kru48u3' } ];
   let salesMapTitle = 'Average Sale Price by Census Tract';
   let permitMapTitle = 'Average Permit Valuation by Census Tract';
 
-
   function setStyle(style) {
-    currentStyle = style.style;
-    salesMap.setStyle(currentStyle);
-    updatesalesLegend(style);
-    if (style.name === 'Average Sale Price') {
-      salesMapTitle = 'Average Sale Price by Census Tract';
-    } else if (style.name === 'Total Number of Sales') {
-      salesMapTitle = 'Total Number of Sales/Population by Census Tract';
-    } else if (style.name === 'Median Income') {
-      salesMapTitle = 'Median Income by Census Tract';
-    } else if (style.name === 'Percent Renter Occupied - 2010') {
-      salesMapTitle = 'Percent Renter Occupied - 2010 by Census Tract';
-    }
+  currentStyle = style; // Update currentStyle
+  salesMap.setStyle(style.style); // Update map style
+  updatesalesLegend(style); // Update legend
+  // Update title based on style
+  if (style.name === 'Average Sale Price') {
+    salesMapTitle = 'Average Sale Price by Census Tract';
+  } else if (style.name === 'Number of Sales/Population') {
+    salesMapTitle = 'Number of Sales/Population by Census Tract';
+  } else if (style.name === 'Median Income') {
+    salesMapTitle = 'Median Income by Census Tract';
+  } else if (style.name === 'Percent Renter Occupied - 2010') {
+    salesMapTitle = 'Percent Renter Occupied - 2010 by Census Tract';
   }
-
+  }
   function setPermitStyle(permitstyle) {
-    currentPermitStyle = permitstyle.permitstyle;
-    permitMap.setStyle(currentPermitStyle);
-    updatepermitLegend(permitstyle);
+    currentPermitStyle = permitstyle; // Update currentPermitStyle
+    permitMap.setStyle(permitstyle.permitstyle); // Update map style
+    updatepermitLegend(permitstyle); // Update legend
+    // Update title based on style
     if (permitstyle.name === 'Average Permit Valuation') {
-      permitMapTitle = 'Average Permit Valuation by Census Tract';
-    } else if (permitstyle.name === 'Total Number of Permits') {
-      permitMapTitle = 'Total Number of Permits/Population by Census Tract';
+        permitMapTitle = 'Average Permit Valuation by Census Tract';
+    } else if (permitstyle.name === 'Number of Permits/Population') {
+        permitMapTitle = 'Number of Permits/Population by Census Tract';
     } else if (permitstyle.name === 'Median Income') {
-      permitMapTitle = 'Median Income by Census Tract';
-    } else if (style.name === 'Percent Renter Occupied - 2022') {
-      salesMapTitle = 'Percent Renter Occupied - 2022 by Census Tract';
+        permitMapTitle = 'Median Income by Census Tract';
+    } else if (permitstyle.name === 'Percent Renter Occupied - 2022') {
+        salesMapTitle = 'Percent Renter Occupied - 2022 by Census Tract';
     }
-  }
+}
 
   function loadScript(script) {
     return new Promise((resolve, reject) => {
@@ -227,10 +248,11 @@
 
     salesMap = new mapboxgl.Map({
       container: 'salesMap',
-      style: currentStyle,
+      style: currentStyle.style,
       center: [-71.0955, 42.3314],
       zoom: 10
     });
+
     salesMap.on('mouseenter', 'choropleth-fill', function (e) {
   // Change the cursor style
   salesMap.getCanvas().style.cursor = 'pointer';
@@ -238,68 +260,128 @@
   // Get the first feature from the event
   const feature = e.features[0];
 
-  // Display information for the hovered feature
+  // Display information for the hovered feature based on the current style
   const properties = feature.properties;
-  const featureInfo = `Feature ID: ${feature.id}<br>Property 1: ${properties}<br>Property 2: ${properties.property2}`;
-  document.getElementById('pd').innerHTML = featureInfo; // Update the content of your overlay with feature properties
+  let featureInfo;
+  if (currentStyle.name === 'Average Sale Price') {
+    featureInfo = `${currentStyle.name}: ${properties.avg_sale}`;
+  } else if (currentStyle.name === 'Number of Sales/Population') {
+    featureInfo = `${currentStyle.name}: ${properties.norm_num_s}`;
+  } else if (currentStyle.name === 'Median Income') {
+    featureInfo = `${currentStyle.name}: ${properties.income}`;
+  } else if (currentStyle.name === 'Percent Renter Occupied - 2010') {
+    featureInfo = `${currentStyle.name}: ${properties.Real_perce}`;
+  }
+
+  document.querySelector('.salemap-overlay #pd').innerHTML = featureInfo;
 });
 
-salesMap.on('mouseleave', 'choropleth-fill', function () {
-  // Restore the default cursor style
-  salesMap.getCanvas().style.cursor = '';
 
-  // Remove the information from the overlay
-  document.getElementById('pd').innerHTML = "<p>Hover over a census tract!</p>";
-});
+
 
 
     permitMap = new mapboxgl.Map({ 
       container: 'permitMap',
-      style: currentPermitStyle,
+      style: currentPermitStyle.style,
       center: [-71.0955, 42.3314],
       zoom: 10
     });
+    permitMap.on('mouseenter', 'choropleth-fill', function (e) {
+  // Change the cursor style
+  permitMap.getCanvas().style.cursor = 'pointer';
+
+  // Get the first feature from the event
+  const feature = e.features[0];
+
+  // Display information for the hovered feature based on the current style
+  const properties = feature.properties;
+  let featureInfo;
+  if (currentPermitStyle.name === 'Average Permit Valuation') {
+    featureInfo = `${currentPermitStyle.name}: ${properties.avg_permit}`;
+  } else if (currentPermitStyle.name === 'Number of Permits/Population') {
+    featureInfo = `${currentPermitStyle.name}: ${properties.norm_num_p}`;
+  } else if (currentPermitStyle.name === 'Median Income') {
+    featureInfo = `${currentPermitStyle.name}: ${properties.income}`;
+  } else if (currentPermitStyle.name === 'Percent Renter Occupied - 2022') {
+    featureInfo = `${currentPermitStyle.name}: ${properties.Real_perce}`;
+  }
+
+  document.querySelector('.permitmap-overlay #pd').innerHTML = featureInfo;
+});
+
 
     const container = '#mapcontainer';
   }
 
   function updatesalesLegend(style) {
   const legendElement = document.getElementById('salesLegend');
-  legendElement.innerHTML = ''; 
+  legendElement.innerHTML = ''; // Clear the legend content
 
-  let salesLegendContent = '';
+  let salesLegendContent = '<strong>' + style.name + ':</strong><br>'; // Add legend title
+
+  // Generate linear gradient legend bars based on style
   if (style.name === 'Average Sale Price') {
-    salesLegendContent = '<strong>Legend for Average Sale Price:</strong><br>' +
-  '<div><span style="background-color: #FF80ED; width: 20px; height: 20px; display: inline-block;"></span> $0 - $100k</div>' +
-  '<div><span style="background-color: #1d42dc; width: 20px; height: 20px; display: inline-block;"></span> $100k - $200k</div>' 
-  } else if (style.name === 'Total Number of Sales') {
-    salesLegendContent = '<strong>Legend for Total Number of Sales:</strong><br>Put legend content here.';
+    salesLegendContent += generateLegendBar(250000, 13000000, '$', '#dee8e1', '#62a779'); // Example range, unit, and colors
+  } else if (style.name === 'Number of Sales/Population') {
+    salesLegendContent += generateLegendBar(0.0002, 0.4, '', '#dee8e1', '#62a779'); // Example range, unit, and colors
   } else if (style.name === 'Median Income') {
-    salesLegendContent = '<strong>Legend for Median Income:</strong><br>Put legend content here.';
+    salesLegendContent += generateLegendBar(12300, 246750, '$', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
+  } else if (style.name === 'Percent Renter Occupied - 2010') {
+    salesLegendContent += generateLegendBar(0, 100, '%', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
   }
 
   legendElement.innerHTML = salesLegendContent;
 }
 
+function generateLegendBar(minValue, maxValue, unit, color1, color2) {
+  const barWidth = 10; // Adjust the width of the legend bar
+  const numTicks = 2; // Number of tick marks on the legend bar
+  const tickInterval = (maxValue - minValue) / (numTicks - 1);
+  let legendBarHTML = '<div class="legend-bar" style="background: linear-gradient(to right, ' + color1 + ', ' + color2 + '); display: flex; justify-content: space-between; align-items: center;">';
+
+  for (let i = 0; i < numTicks; i++) {
+    const tickValue = minValue + i * tickInterval;
+    legendBarHTML += '<span class="tick-label">' + tickValue + unit + '</span>';
+  }
+
+  legendBarHTML += '</div>';
+  return legendBarHTML;
+}
 
 function updatepermitLegend(permitstyle) {
   const legendElement = document.getElementById('permitLegend');
-  legendElement.innerHTML = ''; 
+  legendElement.innerHTML = ''; // Clear the legend content
 
-  let permitLegendContent = '';
-  if (permitstyle.name === 'Average Permit Valuatution') {
-    permitLegendContent = '<strong>Legend for Average Permit Valuation:</strong><br>' +
-  '<div><span style="background-color: #FF80ED; width: 20px; height: 20px; display: inline-block;"></span> $0 - $100k</div>' +
-  '<div><span style="background-color: #1d42dc; width: 20px; height: 20px; display: inline-block;"></span> $100k - $200k</div>' 
-  } else if (permitstyle.name === 'Total Number of Permits') {
-    permitLegendContent = '<strong>Legend for Total Number of Permits:</strong><br>Put legend content here.';
+  let permitLegendContent = '<strong>' + permitstyle.name + ':</strong><br>'; // Add legend title
+
+  // Generate linear gradient legend bars based on permit style
+  if (permitstyle.name === 'Average Permit Valuation') {
+    permitLegendContent += generatepermitLegendBar(0, 577682, '$', '#c7e7ff', '#0087ec'); // Example range, unit, and colors
+  } else if (permitstyle.name === 'Number of Permits/Population') {
+    permitLegendContent += generatepermitLegendBar(0.004, 0.3, '', '#c7e7ff', '#0087ec'); // Example range, unit, and colors
   } else if (permitstyle.name === 'Median Income') {
-    permitLegendContent = '<strong>Legend for Median Income:</strong><br>Put legend content here.';
+    permitLegendContent += generatepermitLegendBar(12300, 246750, '$', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
+  } else if (permitstyle.name === 'Percent Renter Occupied - 2022') {
+    permitLegendContent += generateLegendBar(0, 100, '%', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
   }
 
   legendElement.innerHTML = permitLegendContent;
 }
 
+function generatepermitLegendBar(minValue, maxValue, unit, color1, color2) {
+  const barWidth = 10; // Adjust the width of the legend bar
+  const numTicks = 2; // Number of tick marks on the legend bar
+  const tickInterval = (maxValue - minValue) / (numTicks - 1);
+  let legendBarHTML = '<div class="legend-bar" style="background: linear-gradient(to right, ' + color1 + ', ' + color2 + '); display: flex; justify-content: space-between; align-items: center;">';
+
+  for (let i = 0; i < numTicks; i++) {
+    const tickValue = minValue + i * tickInterval;
+    legendBarHTML += '<span class="tick-label">' + tickValue + unit + '</span>';
+  }
+
+  legendBarHTML += '</div>';
+  return legendBarHTML;
+}
 
 </script>
 
