@@ -201,9 +201,16 @@
     const properties = feature.properties;
     let featureInfo;
     if (currentStyle.name === '2010 Profit') {
-      featureInfo = `${currentStyle.name}: ${properties.j_m_p_real}`;
+      featureInfo = `${currentStyle.name}: ${properties.j_m_p_real}<br>`;
+  featureInfo += `Zipcode: ${properties.z_real}<br>`;
+  featureInfo += `Neighborhood: ${properties.j_n}<br>`;
+  featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
+
     } else if (currentStyle.name === '2022 Profit') {
-      featureInfo = `${currentStyle.name}: ${properties.j_n}`;
+      featureInfo = `${currentStyle.name}: ${properties.profit}<br>`;
+  featureInfo += `Zipcode: ${properties.z_real}<br>`;
+  featureInfo += `Neighborhood: ${properties.j_n}<br>`;
+  featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
     }
   
     document.querySelector('.profitmap-overlay #pd').innerHTML = featureInfo;
