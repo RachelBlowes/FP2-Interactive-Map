@@ -15,7 +15,7 @@
     let x, y, svg, focus, focusText, bisect, data;
   
     // Define selectedYear variable in component's state
-    let selectedYear = 2010;
+    let selectedYear = 2022;
   
     // Define legend data
     const legendData = [
