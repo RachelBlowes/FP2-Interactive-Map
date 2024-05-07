@@ -85,109 +85,92 @@
   
   </style>
   
-<div id="mapcontainer">
-  <div id="profitMap">
-    <div class="profitmap-overlay" id="features">
-      <h2>{profitMapTitle}</h2>
-      <div id="pd"><p>Hover over a zipcode!</p></div>
-    </div>
-    <div class="legend-overlay" id="profitLegend"></div>
-  </div>
-</div>
-
-<div id="optionsContainer">
-  <div class="dropdown">
-    <button class="dropbtn">Profit Map Options</button>
-    <div class="dropdown-content">
-      {#each styles as style}
-        <a href="#" on:click|preventDefault={() => setStyle(style)}>{style.name}</a>
-      {/each}
+  <div id="mapcontainer">
+    <div id="profitMap">
+      
+      <div class="profitmap-overlay" id="features">
+        <h2>{profitMapTitle}</h2>
+        <div id="pd"><p>Hover over a zipcode!</p></div>
+      </div>
+      <div class="legend-overlay" id="profitLegend"></div> <!-- Add an ID for sales legend -->
     </div>
   </div>
-</div>
-<script>
-  import { onMount } from 'svelte';
-  import { hoveredZipcode, selectedYear } from './store'; // Importing hoveredZipcode and selectedYear
-
-  // Define global variables
-  let profitMap;
-  let currentHoveredZipcode = null;
-  let currentSelectedYear = null;
   
-  // Subscribe to hoveredZipcode and selectedYear
-  const unsubscribeHoveredZipcode = hoveredZipcode.subscribe(value => {
-    currentHoveredZipcode = value;
-  });
+  
+  <div id="optionsContainer">
+    <div class="dropdown">
+      <button class="dropbtn">Profit Map Options</button>
+      <div class="dropdown-content">
+        {#each styles as style}
+          <a href="#" on:click|preventDefault={() => setStyle(style)}>{style.name}</a>
+        {/each}
+      </div>
+    </div>
+  </div>
 
-  const unsubscribeSelectedYear = selectedYear.subscribe(value => {
-    currentSelectedYear = value;
-  });
-
-  // Unsubscribe when the component is destroyed
-  onMount(() => {
-    return () => {
-      unsubscribeHoveredZipcode();
-      unsubscribeSelectedYear();
+  <script>
+    import { onMount } from 'svelte';
+  
+    let profitMap; // Define salesMap globally
+    
+  
+    onMount(() => {
+  
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css';
+      document.head.appendChild(link);
+  
+      const mapboxScript = document.createElement('script');
+      mapboxScript.src = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js';
+      mapboxScript.async = true;
+      document.head.appendChild(mapboxScript);
+  
+      const compareStylesheet = document.createElement('link');
+      compareStylesheet.rel = 'stylesheet';
+      compareStylesheet.href = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css';
+      document.head.appendChild(compareStylesheet);
+  
+      const compareScript = document.createElement('script');
+      compareScript.src = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js';
+      compareScript.async = true;
+      document.head.appendChild(compareScript);
+  
+      Promise.all([loadScript(mapboxScript), loadScript(compareScript)]).then(() => {
+        initializeMap();
+        updateprofitLegend(defaultStyle); // Update the legend with default style
+      });
+  
+    });
+  
+    // Define your default map styles
+    let defaultStyle = {
+      name: '2010 Profit', 
+      style: 'mapbox://styles/rachelmb/clvwspq9j06vf01ph2ymvc4kd'
     };
-  });
-
-  // Load Mapbox scripts and initialize the map
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css';
-  document.head.appendChild(link);
-
-  const mapboxScript = document.createElement('script');
-  mapboxScript.src = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js';
-  mapboxScript.async = true;
-  document.head.appendChild(mapboxScript);
-
-  const compareStylesheet = document.createElement('link');
-  compareStylesheet.rel = 'stylesheet';
-  compareStylesheet.href = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css';
-  document.head.appendChild(compareStylesheet);
-
-  const compareScript = document.createElement('script');
-  compareScript.src = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js';
-  compareScript.async = true;
-  document.head.appendChild(compareScript);
-
-  // Load other scripts asynchronously
-  Promise.all([loadScript(mapboxScript), loadScript(compareScript)]).then(() => {
-    initializeMap();
-    updateprofitLegend(defaultStyle);
-  });
-
-  // Define your default map styles
-  let defaultStyle = {
-    name: '2010 Profit', 
-    style: 'mapbox://styles/rachelmb/clvwspq9j06vf01ph2ymvc4kd'
-  };
   
-  let currentStyle = defaultStyle; 
+  
+    let currentStyle = defaultStyle;
    
     let styles = [
       { name: '2010 Profit', style: 'mapbox://styles/rachelmb/clvwspq9j06vf01ph2ymvc4kd', year: 2010 },
-      { name: '2022 Profit', style: 'mapbox://styles/rachelmb/clvwt08qp09nh01pk0r946nhd', year: 2022 },
+      { name: '2022 Profit', style: 'mapbox://styles/rachelmb/clvwt08qp09nh01pk0r946nhd', year:2022 },
      ];
     
     let profitMapTitle = 'Median Profit by Zipcode';
 
   
-
     function setStyle(style) {
-    currentStyle = style; 
-    profitMap.setStyle(style.style); 
-    updateprofitLegend(style); 
-
-    selectedYear.set(style.year);
-    
+    currentStyle = style; // Update currentStyle
+    profitMap.setStyle(style.style); // Update map style
+    updateprofitLegend(style); // Update legend
+    // Update title based on style
     if (style.name === '2010 Profit') {
-        profitMapTitle = 'Median Profit by Zipcode in 2010';
+      profitMapTitle = 'Median Profit by Zipcode in 2010';
     } else if (style.name === '2022 Profit') {
-        profitMapTitle = 'Median Profit by Zipcode in 2022';
+      profitMapTitle = 'Median Profit by Zipcode in 2022';
     }
-}
+    }
     
   
     function loadScript(script) {
@@ -231,8 +214,11 @@
     }
   
     document.querySelector('.profitmap-overlay #pd').innerHTML = featureInfo;
-    hoveredZipcode.set(properties.z_real);
   });
+  
+  
+  
+  
       const container = '#mapcontainer';
     }
   
