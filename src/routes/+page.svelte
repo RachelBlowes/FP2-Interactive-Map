@@ -157,7 +157,7 @@ building foreshadowing patterns of buying. </h3>
 
 <Census_Maps class="component"/>
 
-<div style="height: 100px;"></div>
+<!-- <div style="height: 100px;"></div>
 
   <div class="divided">
     <div class="dividedtitle">
@@ -170,7 +170,7 @@ building foreshadowing patterns of buying. </h3>
       <CensusBarChartFiscal />
     </div>
   </div>
-  <p>Hover over the bars to see more information. </p>
+  <p>Hover over the bars to see more information. </p> -->
 
 <div style="height: 40px;"></div>
 
@@ -281,6 +281,8 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
 <Conclusion_Map />
 
+<ZipRenterBarChart />
+
 <script>
 
   //Comparison Maps
@@ -323,6 +325,9 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
      //Conclusion_Map
      import Conclusion_Map from '$lib/Conclusion_Map.svelte';
+
+     //zip bar chart
+     import ZipRenterBarChart from '$lib/zipRenterBarChart.svelte';
 
 
 </script>
