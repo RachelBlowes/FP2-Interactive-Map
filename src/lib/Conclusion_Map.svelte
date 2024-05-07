@@ -1,96 +1,251 @@
+
+
 <style>
-  #Map {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-  }
-
-  #mapcontainer {
+  #optionsContainer {
     display: flex;
-    width: 100%;
-    height: 400px;
-    margin-bottom: 20px;
     justify-content: space-around;
+    margin-bottom: 10px;
   }
-
-  #maptitles {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+  
+  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
   }
-</style>
-
-<div id="mapcontainer">
-  <div id="Map"></div>
-</div>
-
-<div id="maptitles">
-  <h5>{MapTitle}</h5>
-</div>
-
-<script>
-  import { onMount } from 'svelte';
-
-  let Map;
-  let MapTitle = '% Renters by Census Tract';
-
-  onMount(async () => {
-    try {
-      const response = await fetch('https://rachelblowes.github.io/Geodata/demographic_data/percent_renters.geojson');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const geojsonData = await response.json();
-
-      geojsonData.features.forEach(feature => {
-        const value = parseFloat(feature.properties['Retained fields_2010_percent_renter']);
-        if (!isNaN(value)) {
-          feature.properties['Retained fields_2010_percent_renter'] = value;
-        } else {
-          feature.properties['Retained fields_2010_percent_renter'] = 1; 
-        }
-
-        const geoidValue = parseInt(feature.properties['geoid']);
-        if (!isNaN(geoidValue)) {
-          feature.properties['geoid'] = geoidValue;
-        } else {
-          feature.properties['geoid'] = 1; 
-        }
-        
-        console.log('Feature Properties:', feature.properties);
-      });
-
-      initializeMap(geojsonData);
-    } catch (error) {
-      console.error('Error fetching census tract data:', error);
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+  
+    #profitMap {
+      flex: 1;
+      width: 50%; /* Adjust the width of each map */
+      height: 100%; /* Set a fixed height for each map */
     }
-  });
-
-  function initializeMap(geojsonData) {
-    mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA';
-
-    Map = new mapboxgl.Map({ 
-      container: 'Map',
-      style: 'mapbox://styles/mapbox/standard',
-      center: [-71.0955, 42.3314],
-      zoom: 10
-    });
-
-    Map.on('load', () => {
-      Map.addLayer({
-        id: 'geoid',
-        type: 'fill',
-        source: {
-          type: 'geojson',
-          data: geojsonData
-        },
-        paint: {
-          'fill-extrusion-color': '#aaa', 
-          'fill-extrusion-height': ['get', 'Retained fields_2010_percent_renter'], 
-          'fill-extrusion-opacity': 0.6
-        }
-      });
-    });
+  
+    #mapcontainer {
+      display: flex;
+      width: 100%;
+      height: 400px; /* Set a fixed height for both maps */
+      margin-bottom: 20px; /* Add space between the maps */
+      justify-content: space-around;
+    }
+  
+    .profitmap-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    overflow: auto;
+    z-index: 1;
+    width: 25%;
+    height: 30%;
   }
-</script>
+  
+  
+  .legend-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #fff;
+    overflow: auto;
+    z-index: 1;
+    width: 25%;
+    height: 15%;
+  }
+  
+  </style>
+  
+  <div id="mapcontainer">
+    <div id="profitMap">
+      
+      <div class="profitmap-overlay" id="features">
+        <h2>{profitMapTitle}</h2>
+        <div id="pd"><p>Hover over a zipcode!</p></div>
+      </div>
+      <div class="legend-overlay" id="profitLegend"></div> <!-- Add an ID for sales legend -->
+    </div>
+  </div>
+  
+  
+  <div id="optionsContainer">
+    <div class="dropdown">
+      <button class="dropbtn">Profit Map Options</button>
+      <div class="dropdown-content">
+        {#each styles as style}
+          <a href="#" on:click|preventDefault={() => setStyle(style)}>{style.name}</a>
+        {/each}
+      </div>
+    </div>
+  </div>
 
+  <script>
+    import { onMount } from 'svelte';
+  
+    let profitMap; // Define salesMap globally
+    
+  
+    onMount(() => {
+  
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css';
+      document.head.appendChild(link);
+  
+      const mapboxScript = document.createElement('script');
+      mapboxScript.src = 'https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js';
+      mapboxScript.async = true;
+      document.head.appendChild(mapboxScript);
+  
+      const compareStylesheet = document.createElement('link');
+      compareStylesheet.rel = 'stylesheet';
+      compareStylesheet.href = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css';
+      document.head.appendChild(compareStylesheet);
+  
+      const compareScript = document.createElement('script');
+      compareScript.src = 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js';
+      compareScript.async = true;
+      document.head.appendChild(compareScript);
+  
+      Promise.all([loadScript(mapboxScript), loadScript(compareScript)]).then(() => {
+        initializeMap();
+        updateprofitLegend(defaultStyle); // Update the legend with default style
+      });
+  
+    });
+  
+    // Define your default map styles
+    let defaultStyle = {
+      name: '2010 Profit', 
+      style: 'mapbox://styles/rachelmb/clvwspq9j06vf01ph2ymvc4kd'
+    };
+  
+  
+    let currentStyle = defaultStyle;
+   
+    let styles = [
+      { name: '2010 Profit', style: 'mapbox://styles/rachelmb/clvwspq9j06vf01ph2ymvc4kd' },
+      { name: '2022 Profit', style: 'mapbox://styles/rachelmb/clvwt08qp09nh01pk0r946nhd' },
+     ];
+    
+    let profitMapTitle = 'Median Profit by Zipcode';
+
+  
+    function setStyle(style) {
+    currentStyle = style; // Update currentStyle
+    profitMap.setStyle(style.style); // Update map style
+    updateprofitLegend(style); // Update legend
+    // Update title based on style
+    if (style.name === '2010 Profit') {
+      profitMapTitle = 'Median Profit by Zipcode in 2010';
+    } else if (style.name === '2022 Profit') {
+      profitMapTitle = 'Median Profit by Zipcode in 2022';
+    }
+    }
+    
+  
+    function loadScript(script) {
+      return new Promise((resolve, reject) => {
+        script.onload = resolve;
+        script.onerror = reject;
+      });
+    }
+  
+    function initializeMap() {
+      mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA';
+  
+      profitMap = new mapboxgl.Map({
+        container: 'profitMap',
+        style: currentStyle.style,
+        center: [-71.0955, 42.3314],
+        zoom: 10
+      });
+  
+      profitMap.on('mouseenter', 'choropleth-fill', function (e) {
+    // Change the cursor style
+    profitMap.getCanvas().style.cursor = 'pointer';
+  
+    // Get the first feature from the event
+    const feature = e.features[0];
+  
+    // Display information for the hovered feature based on the current style
+    const properties = feature.properties;
+    let featureInfo;
+    if (currentStyle.name === '2010 Profit') {
+      featureInfo = `${currentStyle.name}: ${properties.j_m_p_real}`;
+    } else if (currentStyle.name === '2022 Profit') {
+      featureInfo = `${currentStyle.name}: ${properties.j_n}`;
+    }
+  
+    document.querySelector('.profitmap-overlay #pd').innerHTML = featureInfo;
+  });
+  
+  
+  
+  
+      const container = '#mapcontainer';
+    }
+  
+    function updateprofitLegend(style) {
+    const legendElement = document.getElementById('profitLegend');
+    legendElement.innerHTML = ''; // Clear the legend content
+  
+    let profitLegendContent = '<strong>' + style.name + ':</strong><br>'; // Add legend title
+  
+    // Generate linear gradient legend bars based on style
+    if (style.name === '2010 Profit') {
+      profitLegendContent += generateLegendBar(-40000, 1500000, '$', '#eba94c', '#62a779'); // Example range, unit, and colors
+    } else if (style.name === '2022 Profit') {
+      profitLegendContent += generateLegendBar(-40000, 1500000, '$', '#eba94c', '#62a779'); // Example range, unit, and colors
+    }
+  
+    legendElement.innerHTML = profitLegendContent;
+  }
+  
+  function generateLegendBar(minValue, maxValue, unit, color1, color2) {
+    const barWidth = 10; // Adjust the width of the legend bar
+    const numTicks = 2; // Number of tick marks on the legend bar
+    const tickInterval = (maxValue - minValue) / (numTicks - 1);
+    let legendBarHTML = '<div class="legend-bar" style="background: linear-gradient(to right, ' + color1 + ', ' + color2 + '); display: flex; justify-content: space-between; align-items: center;">';
+  
+    for (let i = 0; i < numTicks; i++) {
+      const tickValue = minValue + i * tickInterval;
+      legendBarHTML += '<span class="tick-label">' + tickValue + unit + '</span>';
+    }
+  
+    legendBarHTML += '</div>';
+    return legendBarHTML;
+  }
+  
+  </script>
+  
+  
