@@ -253,7 +253,7 @@
       zoom: 10
     });
 
-    salesMap.on('mouseenter', 'choropleth-fill', function (e) {
+    salesMap.on('mousemove', 'choropleth-fill', function (e) {
   // Change the cursor style
   salesMap.getCanvas().style.cursor = 'pointer';
 
@@ -286,7 +286,7 @@
       center: [-71.0955, 42.3314],
       zoom: 10
     });
-    permitMap.on('mouseenter', 'choropleth-fill', function (e) {
+    permitMap.on('mousemove', 'choropleth-fill', function (e) {
   // Change the cursor style
   permitMap.getCanvas().style.cursor = 'pointer';
 

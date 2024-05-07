@@ -190,7 +190,7 @@
         zoom: 10
       });
   
-      profitMap.on('mouseenter', 'choropleth-fill', function (e) {
+      profitMap.on('mousemove', 'choropleth-fill', function (e) {
     // Change the cursor style
     profitMap.getCanvas().style.cursor = 'pointer';
   
