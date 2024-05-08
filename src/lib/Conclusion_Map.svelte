@@ -196,7 +196,7 @@
         style: currentStyle.style,
         center: [-71.0955, 42.3314],
         zoom: 10,
-        pitch: 0,
+        maxPitch: 0,
         maxBounds: bounds
       });
   
