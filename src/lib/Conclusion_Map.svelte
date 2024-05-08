@@ -109,10 +109,13 @@
   </div>
 
   <script>
-    import { onMount } from 'svelte';
-  
-    let profitMap; // Define salesMap globally
-    
+ import { onMount } from 'svelte';
+  import { writable } from 'svelte/store';
+
+  // Create writable store for selected style and hovered zip code
+  const mapData = writable({ selectedStyle: null, hoveredZip: null });
+
+  let profitMap; // Define salesMap globally
   
     onMount(() => {
   
@@ -161,6 +164,7 @@
 
   
     function setStyle(style) {
+      mapData.update(data => ({ ...data, selectedStyle: style }));
     currentStyle = style; // Update currentStyle
     profitMap.setStyle(style.style); // Update map style
     updateprofitLegend(style); // Update legend
@@ -212,7 +216,7 @@
   featureInfo += `Neighborhood: ${properties.j_n}<br>`;
   featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
     }
-  
+    mapData.update(data => ({ ...data, hoveredZip: properties.z_real }))
     document.querySelector('.profitmap-overlay #pd').innerHTML = featureInfo;
   });
   
@@ -256,3 +260,12 @@
   </script>
   
   
+
+<!-- Displaying values from the store -->
+{#if $mapData.selectedStyle}
+  <p>Selected Style: {$mapData.selectedStyle.name}</p>
+  <p>Year: {$mapData.selectedStyle.year}</p>
+{/if}
+{#if $mapData.hoveredZip}
+  <p>Hovered Zip Code: {$mapData.hoveredZip}</p>
+{/if}
