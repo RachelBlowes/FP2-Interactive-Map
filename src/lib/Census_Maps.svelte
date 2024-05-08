@@ -246,11 +246,19 @@
   function initializeMap() {
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA';
 
+
+    const bounds = [
+        [-71.223469, 42.285535], // Southwest coordinates
+        [-70.921124, 42.407021] // Northeast coordinates
+    ];
+    
     salesMap = new mapboxgl.Map({
       container: 'salesMap',
       style: currentStyle.style,
       center: [-71.0955, 42.3314],
-      zoom: 10
+      zoom: 10,
+      maxPitch: 0,
+      maxBounds: bounds
     });
 
     salesMap.on('mousemove', 'choropleth-fill', function (e) {
@@ -284,7 +292,9 @@
       container: 'permitMap',
       style: currentPermitStyle.style,
       center: [-71.0955, 42.3314],
-      zoom: 10
+      zoom: 10,
+      maxPitch: 0,
+      maxBounds: bounds
     });
     permitMap.on('mousemove', 'choropleth-fill', function (e) {
   // Change the cursor style
