@@ -37,7 +37,6 @@
 
 // Function to render graph
 function render(csvData) {
-  console.log("Data:", csvData);
   data = csvData;
 
   // Filter data based on the initial selected year

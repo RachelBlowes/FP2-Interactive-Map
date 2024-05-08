@@ -281,7 +281,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
 <Conclusion_Map />
 
-<ZipRenterBarChart />
+<!-- <ZipRenterBarChart /> -->
 
 <script>
 
@@ -326,10 +326,10 @@ whereas building permits are more infrequent for the lowest-income and highest-i
      //Conclusion_Map
      import Conclusion_Map from '$lib/Conclusion_Map.svelte';
 
+    //  import { mapData } from '$lib/Conclusion_Map.svelte';
 
-     //zip bar chart
-     import ZipRenterBarChart from '$lib/zipRenterBarChart.svelte';
-
+    //zip bar chart
+    // import ZipRenterBarChart from '$lib/zipRenterBarChart.svelte';
 
 </script>
 

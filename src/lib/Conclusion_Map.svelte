@@ -111,9 +111,10 @@
   <script>
  import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
+  import ZipRenterBarChart from '$lib/zipRenterBarChart.svelte';
 
   // Create writable store for selected style and hovered zip code
-  const mapData = writable({ selectedStyle: null, hoveredZip: null });
+  export const mapData = writable({ selectedStyle: null, hoveredZip: null });
 
   let profitMap; // Define salesMap globally
   
@@ -197,28 +198,31 @@
       profitMap.on('mousemove', 'choropleth-fill', function (e) {
     // Change the cursor style
     profitMap.getCanvas().style.cursor = 'pointer';
-  
+
     // Get the first feature from the event
     const feature = e.features[0];
-  
+
     // Display information for the hovered feature based on the current style
     const properties = feature.properties;
     let featureInfo;
     if (currentStyle.name === '2010 Profit') {
-      featureInfo = `${currentStyle.name}: ${properties.j_m_p_real}<br>`;
-  featureInfo += `Zipcode: ${properties.z_real}<br>`;
-  featureInfo += `Neighborhood: ${properties.j_n}<br>`;
-  featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
+        featureInfo = `${currentStyle.name}: ${properties.j_m_p_real}<br>`;
+        featureInfo += `Zipcode: ${properties.z_real}<br>`;
+        featureInfo += `Neighborhood: ${properties.j_n}<br>`;
+        featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
 
     } else if (currentStyle.name === '2022 Profit') {
-      featureInfo = `${currentStyle.name}: ${properties.profit}<br>`;
-  featureInfo += `Zipcode: ${properties.z_real}<br>`;
-  featureInfo += `Neighborhood: ${properties.j_n}<br>`;
-  featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
+        featureInfo = `${currentStyle.name}: ${properties.profit}<br>`;
+        featureInfo += `Zipcode: ${properties.z_real}<br>`;
+        featureInfo += `Neighborhood: ${properties.j_n}<br>`;
+        featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
     }
-    mapData.update(data => ({ ...data, hoveredZip: properties.z_real }))
+    // Update mapData with hovered zip code
+    mapData.update(data => ({ ...data, hoveredZip: properties.z_real }));
+
+    // Update the content of the profitmap-overlay
     document.querySelector('.profitmap-overlay #pd').innerHTML = featureInfo;
-  });
+});
   
   
   
@@ -256,10 +260,10 @@
     legendBarHTML += '</div>';
     return legendBarHTML;
   }
-  
+ 
   </script>
-  
-  
+
+<ZipRenterBarChart mapData = {$mapData} />
 
 <!-- Displaying values from the store -->
 {#if $mapData.selectedStyle}

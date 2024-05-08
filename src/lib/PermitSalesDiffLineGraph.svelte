@@ -39,9 +39,7 @@
   
     // Function to render graph
     function render(csvData) {
-      console.log("Data:", csvData);
       data = csvData;
-      console.log(data)
   
       // Filter data based on the initial selected year
       let filteredData = data.filter(d => d.Year.getFullYear() <= selectedYear);
