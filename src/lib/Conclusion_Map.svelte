@@ -270,12 +270,3 @@
   </script>
 
 <ZipRenterBarChart mapData = {$mapData} />
-
-<!-- Displaying values from the store -->
-{#if $mapData.selectedStyle}
-  <p>Selected Style: {$mapData.selectedStyle.name}</p>
-  <p>Year: {$mapData.selectedStyle.year}</p>
-{/if}
-{#if $mapData.hoveredZip}
-  <p>Hovered Zip Code: {$mapData.hoveredZip}</p>
-{/if}
