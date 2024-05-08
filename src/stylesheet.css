@@ -5,7 +5,7 @@ html {
 }
 
 :root {
-  --textCloud-color: red; /* Define the variable for text color */
+  --textCloud-color: #BBB4B1; /* Define the variable for text color */
 }
 
 body {
