@@ -302,7 +302,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
   <div style="height: 20px;"></div> -->
 
-<section class="section-short">
+<section class="section-long">
   <h3> Since 2017, the profit from real estate has risen from a few ten thousand dollars to $2-300,000, with physically improved properties decoupling from this trend, demonstrating that physical investment may be being used to inflate the value of real estate. </h3>
 </section>
 <section class="section-short">
