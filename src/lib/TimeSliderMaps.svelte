@@ -128,7 +128,7 @@
                 (sale.buyer_llc_ind === "1" || sale.buyer_llp_ind === "1" || sale.buyer_bus_ind === "1") ? "#FC96B3" :
                 (sale.buyer_trst_ind === "1" ? "#0087EC" :
                 (sale.buyer_bnk_ind === "1" || sale.buyer_gse_ind === "1") ? "#F69D2C" :
-                (sale.buyer_gov_ind === "1" ? "#8D6E63" : "#78B48C"))
+                (sale.buyer_gov_ind === "1" ? "#8D6E63" : "#EE6553"))
               }
               fill-opacity="0.7"
               stroke="white"
@@ -149,7 +149,7 @@
               fill={
                 (permit.ownerType === "c") ? "#FC96B3" :
                 (permit.ownerType === "t" ? "#0087EC" :
-                (permit.ownerType === "b" ? "#8D6E63" : "#78B48C"))
+                (permit.ownerType === "b" ? "#8D6E63" : "#EE6553"))
               }
               fill-opacity="0.7"
               stroke="white"
@@ -173,7 +173,7 @@
       <text x="30" y="75" font-family="Arial" font-size="12" fill="black">Bank</text>
       <circle class="legendcircle" r=5 cx="20" cy="95" fill="#8D6E63" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="100" font-family="Arial" font-size="12" fill="black">Government</text>
-      <circle class="legendcircle" r=5 cx="20" cy="120" fill="#78B48C" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="120" fill="#EE6553" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="125" font-family="Arial" font-size="12" fill="black">Individual/Other</text>
     </svg>
     <svg class="legendsvg">
@@ -195,7 +195,7 @@
       <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Trust</text>
       <circle class="legendcircle" r=5 cx="20" cy="70" fill="#8D6E63" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="75" font-family="Arial" font-size="12" fill="black">Government</text>
-      <circle class="legendcircle" r=5 cx="20" cy="95" fill="#78B48C" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="95" fill="#EE6553" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="100" font-family="Arial" font-size="12" fill="black">Individual/Other</text>
     </svg>
     <svg class="legendsvg">
@@ -303,32 +303,32 @@
       .range([1, 30]);
 
     // Batch and debounce map events
-      const debouncedMoveHandler = debounce(() => {
-      mapViewChanged++;
-      const { lng, lat } = salesTimeMap.getCenter();
-      permitTimeMap.setCenter([lng, lat]);
-    }, 50);
+    const debouncedMoveHandler = debounce(() => {
+    mapViewChanged++;
+    const { lng, lat } = salesTimeMap.getCenter();
+    permitTimeMap.setCenter([lng, lat]);
+  }, 50);
 
-    const debouncedZoomHandler = debounce(() => {
-      const zoom = salesTimeMap.getZoom();
-      permitTimeMap.setZoom(zoom);
-    }, 50);
+  const debouncedZoomHandler = debounce(() => {
+    const zoom = salesTimeMap.getZoom();
+    permitTimeMap.setZoom(zoom);
+  }, 50);
 
-    const debouncedMoveHandlerReverse = debounce(() => {
-      mapViewChanged++;
-      const { lng, lat } = permitTimeMap.getCenter();
-      salesTimeMap.setCenter([lng, lat]);
-    }, 50);
+  const debouncedMoveHandlerReverse = debounce(() => {
+    mapViewChanged++;
+    const { lng, lat } = permitTimeMap.getCenter();
+    salesTimeMap.setCenter([lng, lat]);
+  }, 50);
 
-    const debouncedZoomHandlerReverse = debounce(() => {
-      const zoom = permitTimeMap.getZoom();
-      salesTimeMap.setZoom(zoom);
-    }, 50);
+  const debouncedZoomHandlerReverse = debounce(() => {
+    const zoom = permitTimeMap.getZoom();
+    salesTimeMap.setZoom(zoom);
+  }, 50);
 
-    salesTimeMap?.on("move", debouncedMoveHandler);
-    permitTimeMap?.on("move", debouncedMoveHandlerReverse);
-    salesTimeMap?.on("zoom", debouncedZoomHandler);
-    permitTimeMap?.on("zoom", debouncedZoomHandlerReverse);
+  salesTimeMap?.on("move", debouncedMoveHandler);
+  permitTimeMap?.on("move", debouncedMoveHandlerReverse);
+  salesTimeMap?.on("zoom", debouncedZoomHandler);
+  permitTimeMap?.on("zoom", debouncedZoomHandlerReverse);
 
 
     updateLegendRadius();
