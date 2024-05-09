@@ -29,6 +29,10 @@ h1, h2 {
     color: #F6517A;
 }
 
+h3 {
+  margin: 20px;
+}
+
 h4 {
     color: whitesmoke;
     max-width: 50%;

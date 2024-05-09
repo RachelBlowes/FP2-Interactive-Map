@@ -119,12 +119,11 @@
 <section class="section-long">
   <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. But who’s doing the investing?  </h3>
 </section>
-
-<!-- TIME SLIDER MAP ------------------------------------------------------------------->
 <section class="section-short">
   <h5>Move the slider to see the change in investor type over time…</h5>
 </section>
 
+<!-- TIME SLIDER MAP ------------------------------------------------------------------->
 <h2>Shifting Trends in Investment Behavior</h2>
 <TimeSliderMaps class="component"/>
 <!-- WHO? -->
@@ -173,16 +172,14 @@
   </h5>
 </section>
   
-
- 
-
 <!-- WHERE? ------------------------------------------------------------------->
-
 <h2> What are the spatial patterns of investment around Boston?  </h2>
 
 <div style="height: 40px;"></div>
 
 <Census_Maps class="component"/>
+
+
 
 <!-- <div style="height: 100px;"></div>
 
@@ -207,10 +204,13 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 <div style="height: 40px;"></div>
 
  <!-- WHAT? ------------------------------------------------------------------->
-<h3> Permits also give insight on speculation - flipped properties are more likely to have superficial 
-  work done, possibly putting further pressure on the market without increasing the quality of the property. </h3>
-
-<div style="height: 40px;"></div>
+ <section class="section-short">
+  <h3> Permits also give insight on speculation - flipped properties are more likely to have superficial 
+    work done, possibly putting further pressure on the market without increasing the quality of the property. </h3>
+</section>
+<section class="section-short">
+  <h5>Toggle the wordcloud to see the keywords for flipped and non-flipped properties…</h5>
+</section>
 
 <div calss="component">
   <WordCloud class="component"/>
