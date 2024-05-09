@@ -127,53 +127,54 @@
 
 <h2>Shifting Trends in Investment Behavior</h2>
 <TimeSliderMaps class="component"/>
+<!-- WHO? -->
+<div class="divided">
+  <div class="dividedtitle">
+    <h5>Who is building?</h5>
+  </div>
+  <div id="divline"></div>
+  <div class="dividedtitle">
+    <h5>Who is buying?</h5>
+  </div>
+</div>
 
+<div class="divided">
+  <div class="dividedchart">
+    <Owner_linegraph />
+  </div>
+  <div id="divline"></div>
+  <div class="dividedchart">
+    <OwnerLinegraphSales />
+  </div>
+</div>
+ 
+
+<div style="height: 40px;"></div>
 <section class="section-long">
-  <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. 
+  <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. This trend has been increasing since 2010, with the proportion of corporate investment growing from 13% to 32%. 
   </h3>
 </section>
 
-<div style="height: 40px;"></div>
-
-<!-- WHO? ------------------------------------------------------------------->
-
-<h3> While investors only account for a small percentage of sales, the valuation of building 
-  permits with corporate owners has increased drastically. </h3>
+<!-- <h3> Corporate investors are investing heavily in the construction and renovation of single-family units, 
+  which are more profitable. </h3>
 
 <div style="height: 40px;"></div>
 
-  <!-- WHO? -->
-  <div class="divided">
-    <div class="dividedtitle">
-      <h5>Who is building?</h5>
-    </div>
-    <div id="divline"></div>
-    <div class="dividedtitle">
-      <h5>Who is buying?</h5>
-    </div>
-  </div>
+<h3> Properties owned by corporate owners are more likely to be flipped. </h3>
 
-  <div class="divided">
-    <div class="dividedchart">
-      <Owner_linegraph />
-    </div>
-    <div id="divline"></div>
-    <div class="dividedchart">
-      <OwnerLinegraphSales />
-    </div>
-  </div>
-  <div style="height: 120px;"></div>
-  <p>Move the slider to see changes in owner over time.</p>
-  <div style="height: 80px;"></div>
+<div style="height: 40px;"></div> -->
 
-  <h3> Corporate investors are investing heavily in the construction and renovation of single-family units, 
-      which are more profitable. </h3>
-
-  <div style="height: 40px;"></div>
+<section class="section-short">
+  <h3>How is this distributed spatially? Let’s explore the spatial patterns of physical and fiscal investment in they city.  
+  </h3>
+</section>
+<section class="section-short">
+  <h5>Toggle the maps to explore spatial patterns of building and buying…
+  </h5>
+</section>
   
-  <h3> Properties owned by corporate owners are more likely to be flipped. </h3>
 
-  <div style="height: 40px;"></div>
+ 
 
 <!-- WHERE? ------------------------------------------------------------------->
 
