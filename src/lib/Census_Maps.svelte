@@ -110,7 +110,6 @@
       <h2>{salesMapTitle}</h2>
       <div id="pd"><p>Hover over a census tract!</p></div>
     </div>
-    <div class="legend-overlay" id="salesLegend"></div> <!-- Add an ID for sales legend -->
   </div>
 
   <div id="permitMap">
@@ -118,7 +117,19 @@
       <h2>{permitMapTitle}</h2>
       <div id="pd"><p>Hover over a census tract!</p></div>
     </div>
-    <div class="legend-overlay" id="permitLegend"></div> <!-- Add an ID for permit legend -->
+    
+  </div>
+</div>
+
+
+<div id="legendContainer">
+  <div class="legend-wrapper">
+    <h3>Legend</h3>
+    <div id="salesLegend" class="legend-overlay"></div>
+  </div>
+  <div class="legend-wrapper">
+    <h3>Legend</h3>
+    <div id="permitLegend" class="legend-overlay"></div>
   </div>
 </div>
 
@@ -255,8 +266,8 @@
     salesMap = new mapboxgl.Map({
       container: 'salesMap',
       style: currentStyle.style,
-      center: [-71.0955, 42.3314],
-      zoom: 10,
+      center: [-71.0368795, 42.370097],
+      zoom: 15.5,
       maxPitch: 0,
       maxBounds: bounds
     });
@@ -291,8 +302,8 @@
     permitMap = new mapboxgl.Map({ 
       container: 'permitMap',
       style: currentPermitStyle.style,
-      center: [-71.0955, 42.3314],
-      zoom: 10,
+      center: [-71.0368795, 42.370097],
+      zoom: 15.5,
       maxPitch: 0,
       maxBounds: bounds
     });
