@@ -45,7 +45,9 @@
     </section>
     <!-- This is the 6th section -->
     <section class="section-long">
+    <div>
       <h3>While sales data can provide information about the value and stakeholders involved in a given transaction, the physical side of speculation can provide insight on whether improvements take place when units exchange hands. </h3>
+    </div>
     </section>
     <!-- This is the 7th section -->
     <section class="section-long">
@@ -89,11 +91,9 @@
 </div>
 </Scroller>
 
-<br>
-
-<h2>Let's explore the spatial distribution of sales and building permits. </h2>
-
-<div style="height: 60px;"></div>
+<section class="section-short">
+  <h2>Let's explore the spatial distribution of sales and building permits. </h2>
+</section>
 
 <header id="fiscalvsphysical" style="position: sticky; top: 0; z-index: 1000;">
   <h4>Fiscal</h4>
@@ -101,28 +101,35 @@
   <h4>Physical</h4>
 </header>
 
-<div style="height: 40px;"></div>
-
 <!-- SLIDEY COMPARISON MAP ------------------------------------------------------------------->
- 
+<section class="section-long">
+  <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. </h3>
+</section>
+<section class="section-short">
+  <h5>Move the slider on the map to compare sales and building permits in the city…</h5>
+</section>
+<h2>Fiscal vs. Physical Investment</h2>
 <MapComparison class="component"/>
-  <div class="divided">
-    <div class="dividedtitle">
-      <h5>Boston sales 2010-2022, gradient by sale price</h5>
-    </div>
-    <div id="divline"></div>
-    <div class="dividedtitle">
-      <h5>Building permits 2010-2022, gradient by permit valuation</h5>
-    </div>
+<div class="divided">
+  <div class="dividedtitle">
+    <h5>Boston sales 2010-2022, gradient by sale price</h5>
   </div>
-
-<h3>Investment in both buying and building has been increasing since 2010, with patterns of 
-building foreshadowing patterns of buying. </h3>
-
-<div style="height: 40px;"></div>
+  <div id="divline"></div>
+  <div class="dividedtitle">
+    <h5>Building permits 2010-2022, gradient by permit valuation</h5>
+  </div>
+</div>
 
 <!-- TIME SLIDER MAP ------------------------------------------------------------------->
+<section class="section-long">
+  <h3>But who’s doing the investing? While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. 
+  </h3>
+</section>
+<section class="section-short">
+  <h5>Move the slider to see the change in investor type over time…</h5>
+</section>
 
+<h2>Shifting Trends in Investment Behavior</h2>
 <TimeSliderMaps class="component"/>
 
 <div style="height: 40px;"></div>
@@ -375,7 +382,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   .cover_subtitle {
     position: absolute;
     margin:auto;
-    top: 400px; 
+    top: 380px; 
     z-index: 1; 
     background-color: rgba(255, 255, 255, 0.8); 
     padding: 10px; 
