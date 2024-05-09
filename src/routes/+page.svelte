@@ -217,6 +217,10 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   <div id="divline"></div>
 </div>
 
+<section class="section-long">
+  <h3> Is physical investment used by speculative investors to artificially inflate the value of properties?  </h3>
+</section>
+
 <Scroller top="{0.0}" bottom="{0.7}" bind:index bind:offset bind:progress>
   <div slot="background">
     
@@ -225,17 +229,14 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   </div>
 
   <div slot="foreground">
-    <sectio>
-      <br>
-    </sectio>
-
-    <section>
+    
+    <section class="section-long">
       <!-- Example - intro -->
-      <p id="centered-text"><strong>Let's explore a speculated property.</strong></p>
+      <p id="centered-text"><strong>Let’s explore an example property to examine this.</strong></p>
       <p id="centered-text"><strong>How much profit do you think the investor made?</strong></p>
     </section>
 
-    <section>
+    <section class="section-long">
       <!-- Example 01-->
       <div id="definitions" class="collage">
         <div id="physical">
@@ -252,7 +253,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
         </div>  
       </div>
     </section>
-    <section>
+    <section class="section-long">
       <!-- Example 02 - sale + 2nd renovation -->
       <div id="definitions" class="collage">
         <div id="physical" style="margin-top: -3em">
@@ -267,7 +268,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
         </div>  
       </div>
     </section>
-    <section>
+    <section class="section-long">
       <!-- Example 03 - 2 last sales -->
       <div id="definitions" class="collage">
         <div id="physical" style="margin-top: -3em">
@@ -284,21 +285,29 @@ whereas building permits are more infrequent for the lowest-income and highest-i
         </div>  
       </div>
     </section>
-    <section>
+    <section class="section-long">
       <h3 style="position: relative; top: 30em;"> In less than 4 years, and an initial investment of <b>$250,975</b>, the investor made a profit of</h3> 
       <!-- <br> -->
       <h1 style="position: relative; top: 30em;"><strong id="fiscaltitle">Over $1MM</strong></h1>
     </section>
 
-    <section>
+    <section class="section-long">
       <br>
     </section>
 </Scroller>
 
+<!-- 
 <h3> We found that units with building permits generally had a higher profit, however this profit has increased from $16,000 to nearly $70,0000 
   since 2010, an over fourfold increase. </h3>
 
-  <div style="height: 20px;"></div>
+  <div style="height: 20px;"></div> -->
+
+<section class="section-short">
+  <h3> Since 2017, the profit from real estate has risen from a few ten thousand dollars to $2-300,000, with physically improved properties decoupling from this trend, demonstrating that physical investment may be being used to inflate the value of real estate. </h3>
+</section>
+<section class="section-short">
+  <h5>Move the slider to see this trend change over time…</h5>
+</section>
 
   <h5>Median profit (price diff - permit valuation - permit fees) for residential properties</h5>
 
