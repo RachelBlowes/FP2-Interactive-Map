@@ -102,9 +102,6 @@
 </header>
 
 <!-- SLIDEY COMPARISON MAP ------------------------------------------------------------------->
-<section class="section-long">
-  <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. </h3>
-</section>
 <section class="section-short">
   <h5>Move the slider on the map to compare sales and building permits in the city…</h5>
 </section>
@@ -119,18 +116,22 @@
     <h5>Building permits 2010-2022, gradient by permit valuation</h5>
   </div>
 </div>
+<section class="section-long">
+  <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. But who’s doing the investing?  </h3>
+</section>
 
 <!-- TIME SLIDER MAP ------------------------------------------------------------------->
-<section class="section-long">
-  <h3>But who’s doing the investing? While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. 
-  </h3>
-</section>
 <section class="section-short">
   <h5>Move the slider to see the change in investor type over time…</h5>
 </section>
 
 <h2>Shifting Trends in Investment Behavior</h2>
 <TimeSliderMaps class="component"/>
+
+<section class="section-long">
+  <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. 
+  </h3>
+</section>
 
 <div style="height: 40px;"></div>
 
