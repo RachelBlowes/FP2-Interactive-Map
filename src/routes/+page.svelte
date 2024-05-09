@@ -309,8 +309,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   <h5>Move the slider to see this trend change over time…</h5>
 </section>
 
-  <h5>Median profit (price diff - permit valuation - permit fees) for residential properties</h5>
-
+<h2>Median profit (price diff - permit valuation - permit fees) for residential properties</h2>
 <PermitSalesDiffLineGraph />
 
 <div style="height: 80px;"></div>

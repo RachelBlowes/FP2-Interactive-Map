@@ -265,6 +265,57 @@
       width: 100%;
       text-align: left; /* Center the legend */
     }
+
+/* Slider styles */
+#slider {
+    width: 100%; /* Width of the outside container */
+    margin-bottom: 20px;
+  }
+
+  #timeSlider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 10px; /* Specified height */
+    background: white; 
+    border-radius: 5px; /*Rounded*/
+    outline: none; /* Remove outline */
+    opacity: 0.8; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+
+  /* Mouse-over effects */
+  #timeSlider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  #timeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 5cqi;
+    width: 20px; /* Set a specific slider handle width */
+    height: 10px; /* Slider handle height */
+    background: #3a3a3a; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  #timeSlider::-moz-range-thumb {
+    width: 20px; /* Set a specific slider handle width */
+    height: 10px; /* Slider handle height */
+    border-radius: 5cqi;
+    background: #3a3a3a; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+ #selectedTime, #timesliderlabel {
+  display: block;
+  text-align: center; /* Center the text */
+  font-weight: bold; /* Make the text bold */
+}
+
+
 </style>
 
 <div class="graph-container-permit">
@@ -274,7 +325,9 @@
     <div class="controls-container">
         <!-- Time slider -->
         <div id="slider-container-permit">
-            <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:change={() => updateChart(selectedYear)} />
+            <label id="timesliderlabel" for="timeSlider">Filter by Year:</label>
+            <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" id="timeSlider" on:change={() => updateChart(selectedYear)} />
+            <time id="selectedTime" style="display: block;">{selectedYear}</time>
         </div>
         <!-- Legend container -->
         <div id="legend-container-permit"></div>
