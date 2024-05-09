@@ -8,7 +8,7 @@
   }
   
   .dropbtn {
-    background-color: #4CAF50;
+    background-color: #c7c7c7;
     color: white;
     padding: 10px;
     font-size: 16px;
@@ -17,7 +17,7 @@
   }
   
   .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+    background-color: #c7c7c7;
   }
   
   .dropdown-content {
@@ -43,7 +43,7 @@
   }
   
   .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: #c7c7c7;
   }
   
     #profitMap {
@@ -97,16 +97,12 @@
   </div>
   
   
-  <div id="optionsContainer">
-    <div class="dropdown">
-      <button class="dropbtn">Profit Map Options</button>
-      <div class="dropdown-content">
-        {#each styles as style}
-          <a href="#" on:click|preventDefault={() => setStyle(style)}>{style.name}</a>
-        {/each}
-      </div>
-    </div>
-  </div>
+<div id="optionsContainer">
+  <!-- Replace dropdown with buttons -->
+  <button class="year-button" on:click|preventDefault={() => setYear(2010)}>2010</button>
+  <button class="year-button" on:click|preventDefault={() => setYear(2022)}>2022</button>
+</div>
+
 
   <script>
  import { onMount } from 'svelte';
@@ -177,6 +173,12 @@
     }
     }
     
+    function setYear(year) {
+    const selectedStyle = styles.find(style => style.year === year);
+    if (selectedStyle) {
+      setStyle(selectedStyle);
+    }
+  }
   
     function loadScript(script) {
       return new Promise((resolve, reject) => {
@@ -267,6 +269,20 @@
     return legendBarHTML;
   }
  
+  function updateButtonClasses() {
+    const buttons = document.querySelectorAll('.year-button');
+    buttons.forEach(button => {
+      const year = parseInt(button.textContent);
+      if (year === currentStyle.year) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
+      }
+    });
+  }
+
+  updateButtonClasses();
+
   </script>
 
 <ZipRenterBarChart mapData = {$mapData} />

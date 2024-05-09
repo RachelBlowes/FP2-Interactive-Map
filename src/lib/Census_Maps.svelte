@@ -8,7 +8,7 @@
 }
 
 .dropbtn {
-  background-color: #4CAF50;
+  background-color: #c7c7c7;
   color: white;
   padding: 10px;
   font-size: 16px;
@@ -17,7 +17,7 @@
 }
 
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
+  background-color: #c7c7c7;
 }
 
 .dropdown-content {
@@ -43,7 +43,7 @@
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color: #c7c7c7;
 }
 
   #salesMap {
@@ -251,7 +251,7 @@
         [-71.223469, 42.285535], // Southwest coordinates
         [-70.921124, 42.407021] // Northeast coordinates
     ];
-    
+
     salesMap = new mapboxgl.Map({
       container: 'salesMap',
       style: currentStyle.style,
