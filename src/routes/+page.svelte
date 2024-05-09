@@ -6,39 +6,58 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
 </svelte:head>
 
-<Scroller top="{0.0}" bottom="{0.7}" bind:index bind:offset bind:progress>
+<Scroller top="{0.18}" bottom="{0.9}" bind:index bind:offset bind:progress>
   <div slot="background">
-    
-    <img id="fadedcoverphoto" src="https://rachelblowes.github.io/Geodata/Images/coverphoto.png" alt="Split picture showing an apartment before and after renovation"> 
-    
+    <img id="fadedcoverphoto" src="https://rachelblowes.github.io/Geodata/Images/coverphoto.png" alt="Split picture showing an apartment before and after renovation">
+       
   </div>
 
   <div slot="foreground">
-    <section> 
-      <!-- This is the 1st section -->
+   
+    <!-- This is the 1st section -->
+    <section class="section-long"> 
       <div id="cover">
         <h1 class="cover_header">Speculation | Renovation</h1>
+        <h2 class="cover_subtitle"> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h2>
         <img id="coverphoto" src="https://rachelblowes.github.io/Geodata/Images/coverphoto.png" alt="Split picture showing an apartment before and after renovation"> 
       </div>
     </section>
-
     <!-- This is the 2nd section -->
-    <h2> Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales </h2>
-    
-    <DotAnimation />
-
-    <h3>Between 2010 and 2022, housing prices in Boston have increased by over 200%. </h3>
-
-    <h3>Investment in housing is not confined just to the buying and selling of properties - 
-      Boston is an old city with limited new construction, meaning that investment also takes 
-      the form of renovation and remodeling.  </h3>
-
-    <h3> We use public building permit data in addition to sales data from 2010 - 2022 to better 
-      understand the relationship between physical and fiscal investment in the housing market.</h3>
-
-    <div style="height: 40px;"></div>
-
-      <!-- This is the 5th section. -->
+    <section class="section-long">
+      <h3>Boston’s housing market is under immense pressure, with a shortage of supply for prospective home buyers and with over half of renters being rent burdened. </h3>
+    </section>
+    <!-- This is the 3rd section -->
+    <section class="section-long">
+      <div>
+        <div id="animation-div">
+          <DotAnimation />
+        </div>
+      </div>
+    </section>
+      
+   <!-- This is the 4th section -->
+   <section class="section-long">
+    <h3>Since 2010, real estate prices have doubled. According to the MAPC, speculation through investor activity is much to blame…</h3>
+   </section>
+    <!-- This is the 5th section -->
+    <section class="section-long">
+      <h3>Property speculation is an approach to real estate investment where anticipated profits are based on predicted changes in local market conditions rather than physical improvements.</h3>
+    </section>
+    <!-- This is the 6th section -->
+    <section class="section-long">
+      <h3>While sales data can provide information about the value and stakeholders involved in a given transaction, the physical side of speculation can provide insight on whether improvements take place when units exchange hands. </h3>
+    </section>
+    <!-- This is the 7th section -->
+    <section class="section-long">
+      <h3>Here, public building permit data from 2010-2022 is explored to investigate three questions: </h3>
+      <ol id="list-text">
+          <li>Who is building and renovating?</li>
+          <li>How is improvement distributed?</li>
+          <li>How much profit is being made when repair costs are subtracted?</li>
+      </ol>
+    </section>
+    <!-- This is the 8th section. -->
+    <section class="section-long">
       <div id="definitions">
         <div id="fiscal">
           <p id="fiscaltitle">Fiscal (adj)</p>
@@ -51,12 +70,10 @@
           <p>In our analysis, physical investments refer to money spent on physical improvements to a given property</p>
         </div>     
       </div>
-
-      <div style="height: 40px;"></div>
-
-      <!-- Why Permits? -->
+    </section>
+    <!-- This is the 9th section. -->
+    <section class="section-long">
       <h3>Why building permits?</h3>
-
       <div class="text-container">
         <p class="columntext">
           Building permits can give insight on the physical changes that are being made to properties that have sales 
@@ -68,7 +85,8 @@
           We look at flipped and non-flipped sales transactions, permit declared work 
           valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
       </div>
-   
+    </section>
+</div>
 </Scroller>
 
 <br>
@@ -336,6 +354,8 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 <style>
   .cover_header {
     background-color: white;
+    position:absolute;
+    top: 350px; 
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 7px;
@@ -350,6 +370,15 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   .arch_plan{
     width: 180%;
     z-index: 3;
+  }
+
+  .cover_subtitle {
+    position: absolute;
+    margin:auto;
+    top: 400px; 
+    z-index: 1; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 10px; 
   }
 
 </style>
