@@ -1,0 +1,37 @@
+[
+    {
+      "address": "11 Joseph St",
+      "sales": [
+        {
+            "sale_date": "July 2015",
+            "sale_price": 238000
+        }
+      ],
+      "investments": [
+        {
+          "description": "Vinyl sidings installation",
+          "cost": 12975
+        },
+        {
+          "description": "Front porch repair",
+          "cost": 5000
+        }
+      ]
+    },
+    {
+      "address": "123 Main St",
+      "sale_date": "June 2016",
+      "sale_price": 320000,
+      "investments": [
+        {
+          "description": "Roof replacement",
+          "cost": 15000
+        },
+        {
+          "description": "Kitchen renovation",
+          "cost": 20000
+        }
+      ]
+    }
+  ]
+  
