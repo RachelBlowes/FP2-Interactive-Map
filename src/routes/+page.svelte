@@ -327,12 +327,16 @@ whereas building permits are more infrequent for the lowest-income and highest-i
      //zip bar chart
      import ZipRenterBarChart from '$lib/zipRenterBarChart.svelte';
 
+     //CaseStudy
+     import CaseStudy from '$lib/CaseStudy/CaseStudy.svelte';
 
 </script>
 
 <style>
   .cover_header {
     background-color: white;
+    position:absolute;
+    top: 350px; 
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 7px;
