@@ -125,6 +125,7 @@
 
 <!-- TIME SLIDER MAP ------------------------------------------------------------------->
 <h2>Shifting Trends in Investment Behavior</h2>
+<TimeSliderMaps class="component"/>
 
 <!-- WHO? -->
 <div class="divided">
@@ -330,6 +331,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
     import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
     mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
     import * as d3 from 'd3';
+    import TimeSliderMaps from '$lib/TimeSliderMaps.svelte';
 
   //WordCloud
   import WordCloud from '$lib/WordCloud.svelte';
