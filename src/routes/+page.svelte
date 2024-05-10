@@ -116,12 +116,22 @@
     <h5>Building permits 2010-2022, gradient by permit valuation</h5>
   </div>
 </div>
-<section class="section-long">
-  <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. But who’s doing the investing?  </h3>
-</section>
-<section class="section-short">
-  <h5>Move the slider to see the change in investor type over time…</h5>
-</section>
+
+<Scroller top="{0.0}" bottom="{1.0}" bind:index bind:offset bind:progress>
+  <div slot="background">
+         
+  </div>
+
+  <div slot="foreground">
+  <section class="section-long" style="position: sticky; top: 0; z-index: 1000;">
+    <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. But who’s doing the investing?  </h3>
+  </section>
+  <section class="section-short">
+    <h5>Move the slider to see the change in investor type over time…</h5>
+  </section>
+</div>
+</Scroller>
+
 
 <!-- TIME SLIDER MAP ------------------------------------------------------------------->
 <h2>Shifting Trends in Investment Behavior</h2>
@@ -150,11 +160,27 @@
  
 
 <div style="height: 40px;"></div>
-<section class="section-long">
-  <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. This trend has been increasing since 2010, with the proportion of corporate investment growing from 13% to 32%. 
-  </h3>
-</section>
 
+<Scroller top="{0.0}" bottom="{0.5}" bind:index bind:offset bind:progress>
+  <div slot="background">
+         
+  </div>
+
+  <div slot="foreground">
+    <section class="section-long" style="position: sticky; top: 0; z-index: 1000;">
+      <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. This trend has been increasing since 2010, with the proportion of corporate investment growing from 13% to 32%. 
+      </h3>
+    </section>
+    <section class="section-short">
+      <h3>How is this distributed spatially? Let’s explore the spatial patterns of physical and fiscal investment in they city.  
+      </h3>
+    </section>      
+</div>
+</Scroller>
+<section class="section-short">
+  <h5>Toggle the maps to explore spatial patterns of building and buying…
+  </h5>
+</section>
 <!-- <h3> Corporate investors are investing heavily in the construction and renovation of single-family units, 
   which are more profitable. </h3>
 
@@ -163,16 +189,7 @@
 <h3> Properties owned by corporate owners are more likely to be flipped. </h3>
 
 <div style="height: 40px;"></div> -->
-
-<section class="section-short">
-  <h3>How is this distributed spatially? Let’s explore the spatial patterns of physical and fiscal investment in they city.  
-  </h3>
-</section>
-<section class="section-short">
-  <h5>Toggle the maps to explore spatial patterns of building and buying…
-  </h5>
-</section>
-  
+ 
 <!-- WHERE? ------------------------------------------------------------------->
 <h2> What are the spatial patterns of investment around Boston?  </h2>
 
