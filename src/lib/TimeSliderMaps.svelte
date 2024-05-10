@@ -232,7 +232,6 @@
   mapboxgl.accessToken = "pk.eyJ1IjoicmFjaGVsbWIiLCJhIjoiY2x1bjFtbDUwMHN3YTJrb2EyaDZqcGYzNCJ9.wzfF026YmS7lxeAbQOD_tA";
   import * as d3 from 'd3';
   import { onMount } from "svelte";
-  import { debounce } from "lodash";
 
   let sale = [];
   let permit = [];
@@ -302,34 +301,27 @@
       .domain([0, maxvaluation])
       .range([1, 30]);
 
-    // Batch and debounce map events
-    const debouncedMoveHandler = debounce(() => {
-    mapViewChanged++;
-    const { lng, lat } = salesTimeMap.getCenter();
-    permitTimeMap.setCenter([lng, lat]);
-  }, 50);
+    salesTimeMap?.on("move", () => {
+      mapViewChanged++;
+      const { lng, lat } = salesTimeMap.getCenter();
+      permitTimeMap.setCenter([lng, lat]);
+    });
 
-  const debouncedZoomHandler = debounce(() => {
-    const zoom = salesTimeMap.getZoom();
-    permitTimeMap.setZoom(zoom);
-  }, 50);
+    permitTimeMap?.on("move", () => {
+      mapViewChanged++;
+      const { lng, lat } = permitTimeMap.getCenter();
+      salesTimeMap.setCenter([lng, lat]);
+    });
 
-  const debouncedMoveHandlerReverse = debounce(() => {
-    mapViewChanged++;
-    const { lng, lat } = permitTimeMap.getCenter();
-    salesTimeMap.setCenter([lng, lat]);
-  }, 50);
+    salesTimeMap?.on("zoom", () => {
+      const zoom = salesTimeMap.getZoom();
+      permitTimeMap.setZoom(zoom);
+    });
 
-  const debouncedZoomHandlerReverse = debounce(() => {
-    const zoom = permitTimeMap.getZoom();
-    salesTimeMap.setZoom(zoom);
-  }, 50);
-
-  salesTimeMap?.on("move", debouncedMoveHandler);
-  permitTimeMap?.on("move", debouncedMoveHandlerReverse);
-  salesTimeMap?.on("zoom", debouncedZoomHandler);
-  permitTimeMap?.on("zoom", debouncedZoomHandlerReverse);
-
+    permitTimeMap?.on("zoom", () => {
+      const zoom = permitTimeMap.getZoom();
+      salesTimeMap.setZoom(zoom);
+    });
 
     updateLegendRadius();
   });
