@@ -115,6 +115,10 @@
 
 </style>
 
+<div id="maptitles">
+  <h5> Boston Yearly Residential Sales </h5>
+  <h5> Boston Yearly Building Permits </h5>
+</div>
 
 <div id="mapcontainer">
   <div id="salesTimeMap">
@@ -209,13 +213,6 @@
       <text x="80" y="100" font-family="Arial" font-size="12" fill="black">$20,000,000</text>
     </svg>
   </div>
-</div>
-
-
-
-<div id="maptitles">
-  <h5> Boston Yearly Residential Sales </h5>
-  <h5> Boston Yearly Building Permits </h5>
 </div>
 
 

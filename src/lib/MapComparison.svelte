@@ -77,9 +77,62 @@
     width: 100%;
     height: 100%;
   }
+
+  #legendcontainer {
+  width: 100%; /* Width of the outside container */
+  display: flex;
+  justify-content: space-around;
+}
+
+.legend {
+  width: 50%; /* Width of the outside container */
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+.legendsvg {
+  flex: 1;
+
+}
+
+
 </style>
 
 <div id="comparison-container">
   <div id="salesComp"></div>
   <div id="permitsComp"></div>
+</div>
+
+<div id="legendcontainer">
+  <div class="legend">
+    <svg class="legendsvg">
+      <text x="10" y="25" font-family="Arial" font-size="12" fill="black">Legend: Sales Price per Square Meter</text>
+      <rect width="10" height="10" x="10" y="35" fill="#aacfb7" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="45" font-family="Arial" font-size="12" fill="black">$1</text>
+      <rect width="10" height="10" x="10" y="55" fill="#64a078" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="65" font-family="Arial" font-size="12" fill="black">$8,000</text>
+      <rect width="10" height="10" x="10" y="75" fill="#48845b" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="85" font-family="Arial" font-size="12" fill="black">$36,000</text>
+      <rect width="10" height="10" x="10" y="95" fill="#345b41" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="105" font-family="Arial" font-size="12" fill="black">$140,000</text>
+      <rect width="10" height="10" x="10" y="115" fill="#26402f" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="125" font-family="Arial" font-size="12" fill="black">$445,455</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <svg class="legendsvg">
+      <text x="10" y="25" font-family="Arial" font-size="12" fill="black">Legend: Sales Price per Square Meter</text>
+      <rect width="10" height="10" x="10" y="35" fill="#aacfb7" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="45" font-family="Arial" font-size="12" fill="black">$1</text>
+      <rect width="10" height="10" x="10" y="55" fill="#64a078" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="65" font-family="Arial" font-size="12" fill="black">$8,000</text>
+      <rect width="10" height="10" x="10" y="75" fill="#48845b" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="85" font-family="Arial" font-size="12" fill="black">$36,000</text>
+      <rect width="10" height="10" x="10" y="95" fill="#345b41" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="105" font-family="Arial" font-size="12" fill="black">$140,000</text>
+      <rect width="10" height="10" x="10" y="115" fill="#26402f" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
+      <text x="30" y="125" font-family="Arial" font-size="12" fill="black">$445,455</text>
+    </svg>
+  </div>
 </div>

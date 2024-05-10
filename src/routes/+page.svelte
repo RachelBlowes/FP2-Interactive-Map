@@ -106,16 +106,17 @@
   <h5>Move the slider on the map to compare sales and building permits in the city…</h5>
 </section>
 <h2>Fiscal vs. Physical Investment</h2>
-<MapComparison class="component"/>
 <div class="divided">
   <div class="dividedtitle">
-    <h5>Boston sales 2010-2022, gradient by sale price</h5>
+    <h5>Boston residential sales, 2010-2022</h5>
   </div>
   <div id="divline"></div>
   <div class="dividedtitle">
-    <h5>Building permits 2010-2022, gradient by permit valuation</h5>
+    <h5>Boston residential building permits, 2010-2022</h5>
   </div>
 </div>
+<MapComparison class="component"/>
+
 
 <Scroller top="{0.0}" bottom="{1.0}" bind:index bind:offset bind:progress>
   <div slot="background">
