@@ -16,14 +16,14 @@ let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300
 
   // Calculate the radius based on the index
   const calculateLeftRadius = () => {
-    const radii = [200, 204, 204, 228, 267, 217, 180, 151, 227, 212, 183, 207, 253]; // Predefined radii
+    const radii = [200, 204, 204, 228, 267, 217, 180, 251, 227, 212, 183, 207, 253]; // Predefined radii
     const numRadii = radii.length;
     return radii[index % numRadii]; // Cycling through radii based on the index
   };
 
   // Calculate the radius based on the index
   const calculateRightRadius = () => {
-    const radii = [1, 4.3, 5.5, 3, 4.13, 5.16, 4.99, 7.335, 6.936, 8.963, 9.8, 10.37, 9.96]; // Predefined radii
+    const radii = [14, 108, 138, 77, 103, 129, 124, 158, 123, 124, 120, 259, 199]; // Predefined radii
     const numRadii = radii.length;
     return radii[index % numRadii]; // Cycling through radii based on the index
   };
