@@ -278,8 +278,8 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 <PermitSalesDiffLineGraph />
 
 <div style="height: 80px;"></div>
-
-<Conclusion_Map />
+<!-- 
+<Conclusion_Map /> -->
 
 <ZipRenterBarChart />
 
@@ -324,7 +324,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
     import PermitSalesDiffLineGraph from '$lib/PermitSalesDiffLineGraph.svelte';
 
      //Conclusion_Map
-     import Conclusion_Map from '$lib/Conclusion_Map.svelte';
+    //  import Conclusion_Map from '$lib/Conclusion_Map.svelte';
 
 
      //zip bar chart
