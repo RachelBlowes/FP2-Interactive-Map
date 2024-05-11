@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  export let dataUrl = "https://raw.githubusercontent.com/RachelBlowes/Geodata/main/owner_data/investor_data.csv";
+  export let dataUrl = "https://raw.githubusercontent.com/RachelBlowes/Geodata/main/owner_data/owner_type_sales.csv";
   export let selectedYear;
 
   $: {
@@ -17,11 +17,11 @@
   let x, y, svg, focus, focusText, bisect, data;
 
   const legendData = [
-    { label: 'Small', color: '#DC143C' },
-    { label: 'Non-Investor', color: '#2F4F4F' },
-    { label: 'Institutional', color: '#E9967A' },
-    { label: 'Large', color: '#8FBC8F' },
-    { label: 'Medium', color: '#4682B4' }
+    { label: 'Corporate', color: '#FC96B3' },
+    { label: 'Trust', color: '#0087EC' },
+    { label: 'Bank', color: '#F69D2C' },
+    { label: 'City', color: '#8D6E63' },
+    { label: 'Individual', color: '#EE6553' }
   ];
 
   onMount(() => {
@@ -30,12 +30,12 @@
 
   function formatData(d) {
     return {
-      Year: d3.timeParse("%Y")(d.Year),
-      Small: parseInt(d.small),
-      NonInvestor: parseInt(d["non-investor"]),
-      Institutional: parseInt(d.institutional),
-      Large: parseInt(d.large),
-      Medium: parseInt(d.medium)
+      Year: d3.timeParse("%Y")(d.year),
+      Corporate: parseInt(d.corporate),
+      Trust: parseInt(d.trust),
+      Bank: parseInt(d.bank),
+      City: parseInt(d.city),
+      Individual: parseInt(d.individual)
     }
   }
 
@@ -44,14 +44,14 @@
 
     let filteredData = data.filter(d => d.Year.getFullYear() <= selectedYear);
 
-    const colors = ['#DC143C', '#2F4F4F', '#E9967A', '#8FBC8F', '#4682B4'];
+    const colors = ['#FC96B3', '#0087EC', '#F69D2C', '#8D6E63', '#EE6553'];
 
     x = d3.scaleTime()
       .domain(d3.extent(data, d => d.Year))
       .range([0, width]);
 
     y = d3.scaleLinear()
-      .domain([0, d3.max(filteredData, d => Math.max(d.Small, d.NonInvestor, d.Institutional, d.Large, d.Medium))])
+      .domain([0, d3.max(filteredData, d => Math.max(d.Corporate, d.Trust, d.Bank, d.City, d.Individual))])
       .range([height, 0]);
 
     svg = d3.select("#slider_line_graph_sales")
@@ -73,7 +73,7 @@
       .attr("class", "y-axis")
       .call(d3.axisLeft(y));
 
-    ["Small", "NonInvestor", "Institutional", "Large", "Medium"].forEach((value, index) => {
+    ["Corporate", "Trust", "Bank", "City", "Individual"].forEach((value, index) => {
       svg.append("path")
         .attr("class", `line-${value}`)
         .datum(filteredData)
@@ -148,7 +148,7 @@
     var closestData = d1 && (x0 - d0.Year > d1.Year - x0) ? d1 : d0;
 
     if (closestData) {
-      let keys = ["Small", "NonInvestor", "Institutional", "Large", "Medium"];
+      let keys = ["Corporate", "Trust", "Bank", "City", "Individual"];
       let closestValue = keys.reduce((closest, key) => {
         let currentValue = closestData[key];
         let currentDistance = Math.abs(currentValue - y.invert(d3.pointer(event)[1]));
@@ -182,14 +182,14 @@
     let filteredData = data.filter(d => d.Year.getFullYear() <= value);
 
     x.domain([d3.min(filteredData, d => d.Year), x.domain()[1]]);
-    y.domain([0, d3.max(filteredData, d => Math.max(d.Small, d.NonInvestor, d.Institutional, d.Large, d.Medium))]);
+    y.domain([0, d3.max(filteredData, d => Math.max(d.Corporate, d.Trust, d.Bank, d.City, d.Individual))]);
 
     svg.select(".y-axis")
       .transition()
       .duration(1000)
       .call(d3.axisLeft(y));
 
-    ["Small", "NonInvestor", "Institutional", "Large", "Medium"].forEach((value, index) => {
+    ["Corporate", "Trust", "Bank", "City", "Individual"].forEach((value, index) => {
       svg.select(`.line-${value}`)
         .datum(filteredData)
         .transition()
