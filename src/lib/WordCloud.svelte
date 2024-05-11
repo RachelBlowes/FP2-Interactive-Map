@@ -1,8 +1,8 @@
 <script>
 	import Flipped from './FlippedCloud.svelte'
 	import NonSold from './NonSoldCloud.svelte'
-    import { fade } from 'svelte/transition';
-    let isVisible = true;
+	let visible = true;
+
     let current = 'NonSold';
 	let selected = NonSold
     
@@ -14,9 +14,9 @@
 </script>
 
 <div class="container">
-<div  in:fade={{ duration: 1000 }}>
-    <svelte:component this={selected}/>
-</div>
+    <div>
+        <svelte:component this={selected}/>
+    </div>
     <h5>Show what is renovated in:</h5>
     <div  class="button">
         <button  class:active={current === 'NonSold'} on:click={() => selectShape('NonSold', NonSold)}>
@@ -29,11 +29,6 @@
 </div>
 
 <style>
-    div.button {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-    }
     .container {
         display: flex;
         flex-direction: column;

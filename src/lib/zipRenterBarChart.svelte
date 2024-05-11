@@ -1,7 +1,6 @@
 <script>
     // Import necessary modules
     import { onMount } from 'svelte';
-    import { onDestroy } from 'svelte';
     import { writable, get } from 'svelte/store';
     import * as d3 from 'd3';
 

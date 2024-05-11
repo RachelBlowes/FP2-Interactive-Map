@@ -138,27 +138,8 @@
 <h2>Shifting Trends in Investment Behavior</h2>
 <TimeSliderMaps class="component"/>
 
-<!-- WHO? -->
-<div class="divided">
-  <div class="dividedtitle">
-    <h5>Who is building?</h5>
-  </div>
-  <div id="divline"></div>
-  <div class="dividedtitle">
-    <h5>Who is buying?</h5>
-  </div>
-</div>
-
-<div class="divided">
-  <div class="dividedchart">
-    <Owner_linegraph />
-  </div>
-  <div id="divline"></div>
-  <div class="dividedchart">
-    <OwnerLinegraphSales />
-  </div>
-</div>
- 
+<TimeseriesLinegraphs />
+<!-- <OwnerLinegraphSales /> -->
 
 <div style="height: 300px;"></div>
 
@@ -183,15 +164,6 @@
     </section>      
 </div>
 </Scroller>
-
-<!-- <h3> Corporate investors are investing heavily in the construction and renovation of single-family units, 
-  which are more profitable. </h3>
-
-<div style="height: 40px;"></div>
-
-<h3> Properties owned by corporate owners are more likely to be flipped. </h3>
-
-<div style="height: 40px;"></div> -->
  
 <!-- WHERE? ------------------------------------------------------------------->
 <h2> What are the spatial patterns of investment around Boston?  </h2>
@@ -199,23 +171,6 @@
 <div style="height: 40px;"></div>
 
 <Census_Maps class="component"/>
-
-
-
-<!-- <div style="height: 100px;"></div>
-
-  <div class="divided">
-    <div class="dividedtitle">
-      <h5>Where are we building?</h5>
-      <CensusBarChart />
-    </div>
-    <div id="divline"></div>
-    <div class="dividedtitle">
-      <h5>Where are we buying?</h5>
-      <CensusBarChartFiscal />
-    </div>
-  </div>
-  <p>Hover over the bars to see more information. </p> -->
 
 <div style="height: 40px;"></div>
 
@@ -272,12 +227,31 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   <h5>Move the slider to see this trend change over time…</h5>
 </section>
 
-<h2>Median profit (price diff - permit valuation - permit fees) for residential properties</h2>
+<h2>Median profit for residential properties 2010-2022</h2>
+<h5>(Sale profit - permit valuation - permit fees. Adjusted for 2022 dollars)</h5>
 <PermitSalesDiffLineGraph />
 
 <div style="height: 80px;"></div>
 
 <Conclusion_Map />
+
+<br>
+
+
+
+<div class="middle">
+  <div style="margin-top: -6em;">
+    <h2 id="share">Share Here! </h2>
+  </div>
+    <Email class="share-button" subject="{title}" body="{desc} {url}" />
+    <Reddit class="share-button" {title} {url} />
+    <LinkedIn class="share-button" {url} {title} />
+    <Tumblr class="share-button" {title} {url} caption="{title}" />
+    <WhatsApp class="share-button" text="{title} {url}" />
+    <Facebook class="share-button" quote="{title}" {url} />
+    <X class="share-button" text="{title}" {url} hashtags="Boston,urban, data, Data Viz, housing, permits, renovation, speculation, market" via="username" related="other,users" />
+</div>
+
 
 <script>
 
@@ -296,20 +270,11 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   //WordCloud
   import WordCloud from '$lib/WordCloud.svelte';
 
-  //Owner Linegraph
-    import Owner_linegraph from '$lib/Owner_linegraph.svelte';
-
-  //Owner Linegraph Sales
-    import OwnerLinegraphSales from '$lib/Owner_linegraph_sales.svelte';
+  //Owner linegraphs
+  import TimeseriesLinegraphs from '$lib/Timeseries_Linegraphs.svelte';
 
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
-
-    //bar chart fiscal
-    import CensusBarChart from '$lib/CensusBarChart.svelte';
-
-     //bar chart
-    import CensusBarChartFiscal from '$lib/CensusBarChartFiscal.svelte';
 
     //Census_Maps
     import Census_Maps from '$lib/Census_Maps.svelte';
@@ -321,15 +286,18 @@ whereas building permits are more infrequent for the lowest-income and highest-i
     import PermitSalesDiffLineGraph from '$lib/PermitSalesDiffLineGraph.svelte';
 
      //Conclusion_Map
- import Conclusion_Map from '$lib/Conclusion_Map.svelte';
+   import Conclusion_Map from '$lib/Conclusion_Map.svelte';
 
-
-
-     //zip bar chart
-     import ZipRenterBarChart from '$lib/zipRenterBarChart.svelte';
 
      //CaseStudy
      import CaseStudy from '$lib/CaseStudy/CaseStudy.svelte';
+
+     //share buttons
+      import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, Tumblr, Vk, WhatsApp, Xing, Facebook, X, Line } from 'svelte-share-buttons-component';
+
+      const url = 'https://rachelblowes.github.io/FP2-Interactive-Map/';
+      const title = 'Speculation vs. Renovation';
+      const desc = 'Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales';
 
 </script>
 
@@ -345,10 +313,25 @@ whereas building permits are more infrequent for the lowest-income and highest-i
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
   }
 
+  #share{
+    background-color: var(--pink);
+    width: 120px;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    color: white;
+    transform: rotate(-30deg);
+    float:left;
+    margin-left: 20em;
+    z-index: 5;
+  }
+
   .GSV{
     width: 100%;
   }
-
 
   .cover_subtitle {
     position: absolute;
