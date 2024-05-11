@@ -10,7 +10,7 @@
     currentCaseStudyIndex = index;
     currentCaseStudy = CaseStudies[index];
     }
-
+    
 
 //make numbers into $s
   function formatCurrency(number) {
@@ -40,9 +40,19 @@
 </section>
 
 <!-- Toggle buttons for different study cases -->
-{#each CaseStudies as CaseStudy, index}
-  <button on:click={() => toggleCaseStudy(index)}>CaseStudy {index + 1}</button>
-{/each}
+<div>
+<h5>Add your estimation here:</h5>
+<div class="button">
+    <button  class:active={currentCaseStudyIndex === 0} on:click={() => toggleCaseStudy(0)}>
+        11 Joseph St 
+    </button>
+    <button class:active={currentCaseStudyIndex === 1} on:click={() => toggleCaseStudy(1)}>
+        86 Marlborough St
+    </button>
+</div>
+</div>
+
+
 
 {#if currentCaseStudy}
 

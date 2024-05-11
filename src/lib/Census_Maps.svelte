@@ -15,16 +15,18 @@
 }
 
 .dropbtn {
-  background-color: #c7c7c7;
-  color: white;
-  padding: 10px;
+  background-color: #f1f1f1;
+  color: black;
+  padding: 15px 32px;
   font-size: 16px;
-  border: none;
+  margin: 4px 2px;
+  border:1px solid #BBB4B1;
   cursor: pointer;
 }
 
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #c7c7c7;
+  background-color: #BBB4B1;
+  color: white
 }
 
 .dropdown-content {
@@ -41,6 +43,7 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  font-family: courier;
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}
@@ -50,7 +53,8 @@
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #c7c7c7;
+  background-color: #BBB4B1;
+  color: white
 }
 
   #salesMap {

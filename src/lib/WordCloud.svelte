@@ -18,7 +18,7 @@
     <svelte:component this={selected}/>
 </div>
     <h5>Show what is renovated in:</h5>
-    <div>
+    <div  class="button">
         <button  class:active={current === 'NonSold'} on:click={() => selectShape('NonSold', NonSold)}>
             Owned 
         </button>
@@ -29,7 +29,7 @@
 </div>
 
 <style>
-    div {
+    div.button {
         display: flex;
         justify-content: center;
         margin-top: 10px;
