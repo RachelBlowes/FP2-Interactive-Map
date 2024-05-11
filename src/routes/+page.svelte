@@ -160,18 +160,19 @@
 </div>
  
 
-<div style="height: 40px;"></div>
-<section class="section-long">
-  <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. This trend has been increasing since 2010, with the proportion of corporate investment growing from 13% to 32%. 
-  </h3>
-</section>
+<div style="height: 300px;"></div>
 
-<Scroller top="{0.0}" bottom="{0.5}" bind:index bind:offset bind:progress>
+
+<Scroller top="{0.0}" bottom="{1.0}" bind:index bind:offset bind:progress>
   <div slot="background">
          
   </div>
 
   <div slot="foreground">
+    <section class="section-short">
+      <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. This trend has been increasing since 2010, with the proportion of corporate investment growing from 13% to 32%. 
+      </h3>
+    </section>
     <section class="section-long" style="position: sticky; top: 0; z-index: 1000;">
       <h3>How is this distributed spatially? Let’s explore the spatial patterns of physical and fiscal investment in they city.  
       </h3>

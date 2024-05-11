@@ -108,31 +108,29 @@
   <div class="legend">
     <svg class="legendsvg">
       <text x="10" y="25" font-family="Arial" font-size="12" fill="black">Legend: Sales Price per Square Meter</text>
-      <rect width="10" height="10" x="10" y="35" fill="#aacfb7" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="45" font-family="Arial" font-size="12" fill="black">$1</text>
-      <rect width="10" height="10" x="10" y="55" fill="#64a078" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="65" font-family="Arial" font-size="12" fill="black">$8,000</text>
-      <rect width="10" height="10" x="10" y="75" fill="#48845b" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="85" font-family="Arial" font-size="12" fill="black">$36,000</text>
-      <rect width="10" height="10" x="10" y="95" fill="#345b41" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="105" font-family="Arial" font-size="12" fill="black">$140,000</text>
-      <rect width="10" height="10" x="10" y="115" fill="#26402f" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="125" font-family="Arial" font-size="12" fill="black">$445,455</text>
-    </svg>
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#aacfb7;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#26402f;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect width="200" height="20" x="10" y="35" fill="url(#grad)" />
+      <text x="5" y="70" font-family="Arial" font-size="12" fill="black">$1</text>
+      <text x="180" y="70" font-family="Arial" font-size="12" fill="black">$445,455</text>
+     </svg>
   </div>
   <div class="legend">
     <svg class="legendsvg">
       <text x="10" y="25" font-family="Arial" font-size="12" fill="black">Legend: Sales Price per Square Meter</text>
-      <rect width="10" height="10" x="10" y="35" fill="#aacfb7" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="45" font-family="Arial" font-size="12" fill="black">$1</text>
-      <rect width="10" height="10" x="10" y="55" fill="#64a078" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="65" font-family="Arial" font-size="12" fill="black">$8,000</text>
-      <rect width="10" height="10" x="10" y="75" fill="#48845b" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="85" font-family="Arial" font-size="12" fill="black">$36,000</text>
-      <rect width="10" height="10" x="10" y="95" fill="#345b41" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="105" font-family="Arial" font-size="12" fill="black">$140,000</text>
-      <rect width="10" height="10" x="10" y="115" fill="#26402f" fill-opacity="0.7" stroke="white" stroke-width="0.5"></rect>
-      <text x="30" y="125" font-family="Arial" font-size="12" fill="black">$445,455</text>
-    </svg>
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#aacfb7;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#26402f;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect width="200" height="20" x="10" y="35" fill="url(#grad)" />
+      <text x="5" y="70" font-family="Arial" font-size="12" fill="black">$1</text>
+      <text x="180" y="70" font-family="Arial" font-size="12" fill="black">$445,455</text>
+     </svg>
   </div>
 </div>
