@@ -101,9 +101,9 @@
             {currentCaseStudy.sales[3]?.conversion_from} <strong id="physicaltitle">{currentCaseStudy.sales[3]?.conversion_to}</p>
           {/if}
           <br>
-          <img src={currentCaseStudy.pics[0].interior[0]?.src} width=400px>
+          <img src={currentCaseStudy.pics[0].interior[0]?.src} class=interior width=400px>
           <p><em>{currentCaseStudy.pics[0].interior[0]?.captcha}</em></p>
-          <img src={currentCaseStudy.pics[0].interior[1]?.src} style="position: relative; top: 2em; left: 0em" width=400px>
+          <img src={currentCaseStudy.pics[0].interior[1]?.src} class=interior style="position: relative; top: 2em; left: 0em" width=400px>
         </div>
         {#if currentCaseStudy.permits && currentCaseStudy.permits.length > 2}
         <div id="fiscal" style="margin-top:20em">
@@ -117,7 +117,7 @@
         <div id="physical" style="margin-top:-10em; background-color: rgba(0, 0, 0, 0)">
         </div>
         <div id="fiscal" style="background-color: rgba(0, 0, 0,0)">
-          <img src={currentCaseStudy.pics[0]?.interior[2]?.src} style="position: relative; top: -40em; left:-3em; background-color: none" width=500px>
+          <img class=interior src={currentCaseStudy.pics[0]?.interior[2]?.src} style="position: relative; top: -40em; left:-3em; background-color: none" width=500px>
         </div>
       </div>
     </section>
@@ -133,13 +133,16 @@
 
 
   <style>
-
+    .interior{
+      max-width: 400px;
+    }
   .arch_plan{
     width: 180%;
     z-index: 3;
   }
   .GSV{
     width: 100%;
+    max-width: 500px;
   }
 
   </style>

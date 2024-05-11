@@ -61,7 +61,8 @@
                 ],
                 "archPlan": [
                     {
-                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/1st.png?raw=true"
+                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/1st.png?raw=true",
+                        "class": "arch_plan"
                     },
                     {
                         "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/3rd.png?raw=true"
@@ -117,35 +118,36 @@
                 {
                     "GSV_before": [
                         {
-                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/src/lib/CaseStudy/86_marlborough/gsv_2019.png?raw=true",
-                            "captcha": "Google Street View, 2019"
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/gsv_2020.jpg?raw=true",
+                            "captcha": "Google Street View, 2020"
                         }
                     ],
                     "GSV_after": [
                         {
-                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/gsv_2020.png?raw=true",
-                            "captcha": "Renovation (Google Street View, 2020)"
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/gsv_2019.jpg?raw=true",
+                            "captcha": "Renovation (Google Street View, 2019)"
                         }
                     ],
                     "archPlan": [
                         {
-                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/src/lib/CaseStudy/86_marlborough/interior_before.webp?raw=true"
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/kitchen_old.png?raw=true",
+                            "class": "interior"
                         },
                         {
-                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/3rd.png?raw=true"
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/historic2.png?raw=true"
                         }
                     ],
                     "interior": [
                         {
-                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details_kitchen2.jpeg?raw=true",
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/interior8.webp?raw=true",
                             "captcha": "REDFIN Real Estate"
                         },
                         {
-                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details.jpeg?raw=true",
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/interior1.webp?raw=true",
                             "captcha": "REDFIN Real Estate"
                         },
                         {
-                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details_bathroom.jpeg?raw=true"
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/interior2.webp?raw=true"
                         }
                     ]
                 }
