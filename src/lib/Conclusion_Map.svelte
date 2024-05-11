@@ -78,7 +78,7 @@
   import ZipRenterBarChart from '$lib/zipRenterBarChart.svelte';
 
   // Create writable store for selected style and hovered zip code
-  export const mapData = writable({ selectedStyle: null, hoveredZip: null });
+  export const mapData = writable({ selectedStyle: 2010, hoveredZip: null });
 
   let profitMap; // Define salesMap globally
   
@@ -129,17 +129,20 @@
 
   
     function setStyle(style) {
-      mapData.update(data => ({ ...data, selectedStyle: style }));
-    currentStyle = style; // Update currentStyle
-    profitMap.setStyle(style.style); // Update map style
-    updateprofitLegend(style); // Update legend
-    // Update title based on style
-    if (style.name === '2010 Profit') {
-      profitMapTitle = 'Median Profit by Zipcode in 2010';
-    } else if (style.name === '2022 Profit') {
-      profitMapTitle = 'Median Profit by Zipcode in 2022';
-    }
-    }
+      mapData.update(data => ({ ...data, selectedStyle: style.year }));
+      mapData.subscribe(value => {
+        console.log("parent component style updated:", value.selectedStyle);
+      });
+      currentStyle = style; // Update currentStyle
+      profitMap.setStyle(style.style); // Update map style
+      updateprofitLegend(style); // Update legend
+      // Update title based on style
+      if (style.name === '2010 Profit') {
+        profitMapTitle = 'Median Profit by Zipcode in 2010';
+      } else if (style.name === '2022 Profit') {
+        profitMapTitle = 'Median Profit by Zipcode in 2022';
+      }
+      }
     
   
     function loadScript(script) {
