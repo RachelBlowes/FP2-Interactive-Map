@@ -49,6 +49,9 @@
     <button class:active={currentCaseStudyIndex === 1} on:click={() => toggleCaseStudy(1)}>
         86 Marlborough St
     </button>
+    <button class:active={currentCaseStudyIndex === 2} on:click={() => toggleCaseStudy(2)}>
+        381 Park St
+    </button>
 </div>
 </div>
 

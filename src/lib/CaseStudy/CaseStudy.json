@@ -1,6 +1,7 @@
 [
     {
       "address": "11 Joseph St",
+      "neighborhood": "Dorchester",
       "usage": " 2 Family Residential House",
       "investor": "private investor",
       "sales": [
@@ -93,6 +94,7 @@
     },
     {
           "address": "86 Marlborough St #9",
+          "neighborhood": "Back Bay",
           "usage": " Condominum",
           "investor": "Small LLC",
           "sales": [
@@ -159,5 +161,72 @@
                 }
             ]
             
-    }
+    },
+    {
+        "address": "381 Park St",
+        "neighborhood": "West Roxbury",
+        "usage": " Single Family Residential House",
+        "investor": "private investor",
+        "sales": [
+              {
+              "sale_date": "September 2017",
+              "sale_price": 400000
+              },
+              {
+                  "sale_date": "September 2018",
+                  "sale_price": 760000,
+                  "time_dif": "A year",
+                  "description": "the renovated house"
+              }
+            ],
+        "permits": [
+              {
+              "description": "renovating the kitchen and Baths, replacing all windows, repairing front wall and stairs and replace the outer siding. They added dormers to create space for adequate stairs and more living space in the bedrooms of the second floor, re-framing the stairs and bedrooms, and replacing the roof. They also installed gas piping, rewired the entire house, relocated the electric meter, and connected to cable tv. To finish, smokes and co detectors were installed and the property comfirmed as a single family dwelling occupancy.",
+              "valuation": 118700,
+              "fees": 1307
+              }
+          ],
+          "pics": [
+              {
+                  "GSV_before": [
+                      {
+                          "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/park_2017_aerial.png",
+                          "captcha": "Google Earth, 2017"
+                      }
+                  ],
+                  "GSV_after": [
+                      {
+                          "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/gsv.png?raw=true",
+                          "captcha": "Google Street View, 2019"
+                      }
+                  ],
+                  "archPlan": [
+                      {
+                          "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/plans.png?raw=true",
+                          "class": "arch_plan"
+                      }
+                  ],
+                  "interior": [
+                      {
+                          "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/kitchen_blue.jpeg?raw=true",
+                          "captcha": "REDFIN Real Estate"
+                      },
+                      {
+                          "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/dining.jpeg?raw=true",
+                          "captcha": "REDFIN Real Estate"
+                      },
+                      {
+                          "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/bathroom.jpeg?raw=true"
+                      }
+                  ]
+              }
+          ],
+          "overview": [
+              {
+                  "timeframe": "less then a year",
+                  "profit": "Over $235K"
+              }
+          ]
+          
+      }
 ]
