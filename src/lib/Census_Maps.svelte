@@ -7,6 +7,13 @@
   margin-bottom: 10px;
 }
 
+#legendContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  font-size: small;
+}
+
 .dropbtn {
   background-color: #c7c7c7;
   color: white;
@@ -90,10 +97,7 @@
 }
 
 .legend-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #fff;
+  position: relative;
   overflow: auto;
   z-index: 1;
   width: 25%;
@@ -123,14 +127,9 @@
 
 
 <div id="legendContainer">
-  <div class="legend-wrapper">
-    <h3>Legend</h3>
-    <div id="salesLegend" class="legend-overlay"></div>
-  </div>
-  <div class="legend-wrapper">
-    <h3>Legend</h3>
-    <div id="permitLegend" class="legend-overlay"></div>
-  </div>
+  <div id="salesLegend" class="legend-overlay"></div>
+
+  <div id="permitLegend" class="legend-overlay"></div>
 </div>
 
 
@@ -267,7 +266,7 @@
       container: 'salesMap',
       style: currentStyle.style,
       center: [-71.0368795, 42.370097],
-      zoom: 15.5,
+      zoom: 14,
       maxPitch: 0,
       maxBounds: bounds
     });
@@ -303,7 +302,7 @@
       container: 'permitMap',
       style: currentPermitStyle.style,
       center: [-71.0368795, 42.370097],
-      zoom: 15.5,
+      zoom: 14,
       maxPitch: 0,
       maxBounds: bounds
     });
