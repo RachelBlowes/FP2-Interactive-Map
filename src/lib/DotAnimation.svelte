@@ -139,7 +139,7 @@ let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300
     <div class="leftcircle" style="width: {calculateLeftRadius()}px; height: {calculateLeftRadius()}px;"></div>
   </div>
 
-  <div class="rightcircle-container">
+  <div class="rightcircle-container" >
     <div class="rightcircle" style="width: {calculateRightRadius()}px; height: {calculateRightRadius()}px;"></div>
   </div>
 </div>

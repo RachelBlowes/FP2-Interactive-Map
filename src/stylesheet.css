@@ -120,7 +120,7 @@ p {
     flex: 1; 
     max-width: 50%; 
     padding: 20px;   
-    background-color: #f5f3ed ;
+    background-color: #f5f3ed9e ;
     margin: 50px;
     opacity: 0.9;  
   }
@@ -237,7 +237,7 @@ img .collage #gallery{
   }
   
   #animation-div {
-    background-color: #f5f3ed ;
+    background-color: #f5f3eda0 ;
     margin: 50px;
     opacity: 0.8;
   }
