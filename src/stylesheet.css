@@ -145,6 +145,13 @@ p {
     text-align: center;
   }
 
+  div.middle{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5em;
+  }
+
   #divline {
     background-color: whitesmoke;
     width: 2px;
@@ -216,6 +223,11 @@ img .collage #gallery{
     display: flex;
     justify-content: center;
     margin-top: 10px;
+}
+
+.share-button {
+  margin: 2px;
+  display: inline-block;
 }
 
   #list-text {
