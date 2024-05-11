@@ -2,9 +2,8 @@
     import CaseStudies from './CaseStudy.json';
 
   // Define variables for selecting current study case
-    let currentCaseStudyIndex = 1;
+    let currentCaseStudyIndex = 0;
     let currentCaseStudy = CaseStudies[currentCaseStudyIndex];
-    console.log(currentCaseStudy);
     
   // Function to toggle between study cases
   function toggleCaseStudy(index) {
@@ -23,14 +22,14 @@
   }
 
 //CaseStudy variables that needed transormation
-    const sale1_price_format = formatCurrency(currentCaseStudy.sales[0].sale_price);
-    const sale2_price_format = formatCurrency(currentCaseStudy.sales[1].sale_price);
-    const sale3_price_format = formatCurrency(currentCaseStudy.sales[2]?.sale_price);
-    const sale4_price_format = formatCurrency(currentCaseStudy.sales[3]?.sale_price);
-    const permit1_price_format = formatCurrency(currentCaseStudy.permits[0].valuation + currentCaseStudy.permits[0].fees);
-    const permit2_price_format = formatCurrency(currentCaseStudy.permits[1]?.valuation + currentCaseStudy.permits[1]?.fees);
-    const permit3_price_format = formatCurrency(currentCaseStudy.permits[2]?.valuation + currentCaseStudy.permits[2]?.fees);
-    const intial_investment = formatCurrency(currentCaseStudy.sales[0].sale_price + currentCaseStudy.permits[0].valuation + currentCaseStudy.permits[0].fees);
+    $: sale1_price_format = formatCurrency(currentCaseStudy.sales[0].sale_price);
+    $: sale2_price_format = formatCurrency(currentCaseStudy.sales[1].sale_price);
+    $: sale3_price_format = formatCurrency(currentCaseStudy.sales[2]?.sale_price);
+    $: sale4_price_format = formatCurrency(currentCaseStudy.sales[3]?.sale_price);
+    $: permit1_price_format = formatCurrency(currentCaseStudy.permits[0].valuation + currentCaseStudy.permits[0].fees);
+    $: permit2_price_format = formatCurrency(currentCaseStudy.permits[1].valuation);
+    $: permit3_price_format = formatCurrency(currentCaseStudy.permits[2]?.valuation + currentCaseStudy.permits[2]?.fees);
+    $: intial_investment = formatCurrency(currentCaseStudy.sales[0].sale_price + currentCaseStudy.permits[0].valuation + currentCaseStudy.permits[0].fees);
 
   </script>
 
@@ -42,7 +41,7 @@
 
 <!-- Toggle buttons for different study cases -->
 {#each CaseStudies as CaseStudy, index}
-  <button on:click={() => toggleCaseStudy(index)}>Study Case {index + 1}</button>
+  <button on:click={() => toggleCaseStudy(index)}>CaseStudy {index + 1}</button>
 {/each}
 
 {#if currentCaseStudy}
@@ -142,7 +141,7 @@
   }
   .GSV{
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
   }
 
   </style>
