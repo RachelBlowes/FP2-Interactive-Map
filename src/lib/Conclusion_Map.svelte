@@ -236,4 +236,6 @@
  
   </script>
 
+<div style="height: 30px;"></div>
+
 <ZipRenterBarChart mapData = {$mapData} />
