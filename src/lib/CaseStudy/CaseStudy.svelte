@@ -67,6 +67,7 @@
           <h1 id="example_header" style="color: Black; text-align: left;">{currentCaseStudy.address}</h1>
           <p id="example_typology_header" style="text-align: left"><strong style="color: var(--pink)">What?</strong> {currentCaseStudy.usage}</p>
           <p id="example_typology_header" style="text-align: left"><strong style="color: var(--pink)">Who?</strong> {currentCaseStudy.investor}</p>
+          <p id="example_typology_header" style="text-align: left"><strong style="color: var(--pink)">Where?</strong> {currentCaseStudy.neighborhood}</p>
 
           <p id="paragraph_sale1">An {currentCaseStudy.investor} bought {currentCaseStudy.address} in {currentCaseStudy.sales[0].sale_date} for <strong id="fiscaltitle">{sale1_price_format}.</strong></p>
           <br>

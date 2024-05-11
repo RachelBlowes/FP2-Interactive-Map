@@ -190,7 +190,7 @@
               {
                   "GSV_before": [
                       {
-                          "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/park_2017_aerial.png",
+                          "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/park_2017_aerial.png?raw=true",
                           "captcha": "Google Earth, 2017"
                       }
                   ],
@@ -204,6 +204,10 @@
                       {
                           "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/plans.png?raw=true",
                           "class": "arch_plan"
+                      },
+                      {
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/Park/dormers.png?raw=true",
+                            "class": "arch_plan"
                       }
                   ],
                   "interior": [
