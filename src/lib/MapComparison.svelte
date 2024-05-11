@@ -109,28 +109,28 @@
     <svg class="legendsvg">
       <text x="10" y="25" font-family="Arial" font-size="12" fill="black">Legend: Sales Price per Square Meter</text>
       <defs>
-        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:#aacfb7;stop-opacity:1" />
           <stop offset="100%" style="stop-color:#26402f;stop-opacity:1" />
         </linearGradient>
       </defs>
-      <rect width="200" height="20" x="10" y="35" fill="url(#grad)" />
+      <rect width="200" height="20" x="10" y="35" fill="url(#grad1)" />
       <text x="5" y="70" font-family="Arial" font-size="12" fill="black">$1</text>
       <text x="180" y="70" font-family="Arial" font-size="12" fill="black">$445,455</text>
      </svg>
   </div>
   <div class="legend">
     <svg class="legendsvg">
-      <text x="10" y="25" font-family="Arial" font-size="12" fill="black">Legend: Sales Price per Square Meter</text>
+      <text x="10" y="25" font-family="Arial" font-size="12" fill="black">Legend: Permit Valuation per Square Meter</text>
       <defs>
-        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#aacfb7;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#26402f;stop-opacity:1" />
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#a6ceed;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#00518f;stop-opacity:1" />
         </linearGradient>
       </defs>
-      <rect width="200" height="20" x="10" y="35" fill="url(#grad)" />
+      <rect width="200" height="20" x="10" y="35" fill="url(#grad2)" />
       <text x="5" y="70" font-family="Arial" font-size="12" fill="black">$1</text>
-      <text x="180" y="70" font-family="Arial" font-size="12" fill="black">$445,455</text>
+      <text x="180" y="70" font-family="Arial" font-size="12" fill="black">$15,925</text>
      </svg>
   </div>
 </div>
