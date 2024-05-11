@@ -237,9 +237,6 @@
 </script>
 
 <style>
-    .custom-slider {
-      width: 940px;
-    }
     .legend text {
       font-size: 12px;
       font-family: Arial, sans-serif;

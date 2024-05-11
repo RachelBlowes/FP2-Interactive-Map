@@ -138,27 +138,8 @@
 <h2>Shifting Trends in Investment Behavior</h2>
 <TimeSliderMaps class="component"/>
 
-<!-- WHO? -->
-<div class="divided">
-  <div class="dividedtitle">
-    <h5>Who is building?</h5>
-  </div>
-  <div id="divline"></div>
-  <div class="dividedtitle">
-    <h5>Who is buying?</h5>
-  </div>
-</div>
-
-<div class="divided">
-  <div class="dividedchart">
-    <Owner_linegraph />
-  </div>
-  <div id="divline"></div>
-  <div class="dividedchart">
-    <OwnerLinegraphSales />
-  </div>
-</div>
- 
+<TimeseriesLinegraphs />
+<!-- <OwnerLinegraphSales /> -->
 
 <div style="height: 300px;"></div>
 
@@ -183,15 +164,6 @@
     </section>      
 </div>
 </Scroller>
-
-<!-- <h3> Corporate investors are investing heavily in the construction and renovation of single-family units, 
-  which are more profitable. </h3>
-
-<div style="height: 40px;"></div>
-
-<h3> Properties owned by corporate owners are more likely to be flipped. </h3>
-
-<div style="height: 40px;"></div> -->
  
 <!-- WHERE? ------------------------------------------------------------------->
 <h2> What are the spatial patterns of investment around Boston?  </h2>
@@ -199,23 +171,6 @@
 <div style="height: 40px;"></div>
 
 <Census_Maps class="component"/>
-
-
-
-<!-- <div style="height: 100px;"></div>
-
-  <div class="divided">
-    <div class="dividedtitle">
-      <h5>Where are we building?</h5>
-      <CensusBarChart />
-    </div>
-    <div id="divline"></div>
-    <div class="dividedtitle">
-      <h5>Where are we buying?</h5>
-      <CensusBarChartFiscal />
-    </div>
-  </div>
-  <p>Hover over the bars to see more information. </p> -->
 
 <div style="height: 40px;"></div>
 
@@ -296,20 +251,11 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   //WordCloud
   import WordCloud from '$lib/WordCloud.svelte';
 
-  //Owner Linegraph
-    import Owner_linegraph from '$lib/Owner_linegraph.svelte';
-
-  //Owner Linegraph Sales
-    import OwnerLinegraphSales from '$lib/Owner_linegraph_sales.svelte';
-
+  //Owner linegraphs
+  import TimeseriesLinegraphs from '$lib/Timeseries_Linegraphs.svelte';
+  
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
-
-    //bar chart fiscal
-    import CensusBarChart from '$lib/CensusBarChart.svelte';
-
-     //bar chart
-    import CensusBarChartFiscal from '$lib/CensusBarChartFiscal.svelte';
 
     //Census_Maps
     import Census_Maps from '$lib/Census_Maps.svelte';
@@ -321,12 +267,8 @@ whereas building permits are more infrequent for the lowest-income and highest-i
     import PermitSalesDiffLineGraph from '$lib/PermitSalesDiffLineGraph.svelte';
 
      //Conclusion_Map
- import Conclusion_Map from '$lib/Conclusion_Map.svelte';
+   import Conclusion_Map from '$lib/Conclusion_Map.svelte';
 
-
-
-     //zip bar chart
-     import ZipRenterBarChart from '$lib/zipRenterBarChart.svelte';
 
      //CaseStudy
      import CaseStudy from '$lib/CaseStudy/CaseStudy.svelte';
