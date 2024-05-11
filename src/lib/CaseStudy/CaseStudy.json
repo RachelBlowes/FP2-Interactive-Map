@@ -1,37 +1,161 @@
 [
     {
       "address": "11 Joseph St",
+      "usage": " 2 Family Residential House",
+      "investor": "private investor",
       "sales": [
-        {
+            {
             "sale_date": "July 2015",
             "sale_price": 238000
-        }
-      ],
-      "investments": [
-        {
-          "description": "Vinyl sidings installation",
-          "cost": 12975
-        },
-        {
-          "description": "Front porch repair",
-          "cost": 5000
-        }
-      ]
+            },
+            {
+                "sale_date": "August 2015",
+                "sale_price": 425000,
+                "time_dif": "A year",
+                "description": "the renovated first floor as a standalone dwelling unit"
+            },
+            {
+                "sale_date": "March 2017",
+                "sale_price": 727000,
+                "description": "the apartment on the second floor"
+            },
+            {
+                "sale_date": "Dec 2018",
+                "sale_price": 144641,
+                "description": "the third floor as a studio flat",
+                "conversion_from": "The last sale also converted the property from a two-family residential housing to",
+                "conversion_to": "a three-family residential housing."
+            }
+        ],
+      "permits": [
+            {
+            "description": "installing vinyl sidings on the entire exterior, repairing the front porch, and re-issuing a gas permit",
+            "valuation": 12975,
+            "fees": 0
+            },
+            {
+            "description": "a Face-Lift for the second and third floors: retiling the 2 bathrooms on both floors, replacing kitchen cabinets, replacing interior doors, and painting",
+            "valuation": 17700,
+            "fees": 0
+            },
+            {
+            "description":"in upgrading the electricity infrastructure and adding 1 public meter, as well as replacing 3 windows.",
+            "valuation": 7187,
+            "fees": 0,
+            "time_dif": "Between the 2nd and the 3rd sales, they also invested"
+            }
+        ],
+        "pics": [
+            {
+                "GSV_before": [
+                    {
+                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/11Joseph_2014.png?raw=true",
+                        "captcha": "Google Street View, 2014"
+                    }
+                ],
+                "GSV_after": [
+                    {
+                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/11Joseph_2019.png?raw=true",
+                        "captcha": "Google Street View, 2019"
+                    }
+                ],
+                "archPlan": [
+                    {
+                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/1st.png?raw=true"
+                    },
+                    {
+                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/3rd.png?raw=true"
+                    }
+                ],
+                "interior": [
+                    {
+                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details_kitchen2.jpeg?raw=true",
+                        "captcha": "REDFIN Real Estate"
+                    },
+                    {
+                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details.jpeg?raw=true",
+                        "captcha": "REDFIN Real Estate"
+                    },
+                    {
+                        "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details_bathroom.jpeg?raw=true"
+                    }
+                ]
+            }
+        ],
+        "overview": [
+            {
+                "timeframe": "less then 4 years",
+                "profit": "Over $1MM"
+            }
+        ]
+        
     },
     {
-      "address": "123 Main St",
-      "sale_date": "June 2016",
-      "sale_price": 320000,
-      "investments": [
-        {
-          "description": "Roof replacement",
-          "cost": 15000
-        },
-        {
-          "description": "Kitchen renovation",
-          "cost": 20000
-        }
-      ]
+          "address": "86 Marlborough St #9",
+          "usage": " Condominum",
+          "investor": "Small LLC",
+          "sales": [
+                {
+                "sale_date": "May 2018",
+                "sale_price": 1313000
+                },
+                {
+                    "sale_date": "April 2020",
+                    "sale_price": 1805000,
+                    "time_dif": "Less then 2 years",
+                    "description": "the renovated condominum"
+                }
+            ],
+          "permits": [
+                {
+                "description": "installing new flooring and appliances, painting, rewiring, change inner layout and plaster, non structural framing, new plumbing fixtures, electrical fixtures, hvac altrations, a new kitchen, 4 line voltage, and fire protection",
+                "valuation": 164029,
+                "fees": 1838
+                }
+            ],
+            "pics": [
+                {
+                    "GSV_before": [
+                        {
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/src/lib/CaseStudy/86_marlborough/gsv_2019.png?raw=true",
+                            "captcha": "Google Street View, 2019"
+                        }
+                    ],
+                    "GSV_after": [
+                        {
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/86_marlborough/gsv_2020.png?raw=true",
+                            "captcha": "Renovation (Google Street View, 2020)"
+                        }
+                    ],
+                    "archPlan": [
+                        {
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/src/lib/CaseStudy/86_marlborough/interior_before.webp?raw=true"
+                        },
+                        {
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/3rd.png?raw=true"
+                        }
+                    ],
+                    "interior": [
+                        {
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details_kitchen2.jpeg?raw=true",
+                            "captcha": "REDFIN Real Estate"
+                        },
+                        {
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details.jpeg?raw=true",
+                            "captcha": "REDFIN Real Estate"
+                        },
+                        {
+                            "src": "https://github.com/RachelBlowes/FP2-Interactive-Map/blob/main/src/lib/CaseStudy/11_JosephSt/reno_img/2017details_bathroom.jpeg?raw=true"
+                        }
+                    ]
+                }
+            ],
+            "overview": [
+                {
+                    "timeframe": "less then 2 years",
+                    "profit": "Over $326K"
+                }
+            ]
+            
     }
-  ]
-  
+]

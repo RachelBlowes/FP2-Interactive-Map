@@ -1,11 +1,12 @@
 html {
     color: canvastext;
     background-color:hsla(45, 37%, 67%, 0.16) ;
-    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-y: scroll; Enable vertical scrolling
 }
 
 :root {
   --textCloud-color: #BBB4B1; /* Define the variable for text color */
+  --pink: #F6517A;
 }
 
 body {
