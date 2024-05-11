@@ -81,7 +81,7 @@
   #legendcontainer {
   width: 100%; /* Width of the outside container */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-around;  
 }
 
 .legend {
@@ -93,7 +93,7 @@
 
 .legendsvg {
   flex: 1;
-
+  
 }
 
 
