@@ -117,7 +117,7 @@
       .attr("y", -60)
       .attr("dy", ".9em")
       .attr("transform", "rotate(-90)")
-      .text("Value ($)");
+      .text("Number of investors");
 
     // Initialize focus and focusText elements
     focus = svg.append('g')
@@ -189,7 +189,7 @@
         .attr("cy", y(closestValue));
 
       focusText
-        .html(`Year: ${closestData.Year.getFullYear()} - Value: ${closestValue}`)
+        .html(`Year: ${closestData.Year.getFullYear()} - Count: ${closestValue.toLocaleString()}`)
         .attr("x", x(closestData.Year) + 15)
         .attr("y", y(closestValue));
     }
@@ -292,7 +292,7 @@
   <div class="controls-container">
       <!-- Time slider -->
       <div id="slider-container-sales">
-          <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:change={() => updateChart(selectedYear)} />
+          <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:input={() => updateChart(selectedYear)} />
       </div>
       <!-- Legend container -->
       <div id="legend-container-sales"></div>

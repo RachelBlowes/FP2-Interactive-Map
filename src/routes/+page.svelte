@@ -279,8 +279,6 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
 <Conclusion_Map />
 
-<ZipRenterBarChart /> 
-
 <script>
 
   //Comparison Maps

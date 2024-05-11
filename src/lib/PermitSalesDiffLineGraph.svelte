@@ -173,7 +173,7 @@
           .attr("cy", y(closestValue));
   
         focusText
-          .html(`Year: ${closestData.Year.getFullYear()} - Median Price Difference: ${closestValue} $`)
+          .html(`Year: ${closestData.Year.getFullYear()} - Median Price Difference: $${closestValue.toLocaleString()}`)
           .attr("x", x(closestData.Year) + 15)
           .attr("y", y(closestValue));
       }
@@ -326,7 +326,7 @@
         <!-- Time slider -->
         <div id="slider-container-permit">
             <label id="timesliderlabel" for="timeSlider">Filter by Year:</label>
-            <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" id="timeSlider" on:change={() => updateChart(selectedYear)} />
+            <input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" id="timeSlider" on:input={() => updateChart(selectedYear)} />
             <time id="selectedTime" style="display: block;">{selectedYear}</time>
         </div>
         <!-- Legend container -->

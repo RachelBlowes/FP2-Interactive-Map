@@ -291,7 +291,7 @@ function render(csvData) {
 
 <!-- Time slider -->
 <div class="slider-container">
-<input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:change={() => updateChart(selectedYear)} />
+<input type="range" bind:value="{selectedYear}" min="2010" max="2022" step="1" class="custom-slider" on:input={() => updateChart(selectedYear)} />
 </div>
 <!-- Legend container -->
 <div id="legend-container"></div>
