@@ -58,6 +58,9 @@
   
       // Create SVG element
       svg = d3.select("#slider_line_graph_permit")
+        .selectAll("svg")
+        .data([null])
+        .enter()
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -66,11 +69,13 @@
   
       // Add X axis
       svg.append("g")
+        .attr("class", "x-axis")  
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
   
       // Add Y axis
       svg.append("g")
+        .attr("class", "y-axis")
         .call(d3.axisLeft(y));
   
       // Add lines
@@ -109,7 +114,6 @@
         .append('circle')
         .style("fill", "#F6517A")
         .style('opacity', 0)
-        // .attr("stroke", "black")
         .attr('r', 5)
   
       focusText = svg.append('g')
@@ -167,6 +171,10 @@
           let closestDistance = Math.abs(closest - y.invert(d3.pointer(event)[1]));
           return currentDistance < closestDistance ? currentValue : closest;
         }, closestData[keys[0]]);
+
+      let textWidth = focusText.node().getComputedTextLength();
+      let textX = x(closestData.Year) + 15;
+      let overflowRight = textX + textWidth > width + margin.left;
   
         focus
           .attr("cx", x(closestData.Year))
@@ -174,7 +182,7 @@
   
         focusText
           .html(`Year: ${closestData.Year.getFullYear()} - Median Price Difference: $${closestValue.toLocaleString()}`)
-          .attr("x", x(closestData.Year) + 15)
+          .attr("x", overflowRight ? x(closestData.Year) - textWidth - 15 : textX)
           .attr("y", y(closestValue));
       }
     }
@@ -221,6 +229,11 @@
       // Update the domain of the x-axis and y-axis
       x.domain([d3.min(filteredData, d => d.Year), x.domain()[1]]);
       y.domain([0, d3.max(filteredData, d => Math.max(d.Permit, d.NoPermit))]);
+
+      svg.select(".y-axis")
+      .transition()
+      .duration(1000)
+      .call(d3.axisLeft(y));
   
       // Update the lines on the graph
       ["Permit", "NoPermit"].forEach((value, index) => {

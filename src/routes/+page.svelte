@@ -227,7 +227,8 @@ whereas building permits are more infrequent for the lowest-income and highest-i
   <h5>Move the slider to see this trend change over time…</h5>
 </section>
 
-<h2>Median profit (price diff - permit valuation - permit fees) for residential properties</h2>
+<h2>Median profit for residential properties 2010-2022</h2>
+<h5>(Sale profit - permit valuation - permit fees. Adjusted for 2022 dollars)</h5>
 <PermitSalesDiffLineGraph />
 
 <div style="height: 80px;"></div>
@@ -253,7 +254,7 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
   //Owner linegraphs
   import TimeseriesLinegraphs from '$lib/Timeseries_Linegraphs.svelte';
-  
+
     import Scroller from "@sveltejs/svelte-scroller";
     let index, offset, progress;
 
