@@ -235,6 +235,24 @@ whereas building permits are more infrequent for the lowest-income and highest-i
 
 <Conclusion_Map />
 
+<br>
+
+
+
+<div class="middle">
+  <div style="margin-top: -6em;">
+    <h2 id="share">Share Here! </h2>
+  </div>
+    <Email class="share-button" subject="{title}" body="{desc} {url}" />
+    <Reddit class="share-button" {title} {url} />
+    <LinkedIn class="share-button" {url} {title} />
+    <Tumblr class="share-button" {title} {url} caption="{title}" />
+    <WhatsApp class="share-button" text="{title} {url}" />
+    <Facebook class="share-button" quote="{title}" {url} />
+    <X class="share-button" text="{title}" {url} hashtags="Boston,urban, data, Data Viz, housing, permits, renovation, speculation, market" via="username" related="other,users" />
+</div>
+
+
 <script>
 
   //Comparison Maps
@@ -274,6 +292,13 @@ whereas building permits are more infrequent for the lowest-income and highest-i
      //CaseStudy
      import CaseStudy from '$lib/CaseStudy/CaseStudy.svelte';
 
+     //share buttons
+      import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, Tumblr, Vk, WhatsApp, Xing, Facebook, X, Line } from 'svelte-share-buttons-component';
+
+      const url = 'https://rachelblowes.github.io/FP2-Interactive-Map/';
+      const title = 'Speculation vs. Renovation';
+      const desc = 'Mapping speculative investment in Boston’s housing market using data on renovation, construction, and sales';
+
 </script>
 
 <style>
@@ -288,10 +313,25 @@ whereas building permits are more infrequent for the lowest-income and highest-i
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
   }
 
+  #share{
+    background-color: var(--pink);
+    width: 120px;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    color: white;
+    transform: rotate(-30deg);
+    float:left;
+    margin-left: 20em;
+    z-index: 5;
+  }
+
   .GSV{
     width: 100%;
   }
-
 
   .cover_subtitle {
     position: absolute;

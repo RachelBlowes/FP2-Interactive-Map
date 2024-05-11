@@ -4,18 +4,11 @@
     justify-content: space-around;
     margin-bottom: 10px;
   }
-  .toggleButton {
-    background-color: #c7c7c7;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px; /* Add some space between the buttons */
-  }
+
 
   .toggleButton:hover {
-    background-color: #aeaeae;
+    background-color: #BBB4B1;
+    color: white;
   }
   
     #profitMap {
@@ -71,8 +64,8 @@
   
   <div id="optionsContainer">
 
-      <button class="toggleButton" on:click|preventDefault={() => setStyle(styles[0])}>2010 Profit</button>
-      <button class="toggleButton" on:click|preventDefault={() => setStyle(styles[1])}>2022 Profit</button>
+      <button class:active={currentStyle.name === '2010 Profit'} on:click|preventDefault={() => setStyle(styles[0])}>2010 Profit</button>
+      <button class:active={currentStyle.name === '2022 Profit'} on:click|preventDefault={() => setStyle(styles[1])}>2022 Profit</button>
 
     
 
