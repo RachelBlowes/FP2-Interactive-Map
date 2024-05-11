@@ -18,7 +18,7 @@
     const data = writable([]);
 
     var margin = {top: 30, right: 0, bottom: 80, left: 90},
-            width = 1200 - margin.left - margin.right,
+            width = 1000 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
     // Declare colorScale globally
@@ -165,7 +165,7 @@ $: {
     svg.append("text")
         .attr("text-anchor", "end")
         .attr("x", width)
-        .attr("y", height + margin.top + 0)
+        .attr("y", height + margin.top + 10)
         .text("Zipcode");
 
     // Y axis label:
