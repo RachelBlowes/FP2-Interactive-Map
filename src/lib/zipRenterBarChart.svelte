@@ -5,8 +5,8 @@
     import * as d3 from 'd3';
 
     export let mapData; // Accept mapData as a prop
-    console.log("Received mapData in bar graph component:", mapData);
-    console.log("Year is:", mapData.selectedStyle)
+    // console.log("Received mapData in bar graph component:", mapData);
+    // console.log("Year is:", mapData.selectedStyle)
 
     // Initialize data to null
     let previousHoveredZip = null;
@@ -17,8 +17,8 @@
     // Declare reactive variable to hold the data
     const data = writable([]);
 
-    var margin = {top: 30, right: 0, bottom: 80, left: 60},
-            width = 1000 - margin.left - margin.right,
+    var margin = {top: 30, right: 0, bottom: 80, left: 90},
+            width = 1200 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
     // Declare colorScale globally
@@ -27,7 +27,7 @@
     // Watch for changes in hoveredZip and log it
     $: {
         if (mapData && mapData.hoveredZip !== undefined && mapData.hoveredZip !== previousHoveredZip) {
-            console.log("Hovered Zip:", mapData.hoveredZip);
+            // console.log("Hovered Zip:", mapData.hoveredZip);
             previousHoveredZip = mapData.hoveredZip;
             // Call a function to update the chart when hoveredZip changes
             updateChartColors();
@@ -38,11 +38,11 @@
 $: {
     if (mapData.selectedStyle !== previousSelectedStyle){
         if (mapData && mapData.selectedStyle === 2010 && data2010 && mapData.selectedStyle) {
-            console.log("child component: 2010 selected")
+            // console.log("child component: 2010 selected")
             createChart(data2010, width, height);
             previousSelectedStyle = mapData.selectedStyle;
         } else if (mapData && mapData.selectedStyle === 2022 && data2022) {
-            console.log("child component: 2022 selected")
+            // console.log("child component: 2022 selected")
             createChart(data2022, width, height);
             previousSelectedStyle = mapData.selectedStyle;
         }
@@ -71,7 +71,7 @@ $: {
         data2022 = await fetchData('https://raw.githubusercontent.com/RachelBlowes/Geodata/main/permit_sales_analysis/zipcode_pricediff_2022.csv');
     });
 
-function createChart(data, width, height) {
+    function createChart(data, width, height) {
     // Define color scale
     var colorScale = d3.scaleLinear()
         .domain([d3.min(data, function(d) { return +d['% renter']; }), d3.max(data, function(d) { return +d['% renter']; })])
@@ -113,22 +113,18 @@ function createChart(data, width, height) {
         .domain([0, d3.max(data, function(d) { return +d['Median Profit']; })])
         .range([height, 0]);
     svg.append("g")
-        .call(d3.axisLeft(y));
-    svg.selectAll("mybar")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("class", "mybar") // Add the class here
-        .attr("x", function(d) { return x(d['Zip Code']); })
-        .attr("y", height) // Set initial y position to the bottom of the chart
-        .attr("width", x.bandwidth())
-        .attr("height", 0) // Set initial height to 0
-        .style("fill", "url(#gradient)") // Apply gradient fill
-        .transition() // Apply transition to animate bars
-        .duration(800)
-        .attr("y", function(d) { return y(+d['Median Profit']); })
-        .attr("height", function(d) { return height - y(+d['Median Profit']); })
-        .delay(function(d, i) { return i * 100; }); // Delay animation for each bar
+        .call(d3.axisLeft(y))
+        .attr("class", "y-axis"); // Add class for the y-axis
+
+    // Update Y axis label if needed
+    svg.select(".y-axis-label").remove(); // Remove existing label
+    svg.append("text")
+        .attr("class", "y-axis-label")
+        .attr("text-anchor", "end")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left + 20)
+        .attr("x", -margin.top)
+        .text("Median Profit ($)");
 
     // Bars
     svg.selectAll("mybar")
@@ -164,7 +160,6 @@ function createChart(data, width, height) {
         .attr("y", function(d) { return y(+d['Median Profit']); })
         .attr("height", function(d) { return height - y(+d['Median Profit']); })
         .delay(function(d, i) { return i * 10; }); // Delay animation for each bar
-
 
     // Add X axis label:
     svg.append("text")
