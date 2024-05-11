@@ -121,7 +121,7 @@
 
     bisect = d3.bisector(d => d.Year).left;
 
-    createLegend(svg);
+    // createLegend(svg);
   }
 
   function mouseover() {

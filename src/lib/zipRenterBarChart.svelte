@@ -5,10 +5,24 @@
     import * as d3 from 'd3';
 
     export let mapData; // Accept mapData as a prop
-    console.log("Received mapData in Component B:", mapData);
+    console.log("Received mapData in bar graph component:", mapData);
+    console.log("Year is:", mapData.selectedStyle)
 
-    // Initialize previousHoveredZip to null
+    // Initialize data to null
     let previousHoveredZip = null;
+    let previousSelectedStyle = null;
+    let data2010 = null;
+    let data2022 = null;
+
+    // Declare reactive variable to hold the data
+    const data = writable([]);
+
+    var margin = {top: 30, right: 0, bottom: 80, left: 60},
+            width = 1000 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
+
+    // Declare colorScale globally
+    var colorScale;
 
     // Watch for changes in hoveredZip and log it
     $: {
@@ -20,15 +34,60 @@
         }
     }
 
-    function createChart(data, width, height) {
-    // Create SVG element
-    var svg = d3.select("#my_dataviz")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+    // Watch for changes in selectedStyle and update the chart accordingly
+$: {
+    if (mapData.selectedStyle !== previousSelectedStyle){
+        if (mapData && mapData.selectedStyle === 2010 && data2010 && mapData.selectedStyle) {
+            console.log("child component: 2010 selected")
+            createChart(data2010, width, height);
+            previousSelectedStyle = mapData.selectedStyle;
+        } else if (mapData && mapData.selectedStyle === 2022 && data2022) {
+            console.log("child component: 2022 selected")
+            createChart(data2022, width, height);
+            previousSelectedStyle = mapData.selectedStyle;
+        }
+    }
+}
+
+    // Fetch data for both styles on component mount
+    onMount(async () => {
+        const fetchData = async (url) => {
+            const response = await fetch(url);
+            const text = await response.text();
+            const rows = text.trim().split('\n').map(row => row.split(','));
+            const headers = rows.shift();
+            return rows.map(row => {
+                const obj = {};
+                headers.forEach((header, i) => {
+                    obj[header.trim()] = row[i].trim();
+                });
+                return obj;
+            });
+        };
+
+        // Fetch data for 2010
+        data2010 = await fetchData('https://raw.githubusercontent.com/RachelBlowes/Geodata/main/permit_sales_analysis/zipcode_pricediff_2010.csv');
+        // Fetch data for 2022
+        data2022 = await fetchData('https://raw.githubusercontent.com/RachelBlowes/Geodata/main/permit_sales_analysis/zipcode_pricediff_2022.csv');
+    });
+
+function createChart(data, width, height) {
+    // Define color scale
+    var colorScale = d3.scaleLinear()
+        .domain([d3.min(data, function(d) { return +d['% renter']; }), d3.max(data, function(d) { return +d['% renter']; })])
+        .range(["#f2f2f2", "#595959"]);
+    // Select the existing SVG element or append a new one
+    var svg = d3.select("#my_dataviz svg");
+    if (svg.empty()) {
+        svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    } else {
+        svg.selectAll("*").remove(); // Remove existing content
+    }
 
     // X axis
     var x = d3.scaleBand()
@@ -142,11 +201,11 @@
     // Add gradient stops
     linearGradient.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "#78B48C");
+        .attr("stop-color", "#f2f2f2");
 
     linearGradient.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "#FC96B3");
+        .attr("stop-color", "#595959");
 
     // Add legend rectangle
     legend.append("rect")
@@ -171,9 +230,6 @@
 }
 
 function updateChartColors() {
-    // Convert hoveredZip to a string
-    // const hoveredZipString = mapData.hoveredZip.toString();
-
     // Select all bars and update their color based on hoveredZip
     d3.selectAll("rect.mybar")
         .style("fill", function(d) {
@@ -189,62 +245,6 @@ function updateChartColors() {
             }
         });
 }
-
-// Declare reactive variable to hold the data
-const data = writable([]);
-
-var margin = {top: 30, right: 30, bottom: 80, left: 60},
-        width = 1000 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
-
-// Declare colorScale globally
-var colorScale;
-var tooltip;
-
-// Fetch data on component mount
-onMount(async () => {
-    // Fetch CSV data
-    const response = await fetch('https://raw.githubusercontent.com/RachelBlowes/Geodata/main/permit_sales_analysis/zipcode_pricediff_2022.csv');
-    const text = await response.text();
-
-    // Parse CSV data
-    const rows = text.trim().split('\n').map(row => row.split(','));
-    const headers = rows.shift();
-    const newData = rows.map(row => {
-        const obj = {};
-        headers.forEach((header, i) => {
-            obj[header.trim()] = row[i].trim();
-        });
-        return obj;
-    });
-
-    // Sort data by % renter
-    newData.sort((a, b) => +a['% renter'] - +b['% renter']);
-
-    // Update data store
-    data.set(newData);
-
-    // Calculate color scale domain
-    colorScale = d3.scaleLinear()
-        .domain([d3.min(newData, function(d) { return +d['% renter']; }), d3.max(newData, function(d) { return +d['% renter']; })])
-        .range(["#78B48C", "#FC96B3"]);
-
-    // Define tooltip, hoverColor, and staticColor
-    tooltip = d3.select("body")
-    .append("div")
-    .attr("id", "tooltip")
-    .style("position", "absolute")
-    .style("visibility", "hidden")
-    .style("background-color", "white")
-    .style("border", "1px solid black")
-    .style("border-radius", "5px")
-    .style("padding", "10px")
-    .style("font-family", "sans-serif")
-    .style("font-size", "12px");
-    
-    // Call createChart function when data is loaded
-    if (newData.length > 0) createChart(newData, width, height);
-});
 
 </script>
 
