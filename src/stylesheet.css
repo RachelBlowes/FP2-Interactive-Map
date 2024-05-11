@@ -13,7 +13,7 @@ body {
     font: 100%/1.5 system-ui, sans-serif;
     max-width: min(120ch, 80vw);
     margin-inline: max(1em, (100% - 120ch) / 2);
-	align-items: center; /* Center vertically */
+	  align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
 }
 
