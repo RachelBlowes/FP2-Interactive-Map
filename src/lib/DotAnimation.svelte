@@ -61,8 +61,17 @@ let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300
   .titlecontainer {
       display: flex;
     width: 100%;
-    height: 100px; /* Set a fixed height for both maps */
-    margin-bottom: 20px; /* Add space between the maps */
+    height: 25px; 
+    margin-bottom: 20px; 
+    justify-content: space-around;
+  }
+
+
+  .disclaimercontainer {
+      display: flex;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px; 
     justify-content: space-around;
   }
 
@@ -142,7 +151,7 @@ let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300
   </div>
 
   <div class="rightcircle-container">
-    <div>{rightCaptions[index]}</div> <!-- Caption for right circle -->
+    <div>{rightCaptions[index]}</div>
   </div>
   </div>
 
@@ -153,7 +162,12 @@ let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300
     <h5>Median sale price</h5>
     <h5> Median permit valuation </h5>
   </div>
-
-
 </div>
 
+
+<div class="disclaimercontainer">
+  <div id="maptitles">
+    <small>*Not to scale</small>
+    <small>*Not to scale </small>
+  </div>
+</div>

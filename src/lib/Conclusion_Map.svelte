@@ -4,44 +4,18 @@
     justify-content: space-around;
     margin-bottom: 10px;
   }
-  
-  .dropbtn {
-    background-color: #4CAF50;
+  .toggleButton {
+    background-color: #c7c7c7;
     color: white;
     padding: 10px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    margin-right: 10px; /* Add some space between the buttons */
   }
-  
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content a:hover {background-color: #f1f1f1}
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+
+  .toggleButton:hover {
+    background-color: #aeaeae;
   }
   
     #profitMap {
@@ -66,19 +40,19 @@
     overflow: auto;
     z-index: 1;
     width: 25%;
-    height: 30%;
+    height: 20%;
   }
   
   
   .legend-overlay {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
-    background: #fff;
     overflow: auto;
     z-index: 1;
     width: 25%;
     height: 15%;
+    font-size: small;
   }
   
   </style>
@@ -90,20 +64,19 @@
         <h2>{profitMapTitle}</h2>
         <div id="pd"><p>Hover over a zipcode!</p></div>
       </div>
-      <div class="legend-overlay" id="profitLegend"></div> <!-- Add an ID for sales legend -->
+       <!-- Add an ID for sales legend -->
     </div>
   </div>
   
   
   <div id="optionsContainer">
-    <div class="dropdown">
-      <button class="dropbtn">Profit Map Options</button>
-      <div class="dropdown-content">
-        {#each styles as style}
-          <a href="#" on:click|preventDefault={() => setStyle(style)}>{style.name}</a>
-        {/each}
-      </div>
-    </div>
+
+      <button class="toggleButton" on:click|preventDefault={() => setStyle(styles[0])}>2010 Profit</button>
+      <button class="toggleButton" on:click|preventDefault={() => setStyle(styles[1])}>2022 Profit</button>
+
+    
+
+    <div class="legend-overlay" id="profitLegend"></div>
   </div>
 
   <script>
@@ -242,9 +215,9 @@
   
     // Generate linear gradient legend bars based on style
     if (style.name === '2010 Profit') {
-      profitLegendContent += generateLegendBar(-40000, 1500000, '$', '#eba94c', '#62a779'); // Example range, unit, and colors
+      profitLegendContent += generateLegendBar(-40000, 1500000, '$', '#EE6553', '#62a779'); // Example range, unit, and colors
     } else if (style.name === '2022 Profit') {
-      profitLegendContent += generateLegendBar(-40000, 1500000, '$', '#eba94c', '#62a779'); // Example range, unit, and colors
+      profitLegendContent += generateLegendBar(-40000, 1500000, '$', '#EE6553', '#62a779'); // Example range, unit, and colors
     }
   
     legendElement.innerHTML = profitLegendContent;
