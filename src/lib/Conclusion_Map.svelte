@@ -1,5 +1,3 @@
-
-
 <style>
   #optionsContainer {
     display: flex;
@@ -7,6 +5,44 @@
     margin-bottom: 10px;
   }
   
+  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
   
     #profitMap {
       flex: 1;
@@ -59,12 +95,16 @@
   </div>
   
   
-<div id="optionsContainer">
-  <!-- Replace dropdown with buttons -->
-  <button class="year-button" on:click|preventDefault={() => setYear(2010)}>2010</button>
-  <button class="year-button" on:click|preventDefault={() => setYear(2022)}>2022</button>
-</div>
-
+  <div id="optionsContainer">
+    <div class="dropdown">
+      <button class="dropbtn">Profit Map Options</button>
+      <div class="dropdown-content">
+        {#each styles as style}
+          <a href="#" on:click|preventDefault={() => setStyle(style)}>{style.name}</a>
+        {/each}
+      </div>
+    </div>
+  </div>
 
   <script>
  import { onMount } from 'svelte';
@@ -135,12 +175,6 @@
     }
     }
     
-    function setYear(year) {
-    const selectedStyle = styles.find(style => style.year === year);
-    if (selectedStyle) {
-      setStyle(selectedStyle);
-    }
-  }
   
     function loadScript(script) {
       return new Promise((resolve, reject) => {
@@ -231,20 +265,6 @@
     return legendBarHTML;
   }
  
-  function updateButtonClasses() {
-    const buttons = document.querySelectorAll('.year-button');
-    buttons.forEach(button => {
-      const year = parseInt(button.textContent);
-      if (year === currentStyle.year) {
-        button.classList.add('active');
-      } else {
-        button.classList.remove('active');
-      }
-    });
-  }
-
-  updateButtonClasses();
-
   </script>
 
 <ZipRenterBarChart mapData = {$mapData} />
