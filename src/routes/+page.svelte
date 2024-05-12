@@ -189,8 +189,8 @@
 <div style="height: 40px;"></div>
 
 <h3> Building permits show areas with high physical investment - this could be areas with lots of building activity, but also older
-  neighbourhood where few new builds are happening. Across Boston, areas with more renters have less investment in building permits, and the wealthiest
-suburban areas have up to one building permit for every three residents. (Add flipped takeaway)</h3>
+  neighbourhoods where few new builds are happening. Across Boston, areas with more renters have less investment in building permits, and the wealthiest
+suburban areas have up to one building permit for every three residents. Areas with more renters also typically have more flipped properties than low percent-renter areas.</h3>
 
 <div style="height: 40px;"></div>
 

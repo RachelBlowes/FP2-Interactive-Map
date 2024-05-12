@@ -33,7 +33,7 @@
     overflow: auto;
     z-index: 1;
     width: 25%;
-    height: 20%;
+    height: 30%;
   }
   
   
@@ -186,7 +186,7 @@
         featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
 
     } else if (currentStyle.name === '2022 Profit') {
-        const roundedProfit = Math.round(properties.j_m_p_real); // Round the profit to a whole number
+        const roundedProfit = Math.round(properties.profit); // Round the profit to a whole number
         const formattedProfit = roundedProfit.toLocaleString(); // Format the rounded profit using toLocaleString()
         featureInfo = `${currentStyle.name}: $${formattedProfit}<br>`;
         featureInfo += `Zipcode: ${properties.z_real}<br>`;
