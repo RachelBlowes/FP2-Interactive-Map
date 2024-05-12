@@ -61,12 +61,14 @@
     flex: 1;
     width: 50%; /* Adjust the width of each map */
     height: 100%; /* Set a fixed height for each map */
+    position: relative; 
   }
 
   #permitMap {
     flex: 1;
     width: 50%; /* Adjust the width of each map */
     height: 100%; /* Set a fixed height for each map */
+    position: relative; 
   }
 
   #mapcontainer {

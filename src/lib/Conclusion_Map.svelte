@@ -1,5 +1,5 @@
 <style>
-  #optionsContainer {
+  #profitoptionsContainer {
     display: flex;
     justify-content: space-around;
     margin-bottom: 10px;
@@ -13,11 +13,12 @@
   
     #profitMap {
       flex: 1;
-      width: 50%; /* Adjust the width of each map */
-      height: 100%; /* Set a fixed height for each map */
+      width: 50%; 
+      height: 100%; 
+      position: relative; 
     }
   
-    #mapcontainer {
+    #profitmapcontainer {
       display: flex;
       width: 100%;
       height: 400px; /* Set a fixed height for both maps */
@@ -50,19 +51,18 @@
   
   </style>
   
-  <div id="mapcontainer">
+  <div id="profitmapcontainer">
     <div id="profitMap">
       
       <div class="profitmap-overlay" id="features">
         <h2>{profitMapTitle}</h2>
         <div id="pd"><p>Hover over a zipcode!</p></div>
       </div>
-       <!-- Add an ID for sales legend -->
     </div>
   </div>
   
   
-  <div id="optionsContainer">
+  <div id="profitoptionsContainer">
 
       <button class:active={currentStyle.name === '2010 Profit'} on:click|preventDefault={() => setStyle(styles[0])}>2010 Profit</button>
       <button class:active={currentStyle.name === '2022 Profit'} on:click|preventDefault={() => setStyle(styles[1])}>2022 Profit</button>
