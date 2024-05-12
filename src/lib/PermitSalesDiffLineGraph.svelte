@@ -106,7 +106,7 @@
       svg.append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
-        .attr("y", -60)
+        .attr("y", -63)
         .attr("dy", ".9em")
         .attr("transform", "rotate(-90)")
         .text("Median Price Difference ($)");
