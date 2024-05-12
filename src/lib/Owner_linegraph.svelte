@@ -17,10 +17,10 @@
   let x, y, svg, focus, focusText, bisect, data;
 
   const legendData = [
-    { label: 'Corporate', color: '#FC96B3' },
-    { label: 'Individual/Other', color: '#EE6553' },
-    { label: 'Trust', color: '#0087EC' },
-    { label: 'City of Boston', color: '#8D6E63' }
+    { label: 'Corporate', color: 'var(--corporate)' },
+    { label: 'Individual/Other', color: 'var(--individual)' },
+    { label: 'Trust', color: 'var(--trust)' },
+    { label: 'City of Boston', color: 'var(--government)' }
   ];
 
   onMount(() => {
@@ -36,10 +36,10 @@
 
     let filteredData = data.filter(d => d.Year.getFullYear() <= selectedYear);
 
-    const corporate_color = "#FC96B3";
-    const individual_color = "#EE6553";
-    const city_color = "#8D6E63";
-    const trust_color = "#0087EC";
+    const corporate_color = "var(--corporate)";
+    const individual_color = "var(--individual)";
+    const city_color = "var(--government)";
+    const trust_color = "var(--trust)";
 
     x = d3.scaleTime()
       .domain(d3.extent(data, d => d.Year))

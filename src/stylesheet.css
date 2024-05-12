@@ -6,7 +6,14 @@ html {
 
 :root {
   --textCloud-color: #BBB4B1; /* Define the variable for text color */
-  --pink: #F6517A;
+  --pink: #F6517A; /*accent color*/
+  --fiscal: #438b5b;
+  --physical: #0087EC;
+  --corporate: #F6517A;
+  --trust: #FC96B3;
+  --bank: #78B48C;
+  --government: #AB7D7D;
+  --individual: #006094;
 }
 
 body {
@@ -129,11 +136,11 @@ p {
   }
 
   #physicaltitle {
-    color: #0087EC;
+    color: var(--physical);
     font-weight: bold;
   }
   #fiscaltitle {
-    color: #438b5b;
+    color: var(--fiscal);
     font-weight: bold;
   }
 

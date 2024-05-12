@@ -44,7 +44,7 @@
 
     let filteredData = data.filter(d => d.Year.getFullYear() <= selectedYear);
 
-    const colors = ['#FC96B3', '#0087EC', '#F69D2C', '#8D6E63', '#EE6553'];
+    const colors = ['var(--corporate)', 'var(--trust)', 'var(--bank)', 'var(--government)', 'var(--individual)'];
 
     x = d3.scaleTime()
       .domain(d3.extent(data, d => d.Year))

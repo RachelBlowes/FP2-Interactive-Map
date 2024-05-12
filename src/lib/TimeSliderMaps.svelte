@@ -129,10 +129,10 @@
           <circle { ...getCoords(sale) }
               r={radiusScale(sale.saleprice)}
               fill={
-                (sale.buyer_llc_ind === "1" || sale.buyer_llp_ind === "1" || sale.buyer_bus_ind === "1") ? "#FC96B3" :
-                (sale.buyer_trst_ind === "1" ? "#0087EC" :
-                (sale.buyer_bnk_ind === "1" || sale.buyer_gse_ind === "1") ? "#F69D2C" :
-                (sale.buyer_gov_ind === "1" ? "#8D6E63" : "#EE6553"))
+                (sale.buyer_llc_ind === "1" || sale.buyer_llp_ind === "1" || sale.buyer_bus_ind === "1") ? "var(--corporate)" :
+                (sale.buyer_trst_ind === "1" ? "var(--trust)" :
+                (sale.buyer_bnk_ind === "1" || sale.buyer_gse_ind === "1") ? "var(--bank)" :
+                (sale.buyer_gov_ind === "1" ? "var(--government)" : "var(--individual)"))
               }
               fill-opacity="0.7"
               stroke="white"
@@ -151,9 +151,9 @@
           <circle { ...getPermitCoords(permit) }
               r={permitRadiusScale(permit.valuation)}
               fill={
-                (permit.ownerType === "c") ? "#FC96B3" :
-                (permit.ownerType === "t" ? "#0087EC" :
-                (permit.ownerType === "b" ? "#8D6E63" : "#EE6553"))
+                (permit.ownerType === "c") ? "var(--corporate)" :
+                (permit.ownerType === "t" ? "var(--trust)" :
+                (permit.ownerType === "b" ? "var(--government)" : "var(--individual)"))
               }
               fill-opacity="0.7"
               stroke="white"
@@ -169,15 +169,15 @@
 <div id="legendcontainer">
   <div class="legend">
     <svg class="legendsvg">
-      <circle class="legendcircle" r=5 cx="20" cy="20" fill="#FC96B3" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="20" fill="var(--corporate)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="25" font-family="Arial" font-size="12" fill="black">Corporate</text>
-      <circle class="legendcircle" r=5 cx="20" cy="45" fill="#0087EC" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="45" fill="var(--trust)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Trust</text>
-      <circle class="legendcircle" r=5 cx="20" cy="70" fill="#F69D2C" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="70" fill="var(--bank)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="75" font-family="Arial" font-size="12" fill="black">Bank</text>
-      <circle class="legendcircle" r=5 cx="20" cy="95" fill="#8D6E63" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="95" fill="var(--government)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="100" font-family="Arial" font-size="12" fill="black">Government</text>
-      <circle class="legendcircle" r=5 cx="20" cy="120" fill="#EE6553" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="120" fill="var(--individual)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="125" font-family="Arial" font-size="12" fill="black">Individual/Other</text>
     </svg>
     <svg class="legendsvg">
@@ -193,13 +193,13 @@
   </div>
   <div class="legend">
     <svg class="legendsvg">
-      <circle class="legendcircle" r=5 cx="20" cy="20" fill="#FC96B3" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
-      <text x="30" y="25" font-family="Arial" font-size="12" fill="black">Corporate</text>
-      <circle class="legendcircle" r=5 cx="20" cy="45" fill="#0087EC" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="20" fill="var(--corporate)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <text x="30" y="25" font-family="Arial" font-size="12" fill="(black)">Corporate</text>
+      <circle class="legendcircle" r=5 cx="20" cy="45" fill="var(--trust)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="50" font-family="Arial" font-size="12" fill="black">Trust</text>
-      <circle class="legendcircle" r=5 cx="20" cy="70" fill="#8D6E63" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="70" fill="var(--government)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="75" font-family="Arial" font-size="12" fill="black">Government</text>
-      <circle class="legendcircle" r=5 cx="20" cy="95" fill="#EE6553" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
+      <circle class="legendcircle" r=5 cx="20" cy="95" fill="var(--individual)" fill-opacity="0.7" stroke="white" stroke-width="0.5"></circle>
       <text x="30" y="100" font-family="Arial" font-size="12" fill="black">Individual/Other</text>
     </svg>
     <svg class="legendsvg">
