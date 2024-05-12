@@ -209,6 +209,7 @@
   let styles = [
     { name: 'Average Sale Price', style: 'mapbox://styles/rachelmb/clvg0s77002eo01ql8hq98bsp' },
     { name: 'Number of Sales/Population', style: 'mapbox://styles/rachelmb/clvg2b49k02i901pebbil850m' },
+    { name: 'Number of Flips', style: 'mapbox://styles/rachelmb/clw3zzmx008cw01peagmg3lhx' },
     { name: 'Median Income', style: 'mapbox://styles/rachelmb/clvg2c2c205ey01nu88vj97g2' },
     { name: 'Percent Renter Occupied - 2010', style: 'mapbox://styles/rachelmb/clvvcl90d066h01pe3bsm1inl' } ];
   let permitstyles = [
@@ -228,6 +229,8 @@
     salesMapTitle = 'Average Sale Price by Census Tract';
   } else if (style.name === 'Number of Sales/Population') {
     salesMapTitle = 'Number of Sales/Population by Census Tract';
+  } else if (style.name === 'Number of Flips') {
+    salesMapTitle = 'Number of Flips';
   } else if (style.name === 'Median Income') {
     salesMapTitle = 'Median Income by Census Tract';
   } else if (style.name === 'Percent Renter Occupied - 2010') {
@@ -291,6 +294,9 @@
   } else if (currentStyle.name === 'Number of Sales/Population') {
     const roundedNormNumS = Number(properties.norm_num_s.toFixed(2)); // Round to two decimal places
     featureInfo = `${currentStyle.name}: ${roundedNormNumS.toLocaleString()}`; // Apply .toLocaleString()
+  } else if (currentStyle.name === 'Number of Flips') {
+    const roundedFlip = Number(properties.j_flip_ind.toFixed(2)); // Round to two decimal places
+    featureInfo = `${currentStyle.name}: ${roundedFlip.toLocaleString()}`; // Apply .toLocaleString()
   } else if (currentStyle.name === 'Median Income') {
     const roundedIncome = Math.round(properties.income); // Round to the nearest whole number
     featureInfo = `${currentStyle.name}: $${roundedIncome.toLocaleString()}`; // Apply .toLocaleString()
@@ -356,6 +362,8 @@
     salesLegendContent += generateLegendBar(250000, 13000000, ' $', '#dee8e1', '#62a779'); // Example range, unit, and colors
   } else if (style.name === 'Number of Sales/Population') {
     salesLegendContent += generateLegendBar(0.0002, 0.4, '', '#dee8e1', '#62a779'); // Example range, unit, and colors
+  } else if (style.name === 'Number of Flips') {
+    salesLegendContent += generateLegendBar(0, 76, '', '#dee8e1', '#62a779'); // Example range, unit, and colors
   } else if (style.name === 'Median Income') {
     salesLegendContent += generateLegendBar(12300, 246750, ' $', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
   } else if (style.name === 'Percent Renter Occupied - 2010') {
