@@ -134,7 +134,7 @@
   <div slot="background">
          
   </div>
-
+  <div style="height: 60px;"></div>
   <div slot="foreground">
   <section class="section-long" style="position: sticky; top: 0; z-index: 1000;">
     <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. 
