@@ -111,6 +111,8 @@
   <h4>Physical</h4>
 </header>
 
+<div style="height: 60px;"></div>
+
 <!-- SLIDEY COMPARISON MAP ------------------------------------------------------------------->
 <section class="section-short">
   <h5>Move the slider on the map to compare sales and building permits in the city…</h5>
