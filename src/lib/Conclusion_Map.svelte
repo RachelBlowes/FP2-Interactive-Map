@@ -33,7 +33,7 @@
     overflow: auto;
     z-index: 1;
     width: 25%;
-    height: 20%;
+    height: 30%;
   }
   
   
