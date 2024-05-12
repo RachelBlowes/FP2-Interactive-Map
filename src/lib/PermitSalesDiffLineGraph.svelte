@@ -19,7 +19,8 @@
   
     // Define legend data
     const legendData = [
-      { label: 'Permit', color: '#0087EC' },
+      { label: 'Reno permit', color: '#FC96B3' },
+      { label: 'Non-reno permit', color: '#0087EC' },
       { label: 'No Permit', color: '#CABB8B' }
     ];
   
@@ -33,7 +34,8 @@
       return {
         Year: d3.timeParse("%Y")(d.Year),
         Permit: parseInt(d['Permit adjusted for inflation']),
-        NoPermit: parseInt(d["No permit adjusted for inflation"])
+        NoPermit: parseInt(d["No permit adjusted for inflation"]),
+        RenoPermit: parseInt(d["Reno adjusted for inflation"])
       }
     }
   
@@ -45,7 +47,7 @@
       let filteredData = data.filter(d => d.Year.getFullYear() <= selectedYear);
   
       // Define colors
-      const colors = ['#0087EC', '#CABB8B'];
+      const colors = ['#0087EC', '#CABB8B', '#FC96B3'];
   
       // Create scales
       x = d3.scaleTime()
@@ -53,7 +55,7 @@
         .range([0, width]);
   
       y = d3.scaleLinear()
-        .domain([0, d3.max(filteredData, d => Math.max(d.Permit, d.NoPermit))])
+        .domain([0, d3.max(filteredData, d => Math.max(d.Permit, d.NoPermit, d.RenoPermit))])
         .range([height, 0]);
   
       // Create SVG element
@@ -79,7 +81,7 @@
         .call(d3.axisLeft(y));
   
       // Add lines
-      ["Permit", "NoPermit"].forEach((value, index) => {
+      ["Permit", "NoPermit", "RenoPermit"].forEach((value, index) => {
         svg.append("path")
           .attr("class", `line-${value}`)
           .datum(filteredData)
@@ -147,46 +149,52 @@
     }
   
     function mousemove(event) {
-      // Filter data based on the selected year
-      let filteredData = data.filter(d => d.Year.getFullYear() <= selectedYear);
-  
-      // Check if filteredData is empty
-      if (filteredData.length === 0) {
-        return; // Exit the function if no lines are visible
-      }
-  
-      // Recover coordinate we need
-      var x0 = x.invert(d3.pointer(event)[0]);
-      var i = bisect(filteredData, x0, 1);
-      var d0 = filteredData[i - 1];
-      var d1 = filteredData[i];
-      var closestData = d1 && (x0 - d0.Year > d1.Year - x0) ? d1 : d0;
-  
-      if (closestData) {
-        // Find the closest value among the Permit and NoPermit properties
-        let keys = ["Permit", "NoPermit"];
-        let closestValue = keys.reduce((closest, key) => {
-          let currentValue = closestData[key];
-          let currentDistance = Math.abs(currentValue - y.invert(d3.pointer(event)[1]));
-          let closestDistance = Math.abs(closest - y.invert(d3.pointer(event)[1]));
-          return currentDistance < closestDistance ? currentValue : closest;
-        }, closestData[keys[0]]);
+  // Filter data based on the selected year
+  let filteredData = data.filter(d => d.Year.getFullYear() <= selectedYear);
 
-      let textWidth = focusText.node().getComputedTextLength();
-      let textX = x(closestData.Year) + 15;
-      let overflowRight = textX + textWidth > width + margin.left;
-  
-        focus
-          .attr("cx", x(closestData.Year))
-          .attr("cy", y(closestValue));
-  
-        focusText
-          .html(`Year: ${closestData.Year.getFullYear()} - Median Price Difference: $${closestValue.toLocaleString()}`)
-          .attr("x", overflowRight ? x(closestData.Year) - textWidth - 15 : textX)
-          .attr("y", y(closestValue));
-      }
-    }
-  
+  // Check if filteredData is empty
+  if (filteredData.length === 0) {
+    return; // Exit the function if no lines are visible
+  }
+
+  // Recover coordinate we need
+  var x0 = x.invert(d3.pointer(event)[0]);
+  var i = bisect(filteredData, x0, 1);
+  var d0 = filteredData[i - 1];
+  var d1 = filteredData[i];
+  var closestData = d1 && (x0 - d0.Year > d1.Year - x0) ? d1 : d0;
+
+  if (closestData) {
+    // Define mapping for key labels
+    let keyLabels = {
+      Permit: "Non-reno permit",
+      NoPermit: "No permit",
+      RenoPermit: "Reno permit"
+    };
+
+    // Find the closest value among the Permit and NoPermit properties
+    let keys = Object.keys(keyLabels);
+    let closestKeyAndValue = keys.reduce((closest, key) => {
+      let currentValue = closestData[key];
+      let currentDistance = Math.abs(currentValue - y.invert(d3.pointer(event)[1]));
+      let closestDistance = Math.abs(closest.value - y.invert(d3.pointer(event)[1]));
+      return currentDistance < closestDistance ? { key, value: currentValue } : closest;
+    }, { key: keys[0], value: closestData[keys[0]] });
+
+    let textWidth = focusText.node().getComputedTextLength();
+    let textX = x(closestData.Year) + 15;
+    let overflowRight = textX + textWidth > width + margin.left;
+
+    focus
+      .attr("cx", x(closestData.Year))
+      .attr("cy", y(closestKeyAndValue.value));
+
+    focusText
+      .html(`${keyLabels[closestKeyAndValue.key]} (${closestData.Year.getFullYear()}): $${closestKeyAndValue.value.toLocaleString()}`)
+      .attr("x", overflowRight ? x(closestData.Year) - textWidth - 15 : textX)
+      .attr("y", y(closestKeyAndValue.value));
+  }
+}
     function mouseout() {
       focus.style("opacity", 0);
       focusText.style("opacity", 0);
@@ -228,7 +236,7 @@
   
       // Update the domain of the x-axis and y-axis
       x.domain([d3.min(filteredData, d => d.Year), x.domain()[1]]);
-      y.domain([0, d3.max(filteredData, d => Math.max(d.Permit, d.NoPermit))]);
+      y.domain([0, d3.max(filteredData, d => Math.max(d.Permit, d.NoPermit, d.RenoPermit))]);
 
       svg.select(".y-axis")
       .transition()
@@ -236,7 +244,7 @@
       .call(d3.axisLeft(y));
   
       // Update the lines on the graph
-      ["Permit", "NoPermit"].forEach((value, index) => {
+      ["Permit", "NoPermit", "RenoPermit"].forEach((value, index) => {
         svg.select(`.line-${value}`)
           .datum(filteredData)
           .transition()
@@ -270,7 +278,7 @@
   
     #legend-container-permit {
       position: absolute;
-      bottom: -80px; /* Adjust as needed to position the legend below the slider */
+      bottom: -50px; /* Adjust as needed to position the legend below the slider */
       left: 0;
       width: 100%;
       text-align: left; /* Center the legend */
