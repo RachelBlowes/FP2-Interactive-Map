@@ -43,7 +43,7 @@
       <h3 class="gallery-title">Adi Kupershmidt</h3>
       <a href="https://www.linkedin.com/in/adi-kupershmidt-9b6730141/" target="_blanc"><img src="https://media.licdn.com/dms/image/D4D03AQG7QwGTfiY1Qg/profile-displayphoto-shrink_800_800/0/1715479440134?e=1721260800&v=beta&t=K6gYuVrDdqU829pvaJKmH0lhEkIjnGYaFOrNZwmPS-Q"></a>
       <br>
-      <p>Architect (B.Arch) and Master of City Planning student (MIT), interested in how data can make cities more shareable.</p>
+      <p>Adi is an architect (B.Arch) and Master of City Planning student (MIT), interested in how data can make cities more shareable.</p>
     </li>
   </ul>
 </div>
@@ -53,9 +53,9 @@
 <h1 style="text-align:left;" calss="About">Data Sources</h1>
 <ol>
   <li><strong>The City of Boston Open Data Portal:</strong> Approved building permits, Live Street Address Management (SAM), Parcels</li>
-  <li><strong>American Community Survey (ACS):</strong> Median income, total population, renters and owners division per census tract </li>
+  <li><strong>American Community Survey (ACS):</strong> Median income, total population, renters and owners division per census tract 2017-2021</li>
   <li><strong>The Warren Group:</strong> proprietary sales transactions data</li>
-  <li><strong>US Census Bureau: </strong> Decennial Census</li>
+  <li><strong>US Census Bureau: </strong> Decennial Census 2020</li>
   <li><strong>The City of Boston Open Data Portal:</strong> Open Geographic Data (SAM)</li>
   <li><strong>US Bureau of Labor Statistics: </strong> Consumer Price Index (CPI)</li>
 </ol>
