@@ -211,7 +211,8 @@ suburban areas have up to one building permit for every three residents. Areas w
 
 <section class="section-long">
   <h3> Finally, looking at sales and permit data together allows us to analyze the profits made by investors who are 
-    making physical changes to their properties. We ask: is physical investment used by speculative investors to artificially inflate the value of properties?  </h3>
+    making physical changes to their properties. We ask: <span style="color: #F6517A">is physical investment used by speculative 
+      investors to artificially inflate the value of properties?  </span></h3>
 </section>
 
 <Scroller top="{0.0}" bottom="{0.7}" bind:index bind:offset bind:progress>
