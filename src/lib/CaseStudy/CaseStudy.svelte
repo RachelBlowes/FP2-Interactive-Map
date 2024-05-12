@@ -41,7 +41,7 @@
 
 <!-- Toggle buttons for different study cases -->
 <div>
-<h5>Add your estimation here:</h5>
+<!-- <h5>Add your estimation here:</h5> -->
 <div class="button">
     <button  class:active={currentCaseStudyIndex === 0} on:click={() => toggleCaseStudy(0)}>
         11 Joseph St 

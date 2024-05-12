@@ -4,7 +4,7 @@
      
     let pages = [
         { url: "./", title: "Home" },
-        { url: "./about", title: "About the Data" },
+        { url: "./about", title: "About" },
         // Add more pages here
     ];
 </script>
