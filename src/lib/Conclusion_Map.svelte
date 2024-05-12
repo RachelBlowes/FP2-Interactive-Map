@@ -131,7 +131,6 @@
     function setStyle(style) {
       mapData.update(data => ({ ...data, selectedStyle: style.year }));
       mapData.subscribe(value => {
-        console.log("parent component style updated:", value.selectedStyle);
       });
       currentStyle = style; // Update currentStyle
       profitMap.setStyle(style.style); // Update map style
@@ -179,13 +178,17 @@
     const properties = feature.properties;
     let featureInfo;
     if (currentStyle.name === '2010 Profit') {
-        featureInfo = `${currentStyle.name}: ${properties.j_m_p_real}<br>`;
+        const roundedProfit = Math.round(properties.j_m_p_real); // Round the profit to a whole number
+        const formattedProfit = roundedProfit.toLocaleString(); // Format the rounded profit using toLocaleString()
+        featureInfo = `${currentStyle.name}: $${formattedProfit}<br>`;
         featureInfo += `Zipcode: ${properties.z_real}<br>`;
         featureInfo += `Neighborhood: ${properties.j_n}<br>`;
         featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;
 
     } else if (currentStyle.name === '2022 Profit') {
-        featureInfo = `${currentStyle.name}: ${properties.profit}<br>`;
+        const roundedProfit = Math.round(properties.j_m_p_real); // Round the profit to a whole number
+        const formattedProfit = roundedProfit.toLocaleString(); // Format the rounded profit using toLocaleString()
+        featureInfo = `${currentStyle.name}: $${formattedProfit}<br>`;
         featureInfo += `Zipcode: ${properties.z_real}<br>`;
         featureInfo += `Neighborhood: ${properties.j_n}<br>`;
         featureInfo += `Percent Renters: ${properties.j_p_r}<br>`;

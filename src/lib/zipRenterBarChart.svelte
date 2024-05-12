@@ -72,6 +72,10 @@ $: {
     });
 
     function createChart(data, width, height) {
+        // Sort the data by percent renter
+    data.sort((a, b) => {
+        return +a['% renter'] - +b['% renter'];
+    });
     // Define color scale
     var colorScale = d3.scaleLinear()
         .domain([d3.min(data, function(d) { return +d['% renter']; }), d3.max(data, function(d) { return +d['% renter']; })])
