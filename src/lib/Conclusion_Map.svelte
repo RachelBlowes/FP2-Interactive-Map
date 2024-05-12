@@ -207,7 +207,7 @@
     const legendElement = document.getElementById('profitLegend');
     legendElement.innerHTML = ''; // Clear the legend content
   
-    let profitLegendContent = '<strong>' + style.name + ':</strong><br>'; // Add legend title
+    let profitLegendContent = '<strong>' + style.name; // Add legend title
   
     // Generate linear gradient legend bars based on style
     if (style.name === '2010 Profit') {
@@ -227,7 +227,8 @@
   
     for (let i = 0; i < numTicks; i++) {
       const tickValue = minValue + i * tickInterval;
-      legendBarHTML += '<span class="tick-label">' + tickValue + unit + '</span>';
+      const formattedTickValue = tickValue.toLocaleString(); // Format the tick value using toLocaleString()
+      legendBarHTML += '<span class="tick-label">' + formattedTickValue + unit + '</span>';
     }
   
     legendBarHTML += '</div>';

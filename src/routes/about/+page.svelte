@@ -25,7 +25,7 @@
       <h3 class="gallery-title">Inge Donovan</h3>
       <a href="https://www.linkedin.com/in/inge-donovan-4467281b3/" targe="_blanc"><img src="https://media.licdn.com/dms/image/C4E03AQEWyaWm4SHyHw/profile-displayphoto-shrink_800_800/0/1595616022881?e=1721260800&v=beta&t=Qzq_OHSNFId2ZcER1cUa2EaRLFb_PVr74Cin0xMtc4c"></a> 
       <br>
-      <p>Inge is kljvgoiehr;oweihv oihj </p>
+      <p>Inge is an M.Arch and SMBT student interested in improving affordability and quality of life through building interventions in the housing sector.   </p>
     </li>
     <li class="gallery-item">
       <h3 class="gallery-title">Jenna Schnitzler</h3>
@@ -50,11 +50,14 @@
 
 <br>
 <br>
-<h1 style="text-align:left;" calss="About">About the Data</h1>
+<h1 style="text-align:left;" calss="About">Data Sources</h1>
 <ol>
   <li><strong>The City of Boston Open Data Portal:</strong> Approved building permits, Live Street Address Management (SAM), Parcels</li>
   <li><strong>American Community Survey (ACS):</strong> Median income, total population, renters and owners division per census tract </li>
-  <li><strong>The Warren Group:</strong>proprietary sales transactions data</li>
+  <li><strong>The Warren Group:</strong> proprietary sales transactions data</li>
+  <li><strong>US Census Bureau: </strong> Decennial Census</li>
+  <li><strong>The City of Boston Open Data Portal:</strong> Open Geographic Data (SAM)</li>
+  <li><strong>US Bureau of Labor Statistics: </strong> Consumer Price Index (CPI)</li>
 </ol>
 <br>
 <br>

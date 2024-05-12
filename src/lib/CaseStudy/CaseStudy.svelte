@@ -33,12 +33,6 @@
 
   </script>
 
-<section class="section-long">
-  <!-- Example - intro -->
-  <p id="centered-text"><strong>Let's explore a speculated property.</strong></p>
-  <p id="centered-text"><strong>How much profit do you think the investor made?</strong></p>
-</section>
-
 <!-- Toggle buttons for different study cases -->
 <div>
 <!-- <h5>Add your estimation here:</h5> -->

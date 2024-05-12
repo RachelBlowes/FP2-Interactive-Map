@@ -22,77 +22,87 @@
         <img id="coverphoto" src="https://rachelblowes.github.io/Geodata/Images/coverphoto.png" alt="Split picture showing an apartment before and after renovation"> 
       </div>
     </section>
+
     <!-- This is the 2nd section -->
     <section class="section-long">
-      <h3>Boston’s housing market is under immense pressure, with a shortage of supply for prospective home buyers and with over half of renters being rent burdened. </h3>
+      <h3>Boston’s housing market is under immense pressure, with a shortage of supply for prospective home buyers 
+        and with <span style="color: #F6517A">over half of renters being rent burdened. </span></h3>
     </section>
+
+       <!-- This is the 4th section -->
+   <section class="section-long">
+    <h3>Since 2010, real estate prices have doubled. According to the MAPC's 2023 
+      <a href="https://www.mapc.org/resource-library/homes-for-profit/">Homes for Profit report</a>
+      , <span style="color: #F6517A">speculative investment is on the rise in 
+      Boston,</span> resulting in increased inaffordability as corporate investors crowd out both homebuyers and renters. 
+    </h3>
+   </section>
+
+     <!-- This is the 5th section -->
+     <section class="section-long">
+      <h3>Property speculation is an approach to real estate investment where anticipated profits are based on predicted changes in 
+        local market conditions <span style="color: #F6517A">rather than physical improvements.</span></h3>
+    </section>
+
+     <!-- This is the 5th section -->
+     <section class="section-long">
+      <h3>Between 2010 and 2022, there were <span style="color: #F6517A">178,2000 sales transactions</span> in Boston, but the same period of time saw nearly 
+        <span style="color: #F6517A">620,000 building permits. </span> Both the declared cost of the work reflected by a building permit, and the sale price of properties in 
+          Boston have been growing rapidly, outpacing inflation. 
+        </h3>
+    </section>
+
     <!-- This is the 3rd section -->
     <section class="section-long">
       <div>
         <div id="animation-div">
+          <h2>Median Sale and Permit Valuation</h2>
           <DotAnimation />
         </div>
       </div>
     </section>
-      
-   <!-- This is the 4th section -->
-   <section class="section-long">
-    <h3>Since 2010, real estate prices have doubled. According to the MAPC, speculation through investor activity is much to blame…</h3>
-   </section>
-    <!-- This is the 5th section -->
-    <section class="section-long">
-      <h3>Property speculation is an approach to real estate investment where anticipated profits are based on predicted changes in local market conditions rather than physical improvements.</h3>
-    </section>
+
     <!-- This is the 6th section -->
     <section class="section-long">
     <div>
-      <h3>While sales data can provide information about the value and stakeholders involved in a given transaction, the physical side of speculation can provide insight on whether improvements take place when units exchange hands. </h3>
+      <h3>While sales data can provide information about the value of a given transaction and the stakeholders involved in it, the physical side of speculation can 
+        provide insight on <span style="color: #F6517A">whether improvements take place when units exchange hands.</span> Almost 90% of flipped properties have a building permit.</h3>
     </div>
     </section>
+
     <!-- This is the 7th section -->
     <section class="section-long">
-      <h3>Here, public building permit data from 2010-2022 is explored to investigate three questions: </h3>
+      <h3>In this project, public building permit data from 2010-2022 is explored to investigate three questions: </h3>
       <ol id="list-text">
           <li>Who is building and renovating?</li>
           <li>How is improvement distributed?</li>
-          <li>How much profit is being made when repair costs are subtracted?</li>
+          <li>What kind of work is being done?</li>
+          <li>How much more do renovated properties sell for? Is this justified?</li>
       </ol>
     </section>
+
     <!-- This is the 8th section. -->
     <section class="section-long">
-      <div id="definitions">
+      <h3>We divide types of investment into <span style="color: #F6517A">"fiscal"</span> and <span style="color: #F6517A">"physical"</span>, 
+        acknowledging that investment doesn't only take the form of sales transactions.</h3>      
+        <div id="definitions">
         <div id="fiscal">
           <p id="fiscaltitle">Fiscal (adj)</p>
-          <p><em>relating to financial matters</em></p>
-          <p>In our analysis, fiscal investments refer to residential real estate transactions</p>
+          <p><em><span style="color: #F6517A">relating to financial matters</span></em></p>
+          <p>In our analysis, fiscal investments refer to residential real estate transactions.</p>
         </div>
         <div id="physical">
           <p id="physicaltitle">Physical (adj)</p>
-          <p><em>tangible or concrete</em></p>
-          <p>In our analysis, physical investments refer to money spent on physical improvements to a given property</p>
+          <p><em><span style="color: #F6517A">tangible or concrete</span></em></p>
+          <p>In our analysis, physical investments refer to money spent on physical improvements to a given property.</p>
         </div>     
       </div>
     </section>
-    <!-- This is the 9th section. -->
-    <section class="section-long">
-      <h3>Why building permits?</h3>
-      <div class="text-container">
-        <p class="columntext">
-          Building permits can give insight on the physical changes that are being made to properties that have sales 
-          transactions, helping us understand whether significant improvements are being made to properties that have 
-          a wide margin between purchase and sale price, or properties that are classified as "flipped". </p>
-        <p class="columntext">
-          Almost 90% of sold flipped properties have a documented permit. 
-      
-          We look at flipped and non-flipped sales transactions, permit declared work 
-          valuation and keyword search of the permit’s description to explore how fiscal and physical investment affect speculation.</p>
-      </div>
-    </section>
-</div>
+
 </Scroller>
 
 <section class="section-short">
-  <h2>Let's explore the spatial distribution of sales and building permits. </h2>
+  <h3>Let's explore the spatial distribution of sales and building permits. </h3>
 </section>
 
 <header id="fiscalvsphysical" style="position: sticky; top: 0; z-index: 1000;">
@@ -125,17 +135,18 @@
 
   <div slot="foreground">
   <section class="section-long" style="position: sticky; top: 0; z-index: 1000;">
-    <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. But who’s doing the investing?  </h3>
+    <h3>Boston is a city with a relatively old housing stock, and therefore physical investment usually takes the shape of renovation or remodeling. 
+      <span style="color: #F6517A">But who’s doing the investing?</span></h3>
   </section>
   <section class="section-short">
-    <h5>Move the slider to see the change in investor type over time…</h5>
+    <h5>Move the slider to see the change in investor type over time.</h5>
   </section>
 </div>
 </Scroller>
 
 
 <!-- TIME SLIDER MAP ------------------------------------------------------------------->
-<h2>Shifting Trends in Investment Behavior</h2>
+<h2>Shifting Trends in Investor Type</h2>
 <TimeSliderMaps class="component"/>
 
 <TimeseriesLinegraphs />
@@ -151,15 +162,18 @@
 
   <div slot="foreground">
     <section class="section-short">
-      <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by corporations and trusts. This trend has been increasing since 2010, with the proportion of corporate investment growing from 13% to 32%. 
+      <h3>While most sales are still done by individuals, building permits for residential properties paint a different picture, with huge physical investments made by 
+        corporations and trusts. This trend has been increasing since 2010, with the <span style="color: #F6517A">proportion of corporate investment growing from 13% to 32%. </span>
       </h3>
     </section>
     <section class="section-long" style="position: sticky; top: 0; z-index: 1000;">
-      <h3>How is this distributed spatially? Let’s explore the spatial patterns of physical and fiscal investment in they city.  
+      <h3><span style="color: #F6517A">How is investment distributed spatially?</span> Let’s explore the patterns of physical and fiscal investment in the city. 
+        We'll start our exploration in East Boston, an area with a history of disinvestment, but recently, an increase in speculation, and a 
+        high percentage of renters.  
       </h3>
     </section>
     <section class="section-short">
-      <h5>Toggle the maps to explore spatial patterns of building and buying…
+      <h5>Toggle the maps to explore spatial patterns of building and buying. Click and drag to explore other neighborhoods. 
       </h5>
     </section>      
 </div>
@@ -174,27 +188,28 @@
 
 <div style="height: 40px;"></div>
 
-<h3> Sales are distributed relatively evenly across census tracts, 
-whereas building permits are more infrequent for the lowest-income and highest-income census parcels.  </h3>
+<h3> Building permits show areas with high physical investment - this could be areas with lots of building activity, but also older
+  neighbourhood where few new builds are happening. Across Boston, areas with more renters have less investment in building permits, and the wealthiest
+suburban areas have up to one building permit for every three residents. (Add flipped takeaway)</h3>
 
 <div style="height: 40px;"></div>
 
  <!-- WHAT? ------------------------------------------------------------------->
  <section class="section-short">
-  <h3> Permits also give insight on speculation - flipped properties are more likely to have superficial 
-    work done, possibly putting further pressure on the market without increasing the quality of the property. </h3>
-</section>
-<section class="section-short">
-  <h5>Toggle the wordcloud to see the keywords for flipped and non-flipped properties…</h5>
+  <h3> But what kind of work is being done?
+    Permits also give insight on speculation - <span style="color: #F6517A">flipped properties are more likely to have superficial 
+    work done,</span> possibly putting further pressure on the market without increasing the quality of the property. </h3>
 </section>
 
+<h5>Toggle the wordcloud to see the keywords for flipped and non-flipped properties…</h5>
 <div calss="component">
   <WordCloud class="component"/>
   <div id="divline"></div>
 </div>
 
 <section class="section-long">
-  <h3> Is physical investment used by speculative investors to artificially inflate the value of properties?  </h3>
+  <h3> Finally, looking at sales and permit data together allows us to analyze the profits made by investors who are 
+    making physical changes to their properties. We ask: is physical investment used by speculative investors to artificially inflate the value of properties?  </h3>
 </section>
 
 <Scroller top="{0.0}" bottom="{0.7}" bind:index bind:offset bind:progress>
@@ -209,31 +224,65 @@ whereas building permits are more infrequent for the lowest-income and highest-i
       <br>
     </section>
 
+    <section class="section-long">
+      <!-- Example - intro -->
+      <h3>Let's explore some properties that have undergone various forms of investment.</h3>
+      <h2>How much profit do you think the investor made?</h2>
+      <div style="height: 80px;"></div>
+      <h5>Click one on the property addresses to explore the investments made.
+      </h5>
+    </section>
+
       <CaseStudy class="component"/>
 
   
 </Scroller>
 
-<!-- 
-<h3> We found that units with building permits generally had a higher profit, however this profit has increased from $16,000 to nearly $70,0000 
-  since 2010, an over fourfold increase. </h3>
-
-  <div style="height: 20px;"></div> -->
-
 <section class="section-long">
-  <h3> Since 2017, the profit from real estate has risen from a few ten thousand dollars to $2-300,000, with physically improved properties decoupling from this trend, demonstrating that physical investment may be being used to inflate the value of real estate. </h3>
+  <h3> Now that we've explored several properties, let's look at how the profits made by residential real estate transactions have changed
+    between 2010 and 2022, with attention to transactions that have building permits, especially building permits that hint at <span style="color: #F6517A">renovations or remodels.</span> </h3>
 </section>
 <section class="section-short">
-  <h5>Move the slider to see this trend change over time…</h5>
+  <h5>Move the slider to see this trend change over time, hover for details.</h5>
 </section>
+
 
 <h2>Median profit for residential properties 2010-2022</h2>
 <h5>(Sale profit - permit valuation - permit fees. Adjusted for 2022 dollars)</h5>
 <PermitSalesDiffLineGraph />
 
-<div style="height: 80px;"></div>
+<section class="section-long">
+  <h3> Since 2017, the profit from real estate has risen from a few ten thousand dollars to $2-300,000, after the cost of the work, and adjusted for inflation. 
+    Properties with building permits demonstrated a decoupling from properties without permits, demonstrating that <span style="color: #F6517A">physical investment may be 
+    being used to inflate the value of real estate</span>, or, at the very least, home-buyers are willing to overpay for properties that 
+    give the impression of having been improved. </h3>
+</section>
 
+<section class="section-long">
+  <h3> The impact of speculative investment on home buyers is relatively clear, but <span style="color: #F6517A">what does this mean for renters?</span></h3>
+</section>
+
+<section class="section-short">
+  <h5>Hover over zip codes to see the correlation between percent renter and profit on the bar chart below. 
+    Toggle between years to see change over time.</h5>
+</section>
+
+<h2>Profit after Improvement and Percent Renter</h2>
 <Conclusion_Map />
+
+<section class="section-long">
+  <h3> Profits on real estate transactions have increased drastically in the last 12 years. There is a slight correlation between zip codes 
+    with a higher percentage of renters and increased profits, <span style="color: #F6517A">suggesting that high-renter areas could be seen as more profitable for 
+    speculative investment.</span>
+  </h3>
+</section>
+
+<section class="section-long">
+  <h3> <span style="color: #F6517A"> This analysis shines a light on the complexity of physical and fiscal investment: 
+    while the renovation and remodeling is an important part of providing livable housing, it could also be used as an instrument
+    of speculation, especially in flipped properties where superficial changes are made in the hope of a higher profit.</span>
+  </h3>
+</section>
 
 <div style="height: 160px;"></div>
 
