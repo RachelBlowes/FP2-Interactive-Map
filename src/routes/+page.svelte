@@ -72,7 +72,7 @@
 
     <!-- This is the 7th section -->
     <section class="section-long">
-      <h3>In this project, public building permit data from 2010-2022 is explored to investigate three questions: </h3>
+      <h3>In this project, public building permit data from 2010-2022 is explored to investigate four questions: </h3>
       <ol id="list-text">
           <li>Who is building and renovating?</li>
           <li>How is improvement distributed?</li>
