@@ -37,7 +37,7 @@
       <h3 class="gallery-title">Rachel Blowes</h3>
       <a href="https://www.linkedin.com/in/rachel-blowes-60aa06100/" target="_blanc"><img src="https://media.licdn.com/dms/image/C5603AQGSTsditXBscQ/profile-displayphoto-shrink_800_800/0/1592238101455?e=1721260800&v=beta&t=yn53fpV6gsb8164dsZzuym6o1VN9s6cKFA_tKv-c7Vs"></a>   
       <br>
-      <p>Inge is kljvgoiehr;oweihv oihj </p>
+      <p>Rachel is a SMArchS student in Building Technology interested in how the renovation and reuse of buildings and their components can limit their environmental impact. </p>
     </li>
     <li class="gallery-item">
       <h3 class="gallery-title">Adi Kupershmidt</h3>
