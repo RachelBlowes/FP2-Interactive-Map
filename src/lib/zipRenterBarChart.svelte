@@ -17,9 +17,12 @@
     // Declare reactive variable to hold the data
     const data = writable([]);
 
-    var margin = {top: 30, right: 0, bottom: 80, left: 90},
-            width = 1000 - margin.left - margin.right,
-            height = 300 - margin.top - margin.bottom;
+    // Declare margin variables
+    const margin = { top: 30, right: 0, bottom: 80, left: 90 };
+
+    // Declare width and height
+    const width = 1000 - margin.left - margin.right;
+    const height = 300 - margin.top - margin.bottom;
 
     // Declare colorScale globally
     var colorScale;
@@ -72,26 +75,26 @@ $: {
     });
 
     function createChart(data, width, height) {
-        // Sort the data by percent renter
-    data.sort((a, b) => {
+    // Sort the data by percent renter
+        data.sort((a, b) => {
         return +a['% renter'] - +b['% renter'];
     });
+    
     // Define color scale
     var colorScale = d3.scaleLinear()
         .domain([d3.min(data, function(d) { return +d['% renter']; }), d3.max(data, function(d) { return +d['% renter']; })])
         .range(["#f2f2f2", "#595959"]);
-    // Select the existing SVG element or append a new one
-    var svg = d3.select("#my_dataviz svg");
-    if (svg.empty()) {
-        svg = d3.select("#my_dataviz")
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    } else {
-        svg.selectAll("*").remove(); // Remove existing content
-    }
+
+    // Remove existing SVG element
+    d3.select("#my_dataviz svg").remove();
+
+    // Append a new SVG element
+    var svg = d3.select("#my_dataviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // X axis
     var x = d3.scaleBand()
@@ -114,21 +117,10 @@ $: {
 
     // Add Y axis
     var y = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d) { return +d['Median Profit']; })])
-        .range([height, 0]);
+        .range([height, 0])
+        .domain([0, d3.max(data, function(d) { return +d['Median Profit']; })]);
     svg.append("g")
-        .call(d3.axisLeft(y))
-        .attr("class", "y-axis"); // Add class for the y-axis
-
-    // Update Y axis label if needed
-    svg.select(".y-axis-label").remove(); // Remove existing label
-    svg.append("text")
-        .attr("class", "y-axis-label")
-        .attr("text-anchor", "end")
-        .attr("transform", "rotate(-90)")
-        .attr("y", -margin.left + 20)
-        .attr("x", -margin.top)
-        .text("Median Profit ($)");
+        .call(d3.axisLeft(y));
 
     // Bars
     svg.selectAll("mybar")
@@ -218,15 +210,16 @@ $: {
         .attr("x", 0)
         .attr("y", legendHeight + 20) // Adjust the y-coordinate to move the text below the legend
         .style("text-anchor", "start")
-        .text("% Renter: " + d3.min(data, function(d) { return +d['% renter']; }));
+        .text("% Renter: " + d3.format(".0%")(d3.min(data, function(d) { return +d['% renter']; })));
 
+    // Add legend text
     legend.append("text")
         .attr("class", "legendText")
         .attr("x", legendWidth)
         .attr("y", legendHeight + 20) // Adjust the y-coordinate to move the text below the legend
         .style("text-anchor", "end")
-        .text(d3.max(data, function(d) { return +d['% renter']; }));
-}
+        .text(d3.format(".0%")(d3.max(data, function(d) { return +d['% renter']; })));
+    }
 
 function updateChartColors() {
     // Select all bars and update their color based on hoveredZip
@@ -244,6 +237,8 @@ function updateChartColors() {
             }
         });
 }
+
+
 
 </script>
 
