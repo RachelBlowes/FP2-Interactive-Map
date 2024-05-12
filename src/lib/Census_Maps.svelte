@@ -286,14 +286,18 @@
   const properties = feature.properties;
   let featureInfo;
   if (currentStyle.name === 'Average Sale Price') {
-    featureInfo = `${currentStyle.name}: ${properties.avg_sale}`;
+    const roundedAvgSale = Math.round(properties.avg_sale); // Round the number
+    featureInfo = `${currentStyle.name}: $${roundedAvgSale.toLocaleString()}`; // Apply .toLocaleString()
   } else if (currentStyle.name === 'Number of Sales/Population') {
-    featureInfo = `${currentStyle.name}: ${properties.norm_num_s}`;
+    const roundedNormNumS = Number(properties.norm_num_s.toFixed(2)); // Round to two decimal places
+    featureInfo = `${currentStyle.name}: ${roundedNormNumS.toLocaleString()}`; // Apply .toLocaleString()
   } else if (currentStyle.name === 'Median Income') {
-    featureInfo = `${currentStyle.name}: ${properties.income}`;
+    const roundedIncome = Math.round(properties.income); // Round to the nearest whole number
+    featureInfo = `${currentStyle.name}: $${roundedIncome.toLocaleString()}`; // Apply .toLocaleString()
   } else if (currentStyle.name === 'Percent Renter Occupied - 2010') {
-    featureInfo = `${currentStyle.name}: ${properties.Real_perce}`;
-  }
+    const roundedRealPerce = Number(properties.Real_perce.toFixed(1)); // Round to one decimal place
+    featureInfo = `${currentStyle.name}: ${roundedRealPerce.toLocaleString()}%`; // Apply .toLocaleString()
+}
 
   document.querySelector('.salemap-overlay #pd').innerHTML = featureInfo;
 });
@@ -321,14 +325,18 @@
   const properties = feature.properties;
   let featureInfo;
   if (currentPermitStyle.name === 'Average Permit Valuation') {
-    featureInfo = `${currentPermitStyle.name}: ${properties.avg_permit}`;
+    const roundedAvgPermit = Math.round(properties.avg_permit); // Round to the nearest whole number
+    featureInfo = `${currentPermitStyle.name}: $${roundedAvgPermit.toLocaleString()}`; // Apply .toLocaleString()
   } else if (currentPermitStyle.name === 'Number of Permits/Population') {
-    featureInfo = `${currentPermitStyle.name}: ${properties.norm_num_p}`;
+    const roundedNormNumP = Number(properties.norm_num_p.toFixed(2)); // Round to two decimal places
+    featureInfo = `${currentPermitStyle.name}: ${roundedNormNumP.toLocaleString()}`; // Apply .toLocaleString()
   } else if (currentPermitStyle.name === 'Median Income') {
-    featureInfo = `${currentPermitStyle.name}: ${properties.income}`;
+    const roundedIncome = Math.round(properties.income); // Round to the nearest whole number
+    featureInfo = `${currentPermitStyle.name}: $${roundedIncome.toLocaleString()}`; // Apply .toLocaleString()
   } else if (currentPermitStyle.name === 'Percent Renter Occupied - 2022') {
-    featureInfo = `${currentPermitStyle.name}: ${properties.Real_perce}`;
-  }
+    const roundedRealPerce = Number(properties.Real_perce.toFixed(1)); // Round to one decimal place
+    featureInfo = `${currentPermitStyle.name}: ${roundedRealPerce.toLocaleString()}%`; // Apply .toLocaleString()
+} 
 
   document.querySelector('.permitmap-overlay #pd').innerHTML = featureInfo;
 });
@@ -345,13 +353,13 @@
 
   // Generate linear gradient legend bars based on style
   if (style.name === 'Average Sale Price') {
-    salesLegendContent += generateLegendBar(250000, 13000000, '$', '#dee8e1', '#62a779'); // Example range, unit, and colors
+    salesLegendContent += generateLegendBar(250000, 13000000, ' $', '#dee8e1', '#62a779'); // Example range, unit, and colors
   } else if (style.name === 'Number of Sales/Population') {
     salesLegendContent += generateLegendBar(0.0002, 0.4, '', '#dee8e1', '#62a779'); // Example range, unit, and colors
   } else if (style.name === 'Median Income') {
-    salesLegendContent += generateLegendBar(12300, 246750, '$', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
+    salesLegendContent += generateLegendBar(12300, 246750, ' $', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
   } else if (style.name === 'Percent Renter Occupied - 2010') {
-    salesLegendContent += generateLegendBar(0, 100, '%', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
+    salesLegendContent += generateLegendBar(0, 100, ' %', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
   }
 
   legendElement.innerHTML = salesLegendContent;
@@ -365,7 +373,8 @@ function generateLegendBar(minValue, maxValue, unit, color1, color2) {
 
   for (let i = 0; i < numTicks; i++) {
     const tickValue = minValue + i * tickInterval;
-    legendBarHTML += '<span class="tick-label">' + tickValue + unit + '</span>';
+    const formattedTickValue = tickValue.toLocaleString(); // Format the tick value using toLocaleString()
+    legendBarHTML += '<span class="tick-label">' + formattedTickValue + unit + '</span>';
   }
 
   legendBarHTML += '</div>';
@@ -380,13 +389,13 @@ function updatepermitLegend(permitstyle) {
 
   // Generate linear gradient legend bars based on permit style
   if (permitstyle.name === 'Average Permit Valuation') {
-    permitLegendContent += generatepermitLegendBar(0, 577682, '$', '#c7e7ff', '#0087ec'); // Example range, unit, and colors
+    permitLegendContent += generatepermitLegendBar(0, 577682, ' $', '#c7e7ff', '#0087ec'); // Example range, unit, and colors
   } else if (permitstyle.name === 'Number of Permits/Population') {
     permitLegendContent += generatepermitLegendBar(0.004, 0.3, '', '#c7e7ff', '#0087ec'); // Example range, unit, and colors
   } else if (permitstyle.name === 'Median Income') {
-    permitLegendContent += generatepermitLegendBar(12300, 246750, '$', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
+    permitLegendContent += generatepermitLegendBar(12300, 246750, ' $', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
   } else if (permitstyle.name === 'Percent Renter Occupied - 2022') {
-    permitLegendContent += generateLegendBar(0, 100, '%', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
+    permitLegendContent += generateLegendBar(0, 100, ' %', '#c4c4c4', '#4f4f4f'); // Example range, unit, and colors
   }
 
   legendElement.innerHTML = permitLegendContent;
@@ -400,7 +409,8 @@ function generatepermitLegendBar(minValue, maxValue, unit, color1, color2) {
 
   for (let i = 0; i < numTicks; i++) {
     const tickValue = minValue + i * tickInterval;
-    legendBarHTML += '<span class="tick-label">' + tickValue + unit + '</span>';
+    const formattedTickValue = tickValue.toLocaleString(); // Format the tick value using toLocaleString()
+    legendBarHTML += '<span class="tick-label">' + formattedTickValue + unit + '</span>';
   }
 
   legendBarHTML += '</div>';
