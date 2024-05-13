@@ -31,7 +31,7 @@
       <h3 class="gallery-title">Jenna Schnitzler</h3>
       <a href="https://www.linkedin.com/in/jenna-schnitzler/"><img src="https://media.licdn.com/dms/image/C4E03AQHVjKk3BdKgxg/profile-displayphoto-shrink_800_800/0/1561256683387?e=1721260800&v=beta&t=1aoptGhLPj2fRPP2bIXZYizV2BoABeFXIVn-JRcyKaA"></a>   
       <br>
-      <p>Lorem ipsum </p>
+      <p>Jenna is a dual degreen M.Arch/SMBT student researching the best ways to reuse buildings. </p>
     </li>
     <li class="gallery-item">
       <h3 class="gallery-title">Rachel Blowes</h3>
