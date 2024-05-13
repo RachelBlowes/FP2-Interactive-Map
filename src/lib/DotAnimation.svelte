@@ -123,6 +123,10 @@ let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300
     justify-content: space-around;
   }
 
+  div {
+    font-family: Courier, monospace;
+  }
+
 </style>
 
 <div class="tickercontainer">
@@ -167,7 +171,7 @@ let rightCaptions = ['$1,050', '$8,000', '$10,483', '$6,000', '$9,150', '$15,300
 
 <div class="disclaimercontainer">
   <div id="maptitles">
-    <small>*Not to scale</small>
-    <small>*Not to scale </small>
+    <small>*Relative scale</small>
+    <small>*Relative scale </small>
   </div>
 </div>

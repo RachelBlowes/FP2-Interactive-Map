@@ -43,6 +43,7 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
+    
   }
 
   /* Slider styles */

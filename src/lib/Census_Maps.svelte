@@ -32,7 +32,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #e8e3e2;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -81,9 +81,9 @@
 
   .salemap-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  background: #fff;
+  top: 0.5em;
+  left: 0.5em;
+  background: rgba(245, 245, 245, 0.698);
   overflow: auto;
   z-index: 1;
   width: 25%;
@@ -93,13 +93,18 @@
 
 .permitmap-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  background: #fff;
+  top: 0.5em;
+  left: 0.5em;
+  background:rgba(245, 245, 245, 0.698);
   overflow: auto;
   z-index: 1;
   width: 25%;
   height: 30%;
+}
+
+.overlay-captcha{
+  padding: 10px;
+  font-family: 100%/1.5 system-ui, sans-serif;
 }
 
 .legend-overlay {
@@ -118,7 +123,7 @@
     
     <div class="salemap-overlay" id="features">
       <h2>{salesMapTitle}</h2>
-      <div id="pd"><p>Hover over a census tract!</p></div>
+      <div class="overlay-captcha" id="pd"><p>Hover over a census tract!</p></div>
     </div>
   </div>
 
@@ -134,12 +139,13 @@
 
 <div id="legendContainer">
   <div id="salesLegend" class="legend-overlay"></div>
-
+  <div id="divline"></div>
   <div id="permitLegend" class="legend-overlay"></div>
 </div>
 
 
-<div id="optionsContainer">
+
+<div id="optionsContainer" >
   <div class="dropdown">
     <button class="dropbtn">Sales Map Options</button>
     <div class="dropdown-content">
@@ -148,7 +154,7 @@
       {/each}
     </div>
   </div>
-
+  <div id="divline" style="margin-left:10px;"></div>
   <div class="dropdown">
     <button class="dropbtn">Permit Map Options</button>
     <div class="dropdown-content">

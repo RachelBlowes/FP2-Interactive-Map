@@ -28,13 +28,13 @@
   
     .profitmap-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    background: #fff;
+    top: 0.5em;
+    left: 0.5em;
+    background:rgba(245, 245, 245, 0.698);
     overflow: auto;
     z-index: 1;
-    width: 25%;
-    height: 30%;
+    width: 18%;
+    height: 35%;
   }
   
   
@@ -240,6 +240,6 @@
  
   </script>
 
-<div style="height: 30px;"></div>
+<!-- <div style="height: 30px;"></div> -->
 
 <ZipRenterBarChart mapData = {$mapData} />

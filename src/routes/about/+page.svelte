@@ -5,11 +5,11 @@
 <br>
 <br>
 <h1 style="text-align:left;" calss="About">About the Project</h1>
-<p class="indented">We created this project as part of the Interactive Visualization & Society class <a href="https://vis-society.github.io/" target="_blanc">(6.C35)</a> at MIT in spring 2024. 
+<p class="about">We created this project as part of the Interactive Visualization & Society class <a href="https://vis-society.github.io/" target="_blanc">(6.C35)</a> at MIT in spring 2024. 
   Collaborating with <a href="https://www.mapc.org/aboutus/" target="_blanc">the Metropolitan Area Planning Council (MAPC)</a>, we addressed Housing Affordability in Greater Boston, 
   researching speculation in the Boston housing market.</p>
 <br>
-  <p class="indented">
+  <p class="about">
       We built on MAPC's work by analyzing more than twenty years of real estate transactions. We then joined these data with 
     the City of Boston's <a href="https://data.boston.gov/dataset/approved-building-permits" target="_blanc">approved building permits data</a> to research the relation between physical and fiscal investments and 
     how physical construction influences real estate market speculation, specifically, through "flipping" - the practice of buying a property, 
@@ -51,13 +51,20 @@
 <br>
 <br>
 <h1 style="text-align:left;" calss="About">Data Sources</h1>
-<ol>
+<ol class="about-list">
   <li><strong>The City of Boston Open Data Portal:</strong> Approved building permits, Live Street Address Management (SAM), Parcels</li>
   <li><strong>American Community Survey (ACS):</strong> Median income, total population, renters and owners division per census tract 2017-2021</li>
   <li><strong>The Warren Group:</strong> proprietary sales transactions data</li>
   <li><strong>US Census Bureau: </strong> Decennial Census 2020</li>
   <li><strong>The City of Boston Open Data Portal:</strong> Open Geographic Data (SAM)</li>
   <li><strong>US Bureau of Labor Statistics: </strong> Consumer Price Index (CPI)</li>
+<br>
+  <p class="about"  style="text-align:left; display: flex;">To find the corresponding permits for each property transaction, we used the SAM to match the sales with parcels based on their address. Then, we 
+    matched each transaction with the permits issued for that parcel between the sale's date and the previous sale of the same address (if mentioned in the dataset). 
+    This methodology serves as a proxy for estimating the profit made by the investor in the transaction. There are some caveats to it, such as: in cases where there are multiple 
+    flipped properties on the same parcel, the permits might not be related to the specific transaction. </p>
+
+    <p class="about">For the renovation estimation, we filtered the permits for ones mentioning renovation keywords, such as renovation, gut, and interior work.</p>
 </ol>
 <br>
 <br>
@@ -68,9 +75,6 @@
     text-indent: 40px;  /* Adjust the value to suit your needs */
 }
 
-h1.about{
-  text-align: left;
-}
 
 p {
     margin-bottom: 20px; /* Increase the bottom margin of a paragraph */
@@ -106,6 +110,11 @@ p {
 .gallery img {
     width: 100%; /* Each image will fill its column */
     height: auto; /* Maintains the image's aspect ratio */
+}
+
+.about-list {
+    font-family: courier, double-space; /* Sets the font family */
+    max-width: 1000px;
 }
 
 </style>

@@ -278,8 +278,8 @@
   
     #legend-container-permit {
       position: absolute;
-      bottom: -50px; /* Adjust as needed to position the legend below the slider */
-      left: 0;
+      bottom: 5em; /* Adjust as needed to position the legend below the slider */
+      left: 60em;
       width: 100%;
       text-align: left; /* Center the legend */
     }
